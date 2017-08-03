@@ -1,7 +1,8 @@
 # bsc-ember
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+[![Build Status](https://travis-ci.org/MattSkrobis/bsc-ember.svg?branch=master)](https://travis-ci.org/MattSkrobis/bsc-ember)
+
+This application will be an e-commerce online shop
 
 ## Prerequisites
 
@@ -10,11 +11,10 @@ You will need the following things properly installed on your computer.
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with NPM)
 * [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone git@github.com:MattSkrobis/bsc-ember.git` this repository
 * `cd bsc-ember`
 * `npm install`
 
@@ -22,10 +22,6 @@ You will need the following things properly installed on your computer.
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
 
 ### Running Tests
 
