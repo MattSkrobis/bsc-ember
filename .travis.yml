@@ -9,10 +9,13 @@ addons:
   chrome: stable
 
 cache:
+  yarn: true
   directories:
     - $HOME/.npm
 
 before_install:
+  - curl -o- -L https:// pkg.com/install.sh | bash -s -- --version version-number
+  - export PATH="$HOME/.yarn/bin:$PATH"
   - npm config set spin false
 
 install:
