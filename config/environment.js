@@ -45,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = ''
+    ENV.APP.host = 'https://bsc-ember-backend.herokuapp.com'
   }
 
   return ENV;
