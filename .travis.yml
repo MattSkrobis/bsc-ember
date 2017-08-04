@@ -11,15 +11,15 @@ addons:
 cache:
   yarn: true
   directories:
-    - $HOME/.npm
+     - $HOME/.npm
 
 before_install:
-  - curl -o- -L https:// pkg.com/install.sh | bash -s -- --version version-number
+   - curl -o- -L https:// pkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm config set spin false
 
 install:
-  - npm install
+  - yarn install --non-interactive
 
 script:
-  - npm test
+  - yarn test
