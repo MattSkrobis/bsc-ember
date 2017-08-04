@@ -14,7 +14,7 @@ cache:
      - $HOME/.npm
 
 before_install:
-   - curl -o- -L https:// pkg.com/install.sh | bash
+  - curl -o- -L https:// pkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm config set spin false
 
