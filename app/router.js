@@ -10,7 +10,9 @@ const ApplicationRouter = Router.extend({
 
 ApplicationRouter.map(function() {
   this.route('users-list');
-  this.route('products');
+  this.route('products', function() {
+    this.route('product', { path: '/:product_id' });
+  });
 });
 
 export default ApplicationRouter;

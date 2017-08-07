@@ -1,5 +1,5 @@
 {{outlet}}
 
 {{#each model as |product|}}
-  {{product.name}}
+  <div>{{#link-to "products.product" product}}{{product.name}}-{{product.id}}{{/link-to}}</div>
 {{/each}}
