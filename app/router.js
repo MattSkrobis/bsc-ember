@@ -1,13 +1,15 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-const Router = Ember.Router.extend({
+const { Router } = Ember;
+
+const ApplicationRouter = Router.extend({
   location: config.locationType,
   rootURL: config.rootURL
 });
 
-Router.map(function() {
+ApplicationRouter.map(function() {
   this.route('users-list');
 });
 
-export default Router;
+export default ApplicationRouter;
