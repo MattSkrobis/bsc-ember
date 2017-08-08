@@ -35,9 +35,11 @@
     "ember-data": "2.13.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
+    "ember-native-dom-helpers": "^0.5.2",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.1",
     "ember-template-lint": "^0.8.0",
+    "ember-test-selectors": "^0.3.7",
     "eslint-plugin-ember-suave": "^1.0.0",
     "loader.js": "^4.2.3"
   },
