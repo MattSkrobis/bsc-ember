@@ -1,6 +1,6 @@
 import { describe, it, beforeEach, afterEach } from 'mocha';
 import { expect } from 'chai';
-import { find, fillIn } from 'ember-native-dom-helpers';
+import { find } from 'ember-native-dom-helpers';
 import startApp from 'bsc-ember/tests/helpers/start-app';
 import destroyApp from 'bsc-ember/tests/helpers/destroy-app';
 import page from 'bsc-ember/tests/pages/product';
@@ -27,13 +27,12 @@ describe('Acceptance | products', function() {
 
     // edit
     await page.openProducts();
-    await click('[data-test-product-thumb-edit-link]');
-    fillIn('[data-test-product-form-name]', 'Apple 1');
-    await click('[data-test-product-form-save-button]');
+    await page.openProductEdit();
+    page.editProductName('Apple 1');
+    await page.saveProduct();
     expect(server.db.products[0].name).to.eq('Apple 1');
-    await click('[data-test-products-link]');
-    await click('[data-test-product-thumb-link]');
-    expect(find('[data-test-product-show-name]').textContent)
-      .to.include('Apple 1');
+    await page.openProducts();
+    await page.openProduct();
+    expect(page.productName).to.include('Apple 1');
   });
 });
