@@ -1,7 +1,7 @@
 {{yield}}
 
-{{input value=product.name}}
+{{input data-test-product-form-name value=product.name}}
 {{textarea value=product.description}}
 {{input type='number' value=product.sku}}
 
-<button {{action 'save'}}>Save</button>
+<button data-test-product-form-save-button {{action 'save'}}>Save</button>
