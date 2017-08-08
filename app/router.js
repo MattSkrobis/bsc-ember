@@ -12,6 +12,7 @@ ApplicationRouter.map(function() {
   this.route('users-list');
   this.route('products', function() {
     this.route('product', { path: '/:product_id' });
+    this.route('edit', { path: '/:product_id/edit' });
   });
 });
 
