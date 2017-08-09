@@ -1,6 +1,6 @@
 ## Routing, template, components
 
-<picture here>
+for picture, look in /TIL (ember.concepts.png)
 
 - router - is the best place to load data connected to the application path (/products - all products, /proudcts/1 - one product)
 - products router - loads data using model() hook (all products)
