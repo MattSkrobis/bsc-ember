@@ -1,6 +1,5 @@
 import { describe, it, beforeEach, afterEach } from 'mocha';
 import { expect } from 'chai';
-import { find } from 'ember-native-dom-helpers';
 import startApp from 'bsc-ember/tests/helpers/start-app';
 import destroyApp from 'bsc-ember/tests/helpers/destroy-app';
 import page from 'bsc-ember/tests/pages/product';
