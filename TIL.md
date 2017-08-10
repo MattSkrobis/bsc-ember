@@ -1,3 +1,41 @@
+#Thursday
+
+##Vim
+  $ - end of the line
+  0 - beginning of the line
+  c - change
+  d - delete 
+  DD - remove whole line
+  P - paste 
+  v - visual mode
+  i - insert mode
+  r - replace
+  Esc - returns to normal mode
+
+## Page object collection
+- collection option of the page objects allows to greatly simplify code, product-thumb can be found 
+```` javascript
+  products: collection({
+    itemScope: '[data-test-product-thumb]',
+    item: {
+      open: clickable('[data-test-product-thumb-link]'),
+      delete: clickable('[data-test-product-destroy-button]'),
+      cancelDelete: clickable('[data-test-product-destroy-cancel-button]'),
+      confirmDelete: clickable('[data-test-product-destroy-confirm-button]')
+    }
+  })
+````
+- functions on page objects can be chained
+```` javascript
+  await page.openProducts()
+    .openNewProduct()
+    .editProductName('FNX 45')
+    .saveProduct();
+````
+- sinon.js 
+
+#Wednesday
+
 # Tuesday
 
 ## ember-cli-sass
