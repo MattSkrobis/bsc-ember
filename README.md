@@ -23,6 +23,9 @@ You will need the following things properly installed on your computer.
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* App can be run in two modes: 
+  - ember s -e rails - will communicate with backend
+  - ember s - will use Mirage's default scenario
 
 ### Running Tests
 
