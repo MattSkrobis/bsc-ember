@@ -33,5 +33,16 @@ describe('Acceptance | products', function() {
     await page.openProducts();
     await page.openProduct();
     expect(page.productName).to.include('Apple 1');
+
+    // new
+    await page.openProducts();
+    await page.openNewProduct();
+    page.editProductName('FNX 45');
+    await page.saveProduct();
+    expect(server.db.products[1].name).to.eq('FNX 45');
+    await page.openProducts();
+    await page.openCreatedProduct();
+    expect(page.productName).to.include('FNX 45');
+
   });
 });

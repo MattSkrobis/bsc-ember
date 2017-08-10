@@ -1,5 +1,7 @@
 {{outlet}}
 
+<div>{{#link-to "products.new" data-test-product-index-new-link}}New{{/link-to}}</div>
+
 {{#each model as |product|}}
   {{product-thumb product=product class="thumb"}}
 {{/each}}
