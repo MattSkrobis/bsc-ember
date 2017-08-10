@@ -2216,7 +2216,7 @@ ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, e
     clone "^2.0.0"
     ember-cli-version-checker "^2.0.0"
 
-ember-cli-babel@^6.6.0:
+ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2:
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.7.2.tgz#9c0886194266f17a98fe5c536d170878ac287009"
   dependencies:
@@ -2284,9 +2284,9 @@ ember-cli-get-dependency-depth@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-get-dependency-depth/-/ember-cli-get-dependency-depth-1.0.0.tgz#e0afecf82a2d52f00f28ab468295281aec368d11"
 
-ember-cli-htmlbars-inline-precompile@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars-inline-precompile/-/ember-cli-htmlbars-inline-precompile-1.0.0.tgz#16a4f6cc69356744a3f3c5a82313a60124bafb62"
+ember-cli-htmlbars-inline-precompile@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars-inline-precompile/-/ember-cli-htmlbars-inline-precompile-1.0.2.tgz#5b544f664d5d9911f08cd979c5f70d8cb0ca2add"
   dependencies:
     babel-plugin-htmlbars-inline-precompile "^0.2.3"
     ember-cli-version-checker "^2.0.0"
@@ -2670,12 +2670,12 @@ ember-mocha@^0.12.0:
   dependencies:
     ember-test-helpers "^0.6.3"
 
-ember-native-dom-helpers@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.5.2.tgz#ba6123230fc32c3350f90a8f9183584a022215fa"
+ember-native-dom-helpers@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.5.3.tgz#276f2172b3018dc3f98202bd0a52b2b43bb0f0e7"
   dependencies:
     broccoli-funnel "^1.1.0"
-    ember-cli-babel "^6.1.0"
+    ember-cli-babel "^6.6.0"
 
 ember-resolver@^4.0.0:
   version "4.3.0"
@@ -2731,7 +2731,7 @@ ember-source@~2.14.1:
     simple-dom "^0.3.0"
     simple-html-tokenizer "^0.4.1"
 
-ember-template-lint@^0.8.0, ember-template-lint@^0.8.1:
+ember-template-lint@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-0.8.1.tgz#a0d96fe497f9dcb271ad3729f0e1afd85d6079c5"
   dependencies:
