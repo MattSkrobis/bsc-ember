@@ -25,35 +25,37 @@ describe('Acceptance | products', function() {
     expect(page.productName).to.include('Personal Computer');
 
     // edit
-    await page.openProducts();
-    await page.openProductEdit();
-    page.editProductName('Apple 1');
-    await page.saveProduct();
+    await page.openProducts()
+      .openProductEdit()
+      .editProductName('Apple 1')
+      .saveProduct();
     expect(server.db.products[0].name).to.eq('Apple 1');
-    await page.openProducts();
-    await page.products(0).open();
+    await page.openProducts()
+      .products(0).open();
     expect(page.productName).to.include('Apple 1');
 
     // new
-    await page.openProducts();
-    await page.openNewProduct();
-    page.editProductName('FNX 45');
-    await page.saveProduct();
+    await page.openProducts()
+      .openNewProduct()
+      .editProductName('FNX 45')
+      .saveProduct();
     expect(server.db.products[1].name).to.eq('FNX 45');
-    await page.openProducts();
-    await page.products(1).open();
+    await page.openProducts()
+      .products(1)
+      .open();
     expect(page.productName).to.include('FNX 45');
 
     // cancel delete
-    await page.openProducts();
-    await page.products(1).delete();
-    await page.products(1).cancelDelete();
+    await page.openProducts()
+      .products(1)
+      .delete()
+      .cancelDelete();
     expect(server.db.products[1].name).to.eq('FNX 45');
 
     // confirm delete
-    await page.products(1).delete();
-    await page.products(1).confirmDelete();
+    await page.products(1)
+      .delete()
+      .confirmDelete();
     expect(server.db.products[1]).to.not.exist;
-
   });
 });
