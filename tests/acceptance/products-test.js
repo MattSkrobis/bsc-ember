@@ -43,6 +43,5 @@ describe('Acceptance | products', function() {
     await page.openProducts();
     await page.openCreatedProduct();
     expect(page.productName).to.include('FNX 45');
-
   });
 });
