@@ -14,6 +14,7 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
     this.route('edit', { path: '/:product_id/edit' });,
     explicit search for the product was not necessary (:product_id is very important in this)
 - actions like save() are declared like that, in component.js
+  ```` js
   export default Component.extend({
     actions: {
       save() {
@@ -22,11 +23,13 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
       }
     }
   });
+  ````
 (edit, thumb, actions:[])
 
 ## Integration component test
 - integration tests ensure that component renders properly with given data, this cannot test transition between pages because there is no router in place 
 (we ensure component renders properly with given data, (no transition testing, link-to) the process of transition from .. to ..)
+  ```` js
   setupComponentTest('product-edit', {
     integration: true
   });
@@ -36,7 +39,7 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
     this.render(hbs`{{product-edit product=product}}`);
     expect(find('[data-test-product-form-name]').value).to.include('Phone');
   });
-  
+````
 ## Acceptance test
 - integration tests ensure the application is working properly
 - without the use of page object
