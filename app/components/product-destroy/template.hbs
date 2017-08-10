@@ -1,0 +1,8 @@
+<button data-test-product-destroy-button {{action "launchConfirmDialog"}}>{{yield}}</button>
+{{#if confirmShown}}
+  <div class="confirm-dialog">
+    <div data-test-product-destroy-text>This will remove the product, do you wish to proceed?</div>
+    <button data-test-product-destroy-confirm-button class="confirm-submit" {{action "submitConfirm"}}>OK</button>
+    <button data-test-product-destroy-cancel-button class="confirm-cancel" {{action "cancelConfirm"}}>Cancel</button>
+  </div>
+{{/if}}
