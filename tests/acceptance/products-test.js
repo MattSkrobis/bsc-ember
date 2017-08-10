@@ -21,7 +21,7 @@ describe('Acceptance | products', function() {
     await page.visit();
 
     // show 
-    await page.openProduct();
+    await page.products(0).open();
     expect(page.productName).to.include('Personal Computer');
 
     // edit
@@ -31,7 +31,7 @@ describe('Acceptance | products', function() {
     await page.saveProduct();
     expect(server.db.products[0].name).to.eq('Apple 1');
     await page.openProducts();
-    await page.openProduct();
+    await page.products(0).open();
     expect(page.productName).to.include('Apple 1');
 
     // new
@@ -41,7 +41,19 @@ describe('Acceptance | products', function() {
     await page.saveProduct();
     expect(server.db.products[1].name).to.eq('FNX 45');
     await page.openProducts();
-    await page.openCreatedProduct();
+    await page.products(1).open();
     expect(page.productName).to.include('FNX 45');
+
+    // cancel delete
+    await page.openProducts();
+    await page.products(1).delete();
+    await page.products(1).cancelDelete();
+    expect(server.db.products[1].name).to.eq('FNX 45');
+
+    // confirm delete
+    await page.products(1).delete();
+    await page.products(1).confirmDelete();
+    expect(server.db.products[1]).to.not.exist;
+
   });
 });

@@ -3,13 +3,21 @@ import {
   visitable,
   clickable,
   text,
-  fillable
+  fillable,
+  collection
 } from 'ember-cli-page-object';
 
 export default create({
+  products: collection({
+    itemScope: '[data-test-product-thumb]',
+    item: {
+      open: clickable('[data-test-product-thumb-link]'),
+      delete: clickable('[data-test-product-destroy-button]'),
+      cancelDelete: clickable('[data-test-product-destroy-cancel-button]'),
+      confirmDelete: clickable('[data-test-product-destroy-confirm-button]')
+    }
+  }),
   visit: visitable('/products'),
-  openProduct: clickable('[data-test-product-thumb-link]', { at: 0 }),
-  openCreatedProduct: clickable('[data-test-product-thumb-link]', { at: 1 }),
   productName: text('[data-test-product-show-name]'),
   openProducts: clickable('[data-test-products-link]'),
   openProductEdit: clickable('[data-test-product-thumb-edit-link]'),
