@@ -7,10 +7,8 @@ export default Component.extend({
     toggle() {
       this.toggleProperty('confirmShown');
     },
-
-    destroy(product) {
-      product.deleteRecord();
-      product.save();
+    submitConfirm() {
+      this.get('onConfirm')();
     }
   }
 });

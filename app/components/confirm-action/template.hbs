@@ -1,0 +1,8 @@
+{{yield}}
+{{#if confirmShown}}
+  <div class="confirm-dialog">
+    <div data-test-warning-msg>{{warningMsg}}</div>
+    <button data-test-confirm-button class="confirm-submit" {{action "submitConfirm"}}>OK</button>
+    <button data-test-cancel-button class="confirm-cancel" {{action "toggle"}}>Cancel</button>
+  </div>
+{{/if}}

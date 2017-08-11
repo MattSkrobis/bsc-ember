@@ -13,8 +13,8 @@ export default create({
     item: {
       open: clickable('[data-test-product-thumb-link]'),
       delete: clickable('[data-test-product-destroy-button]'),
-      cancelDelete: clickable('[data-test-product-destroy-cancel-button]'),
-      confirmDelete: clickable('[data-test-product-destroy-confirm-button]')
+      cancelDelete: clickable('[data-test-cancel-button]'),
+      confirmDelete: clickable('[data-test-confirm-button]')
     }
   }),
   visit: visitable('/products'),

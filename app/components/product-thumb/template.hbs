@@ -2,4 +2,4 @@
 <span data-test-product-thumb-name>{{product.name}}</span>
 <div>{{#link-to "products.product" data-test-product-thumb-link product}}Details{{/link-to}}</div>
 <div>{{#link-to "products.edit" data-test-product-thumb-edit-link product}}Edit{{/link-to}}</div>
-{{#product-destroy onConfirm=(action "destroy" product) }}Remove{{/product-destroy}} 
+{{#product-destroy product=product}}Remove{{/product-destroy}} 
