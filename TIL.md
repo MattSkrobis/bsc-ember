@@ -32,9 +32,11 @@
     .editProductName('FNX 45')
     .saveProduct();
 ````
-- sinon.js 
+- sinon.js - used to create dummy functions (spies) and assert that they were called specific amount of times
 
-#Wednesday
+# Wednesday
+
+- TIL is important
 
 # Tuesday
 
@@ -81,7 +83,7 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
 ## Acceptance test
 - integration tests ensure the application is working properly
 - without the use of page object
-  //
+  ```` js
     ...
     await visit('/products');
     await click('[data-test-product-thumb-link]');
@@ -89,8 +91,10 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
       .to.include('Personal Computer');
     await click('[data-test-products-link]');
     ...
+  ````
 - with page object 
   //pages/product.js
+  ```` javascript
     import {
       create,
       visitable,
@@ -104,13 +108,15 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
       productName: text('[data-test-product-show-name]'),
       openProducts: clickable('[data-test-products-link]')
     });
-
+  ````
 // acceptance/products.js
+  ```` javascript
   ...
     await page.visit();
     await page.openProduct();
     expect(page.productName).to.include('Personal Computer');
   ...
+  ````
 (we ensure the application is working properly, the process of transition from .. to ..)
 
 # Monday
@@ -181,6 +187,7 @@ backend
 https://github.com/cyu/rack-cors
 https://github.com/cerebris/jsonapi-resources
 - update of cors.rb 
+  ```` ruby
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins 'localhost:4200', 'https://bsc-ember.herokuapp.com'
@@ -190,10 +197,13 @@ https://github.com/cerebris/jsonapi-resources
         methods: [:get, :options, :head]
     end
   end
+  ````
 - adding a resource
+  ```` ruby
   class UserResource < JSONAPI::Resource
     attributes :first_name, :last_name, :email
   end
+  ````
 - adding a controller
 - adding a route (jsonapi_resources :users)
 
@@ -201,6 +211,7 @@ frontend
 https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
 
 - adapter
+  ```` js
   import DS from 'ember-data';
   import ENV from '../config/environment';
 
@@ -211,8 +222,9 @@ https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
   export default JSONAPIAdapter.extend({
     host: ENV.APP.host
   });
-
+  ````
 - environment variables 
+  ```` js
   /* eslint-env node */
   'use strict';
 
@@ -239,7 +251,7 @@ https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
 
     return ENV;
   };
-
+  ````
 (cors.rb, JSONAPI (resource, controller, route), ember data adapter, environment variables in ember)
 
 ## Testing communication with backend
