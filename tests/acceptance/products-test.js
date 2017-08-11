@@ -25,13 +25,13 @@ describe('Acceptance | products', function() {
     expect(page.productName).to.include('Personal Computer');
 
     // edit
-    await page.openProducts()
-      .openProductEdit()
+    await page.openProducts().edit()
       .editProductName('Apple 1')
       .saveProduct();
     expect(server.db.products[0].name).to.eq('Apple 1');
-    await page.openProducts()
-      .products(0).open();
+    await page.openProducts();
+    expect(page.products(0).thumbName).to.eq('Apple 1');
+    await page.products(0).open();
     expect(page.productName).to.include('Apple 1');
 
     // new
@@ -40,9 +40,9 @@ describe('Acceptance | products', function() {
       .editProductName('FNX 45')
       .saveProduct();
     expect(server.db.products[1].name).to.eq('FNX 45');
-    await page.openProducts()
-      .products(1)
-      .open();
+    await page.openProducts();
+    expect(page.products(1).thumbName).to.eq('FNX 45');
+    await page.products(1).open();
     expect(page.productName).to.include('FNX 45');
 
     // cancel delete
