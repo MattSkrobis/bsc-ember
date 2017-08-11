@@ -57,5 +57,6 @@ describe('Acceptance | products', function() {
       .delete()
       .confirmDelete();
     expect(server.db.products[1]).to.not.exist;
+    expect(page.products().count).to.eq(1);
   });
 });
