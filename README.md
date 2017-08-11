@@ -1,6 +1,7 @@
 # bsc-ember
 
 [![Build Status](https://travis-ci.org/MattSkrobis/bsc-ember.svg?branch=master)](https://travis-ci.org/MattSkrobis/bsc-ember)
+[![Dependency Status](https://gemnasium.com/badges/github.com/MattSkrobis/bsc-ember.svg)](https://gemnasium.com/github.com/MattSkrobis/bsc-ember)
 
 This application will be an e-commerce online shop
 
