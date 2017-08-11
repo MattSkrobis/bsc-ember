@@ -1,19 +1,20 @@
-#Thursday
+# Thursday
 
-##Vim
-  $ - end of the line
-  0 - beginning of the line
-  c - change
-  d - delete 
-  DD - remove whole line
-  P - paste 
-  v - visual mode
-  i - insert mode
-  r - replace
-  Esc - returns to normal mode
+## Vim
+  - `$` - end of the line
+  - `0` - beginning of the line
+  - `c` - change
+  - `d` - delete 
+  - `DD` - remove whole line
+  - `P` - paste 
+  - `v` - visual mode
+  - `i` - insert mode
+  - `r` - replace
+  - `Esc` - returns to normal mode
 
 ## Page object collection
-- collection option of the page objects allows to greatly simplify code, product-thumb can be found 
+- collection option of the page objects allows to greatly simplify code
+
 ```` javascript
   products: collection({
     itemScope: '[data-test-product-thumb]',
@@ -25,14 +26,17 @@
     }
   })
 ````
+
 - functions on page objects can be chained
+
 ```` javascript
   await page.openProducts()
     .openNewProduct()
     .editProductName('FNX 45')
     .saveProduct();
 ````
-- sinon.js - used to create dummy functions (spies) and assert that they were called specific amount of times
+
+- `sinon.js` - used to create dummy functions (spies) and assert that they were called specific amount of times
 
 # Wednesday
 
@@ -50,10 +54,13 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
 ## Components
 - new components were added
   - edit which is a form because of convention and proper setting of route in route.js, 
+  ```` js
     this.route('products', function() {
     this.route('edit', { path: '/:product_id/edit' });,
-    explicit search for the product was not necessary (:product_id is very important in this)
-- actions like save() are declared like that, in component.js
+  ````
+    explicit search for the product was not necessary (`:product_id` is very important in this)
+- actions like `save() are declared like that, in component.js
+
   ```` js
   export default Component.extend({
     actions: {
@@ -64,11 +71,11 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
     }
   });
   ````
-(edit, thumb, actions:[])
 
 ## Integration component test
+
 - integration tests ensure that component renders properly with given data, this cannot test transition between pages because there is no router in place 
-(we ensure component renders properly with given data, (no transition testing, link-to) the process of transition from .. to ..)
+ 
   ```` js
   setupComponentTest('product-edit', {
     integration: true
@@ -79,7 +86,7 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
     this.render(hbs`{{product-edit product=product}}`);
     expect(find('[data-test-product-form-name]').value).to.include('Phone');
   });
-````
+  ````
 ## Acceptance test
 - integration tests ensure the application is working properly
 - without the use of page object
@@ -93,8 +100,8 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
     ...
   ````
 - with page object 
-  //pages/product.js
   ```` javascript
+  // pages/product.js
     import {
       create,
       visitable,
@@ -109,8 +116,8 @@ http://ember-cli-page-object.js.org/docs/v1.8.x/
       openProducts: clickable('[data-test-products-link]')
     });
   ````
-// acceptance/products.js
-  ```` javascript
+
+  ```` javascript  
   ...
     await page.visit();
     await page.openProduct();
@@ -131,12 +138,10 @@ for picture, look in /TIL (ember.concepts.png)
 - product-thumb component - has access to product inside template.hbs and component.js (this.product)
 
 ## Mirage
-(what that is, factories, default scenario)
+- fake server that runs in client, useful in development, as with standard ember config of models and routes, it can be employed to simulate proper backend until it is implemented
 
 ## Components
-- components can be generated using ember g component --pod component-name, pods are creating a neat structure of tempate.hbs and component.js in the component-name folder. 
-note: the name of a component has to contain dash 
-(--pod, show, listing)
+- components can be generated using `ember g component --pod component-name`, pods are creating a neat structure of `tempate.hbs` and `component.js` in the `component-name` folder. Note: the name of a component has to contain a dash 
 
 # Thursday
 
@@ -164,7 +169,7 @@ https://github.com/rwjblue/ember-template-lint
 ## Continuous Integration and Deployment
 - travis was setup with proper config 
   - repository were set
-  - curl -o- -L https://yarnpkg.com/install.sh | bash in travis.yml of ember app
+  - `curl -o- -L https://yarnpkg.com/install.sh | bash` in `travis.yml` of ember app
   - badges were added to respective repositories
 - both backend were deployed to heroku
   - frontend
@@ -173,20 +178,18 @@ https://github.com/rwjblue/ember-template-lint
   - backend
     - automatic deployments if master is green 
     - standard configuration (database)
-(travis, heroku, ember-buildpack)
 
 ## Javascript Transpilation
 https://guides.emberjs.com/v2.14.0/configuring-ember/build-targets/
-in targets.js it can be specified which browsers are supposed to work with app, 
-old code is bigger than new one, user of new browser do not necessarily want to have the option to run the app on older browsers
-given which version is to be supported, the uglifier has to be updated accordingly 
-(targets.js (backward compatibility of JS and change of uglifier accordingly))
+in `targets.js` it can be specified which browsers are supposed to work with app, 
+old code is bigger than new one, user of new browser do not necessarily want to have the option to run the app on older browsers. given which version is to be supported, the uglifier has to be updated accordingly 
 
 ## Connecting with RoR backend
-backend
-https://github.com/cyu/rack-cors
-https://github.com/cerebris/jsonapi-resources
-- update of cors.rb 
+* Backend
+- https://github.com/cyu/rack-cors
+- https://github.com/cerebris/jsonapi-resources
+
+- update of `cors.rb` 
   ```` ruby
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
@@ -198,6 +201,7 @@ https://github.com/cerebris/jsonapi-resources
     end
   end
   ````
+
 - adding a resource
   ```` ruby
   class UserResource < JSONAPI::Resource
@@ -205,7 +209,7 @@ https://github.com/cerebris/jsonapi-resources
   end
   ````
 - adding a controller
-- adding a route (jsonapi_resources :users)
+- adding a route (`jsonapi_resources :users`)
 
 frontend
 https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
@@ -223,7 +227,9 @@ https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
     host: ENV.APP.host
   });
   ````
+
 - environment variables 
+
   ```` js
   /* eslint-env node */
   'use strict';
@@ -255,7 +261,3 @@ https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
 (cors.rb, JSONAPI (resource, controller, route), ember data adapter, environment variables in ember)
 
 ## Testing communication with backend
-  (frontend: user model, user list route, user list template, user list component)
-  - user model 
-
-  (backend: user model, controller, resource, route, cors.rb)
