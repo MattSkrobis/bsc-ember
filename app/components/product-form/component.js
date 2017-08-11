@@ -5,8 +5,10 @@ const { Component } = Ember;
 export default Component.extend({
   actions: {
     save() {
-      this.product.save()
-        .catch((error) => alert(error));
+      this.attrs.save(this.get('changeset'));
+    },
+    rollback() {
+      this.attrs.rollback(this.get('changeset'));
     }
   }
 });
