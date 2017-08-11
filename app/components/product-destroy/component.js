@@ -4,16 +4,12 @@ const { Component } = Ember;
 
 export default Component.extend({
   actions: {
-    launchConfirmDialog() {
-      this.set('confirmShown', true);
+    toggle() {
+      this.toggleProperty('confirmShown');
     },
 
     submitConfirm() {
       this.get('onConfirm')();
-    },
-
-    cancelConfirm() {
-      this.set('confirmShown', false);
     }
   }
 });
