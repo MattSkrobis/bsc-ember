@@ -1,19 +1,42 @@
 # Thursday
 
 ## Vim
+  [based on this article](https://danielmiessler.com/study/vim/#language)
+
+  vim can be considered a kind of language with its:
+  - verbs
+    - `d` - delete
+    - `c` - change
+    - `y` - yank/copy
+    - `v` - visual character selection
+    - `V` - visual line selection
+  - modifiers 
+    - `a` - around
+    - `i` - inside
+    - `t` - search and stop before it
+    - `f` - search and land on it
+    - `/` - find a string
+  - nouns
+    - `w` - word
+    - `s` - sentence
+    - `p` - paragraph
+    - `t` - HTML/XML tag
+
+  Out of these pieces a sentence can be created e.g.
+   - `yip` - yank a paragraph you are in
+
+  Other useful commands include:
   - `$` - end of the line
   - `0` - beginning of the line
-  - `c` - change
-  - `d` - delete 
   - `DD` - remove whole line
   - `P` - paste 
   - `v` - visual mode
   - `i` - insert mode
   - `r` - replace
   - `Esc` - returns to normal mode
-
+  
 ## Page object collection
-- collection option of the page objects allows to greatly simplify code
+- [x] [ember page object](http://ember-cli-page-object.js.org/docs/v1.8.x/) - collection option of the page objects allows to greatly simplify code, product-thumb can be found 
 
 ```` javascript
   products: collection({
@@ -35,8 +58,7 @@
     .editProductName('FNX 45')
     .saveProduct();
 ````
-
-- `sinon.js` - used to create dummy functions (spies) and assert that they were called specific amount of times
+- [x] [sinonjs documentation](https://github.com/csantero/ember-sinon) - used to create dummy functions (spies) and assert that they were called specific amount of times
 
 # Wednesday
 
@@ -47,20 +69,21 @@
 ## ember-cli-sass
 
 ## Useful testing packages
-https://github.com/cibernox/ember-native-dom-helpers
-https://github.com/simplabs/ember-test-selectors
-http://ember-cli-page-object.js.org/docs/v1.8.x/
+(ember-native-dom-helpers) [https://github.com/cibernox/ember-native-dom-helpers]
+(ember-test-selectors) [https://github.com/simplabs/ember-test-selectors]
 
 ## Components
-- new components were added
-  - edit which is a form because of convention and proper setting of route in route.js, 
-  ```` js
-    this.route('products', function() {
-    this.route('edit', { path: '/:product_id/edit' });,
-  ````
-    explicit search for the product was not necessary (`:product_id` is very important in this)
-- actions like `save() are declared like that, in component.js
+- order: router -> route -> (controller) -> template -> component-name/{.hbs|.js}
+- [x] [documentation on 'model()'](https://www.emberjs.com/api/ember/2.14/classes/Ember.Route/methods/model?anchor=model) 
+- edit which is a form because of convention and proper setting of route in route.js, 
 
+  ```` js
+  this.route('products', function() {
+  this.route('edit', { path: '/:product_id/edit' });,
+  ````  
+  explicit search for the product was not necessary (`:product_id` is very important in this)
+
+- actions like `save()` are declared like that, in component.js
   ```` js
   export default Component.extend({
     actions: {
@@ -138,6 +161,7 @@ for picture, look in /TIL (ember.concepts.png)
 - product-thumb component - has access to product inside template.hbs and component.js (this.product)
 
 ## Mirage
+- [x] [ember cli mirage](http://www.ember-cli-mirage.com/docs/v0.3.x/)
 - fake server that runs in client, useful in development, as with standard ember config of models and routes, it can be employed to simulate proper backend until it is implemented
 
 ## Components
@@ -146,15 +170,16 @@ for picture, look in /TIL (ember.concepts.png)
 # Thursday
 
 ## Linters
-https://github.com/DockYard/eslint-plugin-ember-suave
-https://github.com/rwjblue/ember-cli-template-lint
-https://github.com/rwjblue/ember-template-lint
+- [eslint-plugin-ember-suave](https://github.com/DockYard/eslint-plugin-ember-suave)
+
+- [ember-cli-template-lint](https://github.com/rwjblue/ember-cli-template-lint)
 - all in all - tools that are used to detect foul code style
 (cli-linter, eslinter, template-linter, suave)
 
 ## Testing environment
-- qunit default was replaced with mocha (https://mochajs.org/ which is a test framework running on Node and in browser
-- chai, a assertion library, was also added
+- [x] qunit default was replaced with [mocha](https://mochajs.org/) which is a test framework running on Node and in browser
+- [x] [chai](http://chaijs.com/api/bdd/), a assertion library, was also added
+- [x] [ember-mocha](https://github.com/emberjs/ember-mocha/blob/master/README.md)
 - phantomjs, an old headless browser was replaced with the chrome, run in its headless mode
 (mocha, chrome headless, chai, phantomjs)
 
@@ -162,7 +187,7 @@ https://github.com/rwjblue/ember-template-lint
 - node version manager - a way to manage multiple different node versions
 - yarn - package manager
   - interesting feature of yarn interactive-update that allows selection of the packages to be updated
-(nvm, node, yarn, yarn interactive-update)
+(nvm, node, yarn, `yarn interactive-update`)
 
 # Friday
 
@@ -174,19 +199,20 @@ https://github.com/rwjblue/ember-template-lint
 - both backend were deployed to heroku
   - frontend
     - automatic deployments if master is green
-    - ember build pack https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+    - [ember build pack](https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz)
   - backend
     - automatic deployments if master is green 
     - standard configuration (database)
 
 ## Javascript Transpilation
-https://guides.emberjs.com/v2.14.0/configuring-ember/build-targets/
+[build-targets](https://guides.emberjs.com/v2.14.0/configuring-ember/build-targets/)
 in `targets.js` it can be specified which browsers are supposed to work with app, 
 old code is bigger than new one, user of new browser do not necessarily want to have the option to run the app on older browsers. given which version is to be supported, the uglifier has to be updated accordingly 
 
 ## Connecting with RoR backend
 * Backend
-- https://github.com/cyu/rack-cors
+- [x] [jsonapi resources](http://jsonapi-resources.com/v0.9/guide/index.htmli
+- (https://github.com/cyu/rack-cors)
 - https://github.com/cerebris/jsonapi-resources
 
 - update of `cors.rb` 
@@ -212,9 +238,8 @@ old code is bigger than new one, user of new browser do not necessarily want to 
 - adding a route (`jsonapi_resources :users`)
 
 frontend
-https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
 
-- adapter
+- [adapter](https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter)
   ```` js
   import DS from 'ember-data';
   import ENV from '../config/environment';
@@ -258,6 +283,5 @@ https://www.emberjs.com/api/ember-data/2.14/classes/DS.Adapter
     return ENV;
   };
   ````
-(cors.rb, JSONAPI (resource, controller, route), ember data adapter, environment variables in ember)
-
 ## Testing communication with backend
+- testing was held on heroku, after deployment of both applications, by seeding backend's database with users and visually inspecting that request to API is being sent and users are being displayed. Tweaks to the configuration including backend's `allowed_origins` and frontends `host`.
