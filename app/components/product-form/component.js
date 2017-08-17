@@ -16,13 +16,18 @@ export default Component.extend({
   },
   actions: {
     save() {
-      this.changeset.validate().then(()=>{
-        if (this.changeset.get('isValid')) {
-          this.changeset.save().then(()=>{
-            this.get('router').transitionTo('products.index');
-          });
-        }
-      });
+      this.changeset.validate()
+        .then(()=>{
+          if (this.changeset.get('isValid')) {
+            this.changeset.save()
+              .then(()=>{
+                this.get('router').transitionTo('products.index');
+              })
+              .catch((err)=> {
+                alert(err);
+              });
+          }
+        });
     },
     rollback() {
       this.changeset.rollback();
