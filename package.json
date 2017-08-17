@@ -41,6 +41,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-native-dom-helpers": "^0.5.3",
     "ember-resolver": "^4.4.0",
+    "ember-router-service-polyfill": "^1.0.1",
     "ember-sinon": "^0.7.0",
     "ember-source": "~2.14.1",
     "ember-test-selectors": "^0.3.7",
