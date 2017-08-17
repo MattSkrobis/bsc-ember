@@ -1,3 +1,76 @@
+# Wednesday
+
+## Ember changeset validations
+- [ember changeset validations](https://github.com/DockYard/ember-changeset-validations/) - an addon to `ember-changeset` which is a function based library used for validations. A validation itself is an Object, which can contain already shipped, default validations as well as user-defined ones.
+
+```` js
+// templates/products/edit|new.js
+{{product-form changeset=(changeset model productValidations) save=(action "save") rollback=(action "rollback")}}
+````
+
+```` js
+// validations/product.js 
+import {
+  validatePresence,
+  validateLength,
+  validateNumber
+} from 'ember-changeset-validations/validators';
+
+export const productValidations =  {
+  name: [validatePresence(true), validateLength({ min: 3 })],
+  description: validateLength({ max: 255 }),
+  sku: validateNumber({ integer: true })
+};
+````
+```` js
+// components/product-form/template.js 
+<ul>
+  {{#each changeset.errors as |errorSet|}}
+    {{#each errorSet.validation as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  {{/each}}
+</ul>
+````
+Without further modification, changeset is being validated on each change to it and the errors are displayed below of the form. Nothing, however, is preventing the incorrect form from being sent. To remedy this, the changes in controller are made.
+```` js
+//controllers/products/edit|new.js
+import Ember from 'ember';
+import { productValidations } from '../../validations/product';
+
+const { Controller } = Ember;
+
+export default Controller.extend({
+  productValidations,
+  actions: {
+    save(changeset) {
+      changeset.validate().then(()=>{
+        if (changeset.get('isValid')) {
+          changeset.save().then(()=>{
+            this.transitionToRoute('products.index');
+          });
+        }
+      });
+    },
+    rollback(changeset) {
+      changeset.rollback();
+    }
+  }
+});
+````
+
+# Friday
+
+## Ember changeset 
+- [ember changeset](https://github.com/DockYard/ember-changeset) - a set of valid changes on a object which then can be stored or discarded. Can be checked for correctness by passing a optional validation before save. A changeset can be created using a `changeset` helper.
+
+```` js
+// templates/products/edit|new.js
+{{product-form changeset=(changeset model) save=(action "save") rollback=(action "rollback")}}
+````
+
+or by means of Javascript.
+
 # Thursday
 
 ## Vim
