@@ -1,6 +1,7 @@
 # bsc-ember
 
 [![Build Status](https://travis-ci.org/MattSkrobis/bsc-ember.svg?branch=master)](https://travis-ci.org/MattSkrobis/bsc-ember)
+[![Dependency Status](https://gemnasium.com/badges/github.com/MattSkrobis/bsc-ember.svg)](https://gemnasium.com/github.com/MattSkrobis/bsc-ember)
 
 This application will be an e-commerce online shop
 
@@ -23,10 +24,13 @@ You will need the following things properly installed on your computer.
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* App can be run in two modes: 
+  - `ember s -e rails` - will communicate with backend
+  - `ember s` - will use Mirage's default scenario
 
 ### Running Tests
 
-* `ember test`
+* `ember test` - tests can be filtered by adding `-f` flag and passing a name of test
 * `ember test --server`
 
 ### Building
@@ -36,12 +40,7 @@ You will need the following things properly installed on your computer.
 
 ### Deploying
 
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+* App is deployed on Heroku, automatic deployments are enabled, to deploy manually use
+  - heroku dashboard
+  or
+  - `git push heroku master`
