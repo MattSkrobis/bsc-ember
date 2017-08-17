@@ -14,6 +14,7 @@ ApplicationRouter.map(function() {
     this.route('edit', { path: '/:product_id/edit' });
     this.route('new', { path: '/new' });
   });
+  this.route('categories', function() {});
 });
 
 export default ApplicationRouter;
