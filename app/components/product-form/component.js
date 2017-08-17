@@ -1,4 +1,7 @@
 import Ember from 'ember';
+import { productValidations } from 'bsc-ember/validations/product';
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
 
 const { Component,
   inject: {
@@ -7,6 +10,10 @@ const { Component,
 
 export default Component.extend({
   router: service(),
+  init() {
+    this._super(...arguments);
+    this.changeset = new Changeset(this.model, lookupValidator(productValidations), productValidations);
+  },
   actions: {
     save() {
       this.changeset.validate().then(()=>{
