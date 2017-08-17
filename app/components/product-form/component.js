@@ -1,14 +1,24 @@
 import Ember from 'ember';
 
-const { Component } = Ember;
+const { Component,
+  inject: {
+    service
+  } } = Ember;
 
 export default Component.extend({
+  router: service(),
   actions: {
     save() {
-      this.attrs.save(this.get('changeset'));
+      this.changeset.validate().then(()=>{
+        if (this.changeset.get('isValid')) {
+          this.changeset.save().then(()=>{
+            this.get('router').transitionTo('products.index');
+          });
+        }
+      });
     },
     rollback() {
-      this.attrs.rollback(this.get('changeset'));
+      this.changeset.rollback();
     }
   }
 });
