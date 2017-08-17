@@ -39,6 +39,10 @@ describe('Acceptance | products', function() {
       .openNewProduct()
       .editProductName('FNX 45')
       .saveProduct();
+    expect(server.db.products[1]).to.not.exist;
+    expect(page.editProductSkuError).to.contain('Sku');
+    await page.editProductSku('3')
+      .saveProduct();
     expect(server.db.products[1].name).to.eq('FNX 45');
     await page.openProducts();
     expect(page.products(1).thumbName).to.eq('FNX 45');

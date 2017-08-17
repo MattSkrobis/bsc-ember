@@ -23,6 +23,8 @@ export default create({
   openProducts: clickable('[data-test-products-link]'),
   edit: clickable('[data-test-product-thumb-edit-link]'),
   editProductName: fillable('input', { at: 0 }),
+  editProductSku: fillable('input', { at: 1 }),
   saveProduct: clickable('[data-test-product-form-save-button]'),
+  editProductSkuError: text("li:contains('Sku must')"),
   openNewProduct: clickable('[data-test-product-index-new-link]')
 });

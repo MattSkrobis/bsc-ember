@@ -2,7 +2,7 @@
 {{textarea value=changeset.description}}
 {{input type='number' value=changeset.sku}}
 
-<ul>
+<ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
     {{#each errorSet.validation as |error|}}
       <li>{{error}}</li>
