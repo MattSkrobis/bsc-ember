@@ -21,7 +21,7 @@ export default Component.extend({
           if (this.changeset.get('isValid')) {
             this.changeset.save()
               .then(()=>{
-                this.get('router').transitionTo('products.index');
+                this.get('router').transitionTo('categories.index');
               })
               .catch((err)=> {
                 alert(err);

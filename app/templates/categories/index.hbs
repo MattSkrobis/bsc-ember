@@ -1,5 +1,5 @@
 {{outlet}}
-
+<div>{{#link-to "categories.new"}}New{{/link-to}}</div>
 <ul>  
   {{#each model as |category|}}
     <li>{{#link-to 'categories.category' category}}{{category.name}}{{/link-to}}</li> 

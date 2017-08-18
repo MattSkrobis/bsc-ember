@@ -17,6 +17,7 @@ ApplicationRouter.map(function() {
   this.route('categories', function() {
     this.route('category', { path: '/:category_id' });
     this.route('edit', { path: '/:category_id/edit' });
+    this.route('new', { path: '/new' });
   });
 });
 
