@@ -1,0 +1,3 @@
+<button data-test-category-destroy-button {{action "toggle"}}>{{yield}}</button>
+{{confirm-action onConfirm=(action 'destroy' category)
+  confirmShown=confirmShown warningMsg="This will remove the category, are you certain?" }}
