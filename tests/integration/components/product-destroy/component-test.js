@@ -3,7 +3,6 @@ import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers'; // different find
-import sinon from 'sinon';
 
 describe('Integration | Component | product destroy', function() {
   setupComponentTest('product-destroy', {
@@ -12,9 +11,8 @@ describe('Integration | Component | product destroy', function() {
 
   beforeEach(function() {
     this.set('product', { name: 'Phone', description: 'Black', id: 1 });
-    this.set('destroy', sinon.spy());
     this.render(hbs`
-    {{#product-destroy onConfirm=(action destroy product)}}
+    {{#product-destroy}}
       Remove
     {{/product-destroy}}
     `);
@@ -22,6 +20,6 @@ describe('Integration | Component | product destroy', function() {
 
   it('renders', function() {
     // renders component
-    expect(find('[data-test-product-destroy-button]')).to.have.exist;
+    expect(find('[data-test-product-destroy-button]')).to.exist;
   });
 });
