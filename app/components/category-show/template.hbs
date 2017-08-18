@@ -1,0 +1,9 @@
+{{yield}}
+<h1> {{model.name}} </h1>  
+
+<div> Products in this category </div>
+<ul  data-test-category-show-products>
+  {{#each model.products as |product|}}
+    <li>{{#link-to "products.product" product}}{{product.name}}{{/link-to}}</li>
+  {{/each}}
+</ul>
