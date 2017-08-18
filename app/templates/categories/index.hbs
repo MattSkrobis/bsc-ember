@@ -1,7 +1,11 @@
 {{outlet}}
-<div>{{#link-to "categories.new"}}New{{/link-to}}</div>
+<h1>Categories</h1>
+{{#link-to "categories.new" data-test-categories-new-link}}New{{/link-to}}
 <ul>  
   {{#each model as |category|}}
-    <li>{{#link-to 'categories.category' category}}{{category.name}}{{/link-to}}</li> 
+    <li data-test-category-item>
+      <div data-test-category-name> {{category.name}} </div>
+      {{#link-to 'categories.category' category data-test-category-show-link}}Details{{/link-to}}
+    </li>
   {{/each}}
 </ul>

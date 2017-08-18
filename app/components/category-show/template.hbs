@@ -1,5 +1,5 @@
 {{yield}}
-<h1> {{model.name}} </h1>  
+<h1 data-test-category-show-name> {{model.name}} </h1>  
 
 <div> Products in this category </div>
 <ul  data-test-category-show-products>
@@ -8,5 +8,5 @@
   {{/each}}
 </ul>
 
-{{#link-to "categories.edit" model}}Edit{{/link-to}}
+{{#link-to "categories.edit" model data-test-category-edit-link}}Edit{{/link-to}}
 {{#category-destroy category=model}}Remove{{/category-destroy}}
