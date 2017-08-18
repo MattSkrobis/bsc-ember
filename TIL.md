@@ -1,3 +1,12 @@
+# Thursday
+## Route transition in component's action
+  As routing is not available in a compoment out of the box, package [`ember-router-service-polyfill`](https://github.com/rwjblue/ember-router-service-polyfill) was used to gain access to it.
+  This is to be removed as soon as v2.15 is in place
+  
+## New model - category
+  Began implementation of category, that has many products, and its routes and components
+  Noteworthy is the simplicity of setting relationship in ember data and the ease of creating appropriate default scenario in mirage
+
 # Wednesday
 
 ## Ember changeset validations
