@@ -1,6 +1,8 @@
 <div>
-  <span>Name: {{input data-test-category-form-name value=changeset.name}}</span>
-  <span>Visible: {{input data-test-category-form-visible  type='checkbox' checked=changeset.visible}}</span>
+  {{paper-input data-test-category-form-name class="flex-30" label="Name" value=changeset.name onChange=(action (mut changeset.name))}}
+  {{#paper-checkbox data-test-category-form-visible value=changeset.visible onChange=(action (mut changeset.visible))}}
+    Visible
+  {{/paper-checkbox}}
 </div>
 
 <ul data-test-category-form-errors>
@@ -10,6 +12,5 @@
     {{/each}}
   {{/each}}
 </ul>
-
-<button data-test-category-form-save-button {{action 'save'}}>Save</button>
-<button data-test-category-form-cancel-button {{action 'rollback'}}>Cancel</button>
+{{#paper-button data-test-category-form-save-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
+{{#paper-button data-test-category-form-cancel-button raised=true onClick=(action "rollback")}}Cancel{{/paper-button}}

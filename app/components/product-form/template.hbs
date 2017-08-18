@@ -1,6 +1,7 @@
-{{input data-test-product-form-name value=changeset.name}}
-{{textarea value=changeset.description}}
-{{input type='number' value=changeset.sku}}
+{{paper-input data-test-product-form-name  value=changeset.name onChange=(action (mut changeset.name)) label='Name'}}
+{{paper-input textarea=true block=true maxlength=255 passThru=(hash rows=5 maxRows=10)
+  value=changeset.description onChange=(action (mut changeset.description))}}
+{{paper-input type="number" value=changeset.sku onChange=(action (mut changeset.sku)) label='SKU'}}
 
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
@@ -10,5 +11,5 @@
   {{/each}}
 </ul>
 
-<button data-test-product-form-save-button {{action 'save'}}>Save</button>
-<button data-test-product-form-cancel-button {{action 'rollback'}}>Cancel</button>
+{{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
+{{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}Cancel{{/paper-button}}
