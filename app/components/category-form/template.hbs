@@ -1,0 +1,16 @@
+<h1>Edit category</h1>
+<div>
+  <span>Name: {{input data-test-category-form-name value=changeset.name}}</span>
+  <span>Visible: {{input data-test-category-form-visible  type='checkbox' checked=changeset.visible}}</span>
+</div>
+
+<ul data-test-category-form-errors>
+  {{#each changeset.errors as |errorSet|}}
+    {{#each errorSet.validation as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  {{/each}}
+</ul>
+
+<button data-test-category-form-save-button {{action 'save'}}>Save</button>
+<button data-test-category-form-cancel-button {{action 'rollback'}}>Cancel</button>
