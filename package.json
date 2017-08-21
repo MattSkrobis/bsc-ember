@@ -40,13 +40,16 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-native-dom-helpers": "^0.5.3",
+    "ember-paper": "^1.0.0-beta.2",
     "ember-resolver": "^4.4.0",
     "ember-router-service-polyfill": "^1.0.1",
     "ember-sinon": "^0.7.0",
     "ember-source": "~2.14.1",
     "ember-test-selectors": "^0.3.7",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-ember-suave": "^1.0.0",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.2.3",
+    "prettier": "^1.5.3"
   },
   "engines": {
     "node": "8.2.1*"

@@ -1,0 +1,16 @@
+<div>
+  {{paper-input data-test-category-form-name class="flex-30" label="Name" value=changeset.name onChange=(action (mut changeset.name))}}
+  {{#paper-checkbox data-test-category-form-visible value=changeset.visible onChange=(action (mut changeset.visible))}}
+    Visible
+  {{/paper-checkbox}}
+</div>
+
+<ul data-test-category-form-errors>
+  {{#each changeset.errors as |errorSet|}}
+    {{#each errorSet.validation as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  {{/each}}
+</ul>
+{{#paper-button data-test-category-form-save-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
+{{#paper-button data-test-category-form-cancel-button raised=true onClick=(action "rollback")}}Cancel{{/paper-button}}

@@ -12,6 +12,6 @@ describe('Integration | Component | product form', function() {
   it('renders', function() {
     this.set('product', { name: 'Phone', description: 'Black', sku: 1 });
     this.render(hbs`{{product-form model=product}}`);
-    expect(find('[data-test-product-form-name]').value).to.include('Phone');
+    expect(find('[data-test-product-form-name] input').value).to.include('Phone');
   });
 });

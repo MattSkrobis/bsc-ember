@@ -1,0 +1,12 @@
+{{#paper-card data-test-category-item as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline data-test-category-thumb-name}} {{model.name}} {{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button}}
+      {{#link-to 'categories.category' model data-test-category-show-link}}Details{{/link-to}}
+    {{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}

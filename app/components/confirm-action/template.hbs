@@ -2,7 +2,7 @@
 {{#if confirmShown}}
   <div class="confirm-dialog">
     <div data-test-warning-msg>{{warningMsg}}</div>
-    <button data-test-confirm-button class="confirm-submit" {{action "submitConfirm"}}>OK</button>
-    <button data-test-cancel-button class="confirm-cancel" {{action "toggle"}}>Cancel</button>
+    {{#paper-button data-test-confirm-button raised=true warn=true onClick=(action "submitConfirm")}}OK{{/paper-button}}
+    {{#paper-button data-test-cancel-button raised=true onClick=(action "toggle")}}Cancel{{/paper-button}} 
   </div>
 {{/if}}

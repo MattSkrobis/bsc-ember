@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { productValidations } from 'bsc-ember/validations/product';
+import { categoryValidations } from 'bsc-ember/validations/category';
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 
@@ -11,8 +11,8 @@ export default Component.extend({
     this._super(...arguments);
     this.changeset = new Changeset(
       this.model,
-      lookupValidator(productValidations),
-      productValidations
+      lookupValidator(categoryValidations),
+      categoryValidations
     );
   },
   actions: {
@@ -22,7 +22,7 @@ export default Component.extend({
           this.changeset
             .save()
             .then(() => {
-              this.get('router').transitionTo('products.index');
+              this.get('router').transitionTo('categories.index');
             })
             .catch(err => {
               alert(err);

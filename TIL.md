@@ -1,3 +1,23 @@
+# Friday
+
+## Ember-paper 
+  [documentation](http://miguelcobain.github.io/ember-paper/#/) - Material Design Bootstrap in Ember. Comes with all necessary components that have wide variety of options.
+
+## Whole new section - category
+  - Implement routes and components that allow list, show, edit, add and remove categories. Noteworthy is that category will not be deleted if it has products in it.
+
+  - even though in this case this would not change much as component is being rerendered instead of being in place all the time (basically, it is always created with the latest data), `init()` has been changed to `didReceiveAttr()` in (`-form` components), to 'enforce' good behaviour of having in mind if component is being rerenderd or not
+
+# Thursday
+
+## Route transition in component's action
+  As routing is not available in a compoment out of the box, package [`ember-router-service-polyfill`](https://github.com/rwjblue/ember-router-service-polyfill) was used to gain access to it.
+  This is to be removed as soon as v2.15 is in place
+  
+## New model - category
+  Began implementation of category, that has many products, and its routes and components
+  Noteworthy is the simplicity of setting relationship in ember data and the ease of creating appropriate default scenario in mirage
+
 # Wednesday
 
 ## Ember changeset validations

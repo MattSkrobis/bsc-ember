@@ -20,14 +20,12 @@ describe('Acceptance | products', function() {
     server.create('product', { name: 'Personal Computer' });
     await page.visit();
 
-    // show 
+    // show
     await page.products(0).open();
     expect(page.productName).to.include('Personal Computer');
 
     // edit
-    await page.openProducts().edit()
-      .editProductName('Apple 1')
-      .saveProduct();
+    await page.openProducts().edit().editProductName('Apple 1').saveProduct();
     expect(server.db.products[0].name).to.eq('Apple 1');
     await page.openProducts();
     expect(page.products(0).thumbName).to.eq('Apple 1');
@@ -35,14 +33,14 @@ describe('Acceptance | products', function() {
     expect(page.productName).to.include('Apple 1');
 
     // new
-    await page.openProducts()
+    await page
+      .openProducts()
       .openNewProduct()
       .editProductName('FNX 45')
       .saveProduct();
     expect(server.db.products[1]).to.not.exist;
     expect(page.editProductSkuError).to.contain('Sku');
-    await page.editProductSku('3')
-      .saveProduct();
+    await page.editProductSku('3').saveProduct();
     expect(server.db.products[1].name).to.eq('FNX 45');
     await page.openProducts();
     expect(page.products(1).thumbName).to.eq('FNX 45');
@@ -50,16 +48,11 @@ describe('Acceptance | products', function() {
     expect(page.productName).to.include('FNX 45');
 
     // cancel delete
-    await page.openProducts()
-      .products(1)
-      .delete()
-      .cancelDelete();
+    await page.openProducts().products(1).delete().cancelDelete();
     expect(server.db.products[1].name).to.eq('FNX 45');
 
     // confirm delete
-    await page.products(1)
-      .delete()
-      .confirmDelete();
+    await page.products(1).delete().confirmDelete();
     expect(server.db.products[1]).to.not.exist;
     expect(page.products().count).to.eq(1);
   });
