@@ -10,7 +10,7 @@ const { Component,
 
 export default Component.extend({
   router: service(),
-  init() {
+  didReceiveAttrs() {
     this._super(...arguments);
     this.changeset = new Changeset(this.model, lookupValidator(productValidations), productValidations);
   },
