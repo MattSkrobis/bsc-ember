@@ -7,8 +7,12 @@ export default Component.extend({
   actions: {
     destroy(category) {
       category.deleteRecord();
-      category.save();
-      this.get('router').transitionTo('categories.index');
+      category.save()
+        .then(()=>{
+          this.get('router').transitionTo('categories.index');
+        }).catch((err)=> {
+          alert(err);
+        });
     },
     toggle() {
       this.toggleProperty('confirmShown');
