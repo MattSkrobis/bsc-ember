@@ -11,7 +11,7 @@ export default create({
     itemScope: '[data-test-category-item]',
     item: {
       open: clickable('[data-test-category-show-link]'),
-      thumbName: text('[data-test-category-name]')
+      thumbName: text('[data-test-category-thumb-name]')
     }
   }),
   visit: visitable('/categories'),

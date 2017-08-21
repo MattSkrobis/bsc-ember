@@ -11,6 +11,6 @@ describe('Integration | Component | category form', function() {
   it('renders', function() {
     this.set('category', { name: 'White', visible: true });
     this.render(hbs`{{category-form model=category}}`);
-    expect(find('[data-test-category-form-name]').value).to.eq('White');
+    expect(find('[data-test-category-form-name] input').value).to.eq('White');
   });
 });
