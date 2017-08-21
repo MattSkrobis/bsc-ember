@@ -1,5 +1,19 @@
-<span>{{product.id}}</span>
-<span data-test-product-thumb-name>{{product.name}}</span>
-<div>{{#link-to "products.product" data-test-product-thumb-link product}}Details{{/link-to}}</div>
-<div>{{#link-to "products.edit" data-test-product-thumb-edit-link product}}Edit{{/link-to}}</div>
-{{#product-destroy product=product}}Remove{{/product-destroy}} 
+{{#paper-card data-test-category-item as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline data-test-product-thumb-name}} {{product.name}} {{/text.headline}}
+      {{#text.subhead}} {{product.id}} {{/text.subhead}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button}}
+      {{#link-to "products.product" data-test-product-thumb-link product}}Details{{/link-to}}
+    {{/paper-button}}
+    {{#paper-button}}
+      {{#link-to "products.edit" data-test-product-thumb-edit-link product}}Edit{{/link-to}}
+    {{/paper-button}}
+  {{/card.actions}}
+  <div class='layout-row layout-align-end-end'>
+    {{#product-destroy product=product}}Remove{{/product-destroy}} 
+  </div>
+{{/paper-card}}

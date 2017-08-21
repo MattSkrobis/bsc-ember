@@ -1,11 +1,10 @@
 {{outlet}}
 <h1>Categories</h1>
-{{#link-to "categories.new" data-test-categories-new-link}}New{{/link-to}}
-<ul>  
-  {{#each model as |category|}}
-    <li data-test-category-item>
-      <div data-test-category-name> {{category.name}} </div>
-      {{#link-to 'categories.category' category data-test-category-show-link}}Details{{/link-to}}
-    </li>
-  {{/each}}
-</ul>
+{{#paper-button data-test-categories-new-link raised=true primary=true onClick=(action 'toNew')}}
+  {{!-- {{#link-to "categories.new" }}New{{/link-to}} --}}
+  New
+{{/paper-button}}
+
+{{#each model as |category|}}
+  {{category-thumb model=category}}
+{{/each}}
