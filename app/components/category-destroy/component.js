@@ -7,10 +7,12 @@ export default Component.extend({
   actions: {
     destroy(category) {
       category.deleteRecord();
-      category.save()
-        .then(()=>{
+      category
+        .save()
+        .then(() => {
           this.get('router').transitionTo('categories.index');
-        }).catch((err)=> {
+        })
+        .catch(err => {
           alert(err);
         });
     },

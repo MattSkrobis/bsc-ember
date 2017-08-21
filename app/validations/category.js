@@ -1,7 +1,5 @@
-import {
-  validatePresence
-} from 'ember-changeset-validations/validators';
+import { validatePresence } from 'ember-changeset-validations/validators';
 
-export const categoryValidations =  {
+export const categoryValidations = {
   name: [validatePresence(true)]
 };

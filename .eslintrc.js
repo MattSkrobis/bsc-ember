@@ -15,5 +15,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    'arrow-parens': ['error', 'as-needed'],
+    'operator-linebreak': ['error', 'after'] 
   }
 };
