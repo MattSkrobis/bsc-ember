@@ -1,10 +1,10 @@
 {{outlet}}
 
 <div>{{#link-to "products.new" data-test-product-index-new-link}}New{{/link-to}}</div>
-{{#paper-switch value=availability onChange=(action (mut availability))}}
+{{#paper-switch value=availability label="Availability" onChange=(action (mut availability))}}
   {{availability}}
 {{/paper-switch}}
-{{paper-input label="Search by name" value=name onChange=(action (mut name))}}
+{{paper-input label="Search by name" value=name onChange=(perform nameUpdate name="target.value")}}
 {{#each model as |product|}}
   {{product-thumb product=product class="thumb"}}
 {{/each}}
