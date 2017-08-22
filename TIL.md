@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 ## Monday
+=======
+# Monday
+
+## Prettier
+  code should be now in compliance with one style, thanks to `prettier` 
+
+## Ember-concurrency
+  [documentation](http://ember-concurrency.com/#/docs/examples/autocomplete) - A silver bullet to problems with concurrent action which in a web app are prevalent. It allows a creation of tasks than can be run together with generators. Their greatest perk is their termination after destruction of the parent compoment, which is a fix for the error with running action on nonexistant component. They can be used for debouncing a filter search or making a autosave after some time. All in all: useful if one is in need of creating a function that is composed of long-running calls which do not guarantee same, repetitive execution. 
+
+# Friday
+>>>>>>> Update TIL
 
 ## Friday
   - query params - reload: the params then persist through reload, it is possible to back to the go back in history to every params sent, this is not always wanted, `replace: true` will get rid of entries
