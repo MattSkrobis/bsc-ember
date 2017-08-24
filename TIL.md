@@ -1,7 +1,13 @@
-<<<<<<< HEAD
 ## Monday
-=======
+# Tuesday
+
+## pg_search
+  [documentation](https://github.com/Casecommons/pg_search) extremely intuitive way to make complex queries, either on one (`pg_search_scope`) or on multiple models (`multi-search`)
+
 # Monday
+
+## Query params
+  [documentation](https://guides.emberjs.com/v2.14.0/routing/query-params/#toc_opting-into-a-full-transition)
 
 ## Prettier
   code should be now in compliance with one style, thanks to `prettier` 

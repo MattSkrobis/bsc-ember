@@ -3,6 +3,7 @@ import Ember from 'ember';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
+  toast: service('application-toast'),
   router: service(),
   actions: {
     toggle() {
@@ -14,10 +15,11 @@ export default Component.extend({
       product
         .save()
         .then(() => {
+          this.set('toast.message', 'Success!');
           this.get('router').transitionTo('products.index');
         })
         .catch(err => {
-          alert(err);
+          this.set('toast.message', `Error: ${err}`);
         });
     }
   }
