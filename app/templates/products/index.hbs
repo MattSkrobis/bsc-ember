@@ -4,7 +4,7 @@
 {{#paper-switch value=availability label="Availability" onChange=(action (mut availability))}}
   {{availability}}
 {{/paper-switch}}
-{{paper-input label="Search by name" value=name onChange=(perform nameUpdate name="target.value")}}
+{{paper-input label="Search by name"  value=searchQuery onChange=(perform nameUpdate)}}
 {{#each model as |product|}}
   {{product-thumb product=product class="thumb"}}
 {{/each}}

@@ -3,7 +3,7 @@ import Ember from 'ember';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  toast: service('application-toast'),
+  paperToaster: service(),
   router: service(),
   actions: {
     destroy(category) {
@@ -11,11 +11,11 @@ export default Component.extend({
       category
         .save()
         .then(() => {
-          this.set('toast.message', 'Success!');
+          this.get('paperToaster').show('Success!', { duration: 3000 });
           this.get('router').transitionTo('categories.index');
         })
         .catch(err => {
-          this.set('toast.message', `Error: ${err}`);
+          this.get('paperToaster').show(`Error: ${err}`);
         });
     },
     toggle() {

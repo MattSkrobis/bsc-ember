@@ -7,8 +7,15 @@ export default Controller.extend({
   queryParams: ['availability', 'name'],
   availability: true,
   name: null,
+  actions: {
+    updateName(query) {
+      this.set('searchQuery', query);
+      this.get('nameUpdate').perform(query);
+    }
+  },
   nameUpdate: task(function* (name) {
-    this.set('name', name);
-    yield timeout(250);
+    this.set('searchQuery', name);
+    yield timeout(2000);
+    return this.set('name', name);
   }).restartable()
 });
