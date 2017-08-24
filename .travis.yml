@@ -20,6 +20,9 @@ before_install:
 
 install:
   - yarn install --non-interactive
+  - yarn install -g codecov
 
 script:
-  - yarn test
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
+  - yarn test 

@@ -12,7 +12,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "report-coverage": "codecov"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.6.0",
@@ -23,6 +24,7 @@
     "ember-cli-app-version": "^3.1.0",
     "ember-cli-babel": "^6.8.1",
     "ember-cli-chai": "^0.4.2",
+    "ember-cli-code-coverage": "^0.4.1",
     "ember-cli-dependency-checker": "^2.0.1",
     "ember-cli-eslint": "^4.2.0",
     "ember-cli-htmlbars": "^2.0.1",
@@ -54,5 +56,9 @@
   "engines": {
     "node": "8.2.1*"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "cross-env": "^5.0.5",
+    "istanbul": "^0.4.5"
+  }
 }
