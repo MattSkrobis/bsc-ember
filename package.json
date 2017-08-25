@@ -58,6 +58,7 @@
   },
   "private": true,
   "dependencies": {
+    "codecov": "^2.3.0",
     "cross-env": "^5.0.5",
     "istanbul": "^0.4.5"
   }
