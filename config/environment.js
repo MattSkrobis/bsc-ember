@@ -7,6 +7,9 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    'emberRollbarClient': {
+      accessToken: '0e7b977b67e94392a6bc8371236af93d'
+    },
     EmberENV: {
       FEATURES: {
       },
@@ -42,6 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+
     ENV.APP.host = 'https://bsc-ember-backend.herokuapp.com';
   }
 

@@ -20,6 +20,8 @@ before_install:
 
 install:
   - yarn install --non-interactive
+  - yarn add codecov
 
 script:
-  - yarn test
+  - codecov
+  - yarn test COVERAGE=true
