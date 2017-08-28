@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/MattSkrobis/bsc-ember.svg?branch=master)](https://travis-ci.org/MattSkrobis/bsc-ember)
 [![Dependency Status](https://gemnasium.com/badges/github.com/MattSkrobis/bsc-ember.svg)](https://gemnasium.com/github.com/MattSkrobis/bsc-ember)
 [![codecov](https://codecov.io/gh/MattSkrobis/bsc-ember/branch/master/graph/badge.svg)](https://codecov.io/gh/MattSkrobis/bsc-ember)
-  
+
 This application will be an e-commerce online shop
 
 ## Prerequisites
@@ -45,3 +45,4 @@ You will need the following things properly installed on your computer.
   - heroku dashboard
   or
   - `git push heroku master`
+* issues can be found [here](https://rollbar.com/mattskrobis/bsc-ember/items/)
