@@ -5,10 +5,12 @@ const { Route } = Ember;
 export default Route.extend({
   queryParams: {
     availability: {
-      refreshModel: true
+      refreshModel: true,
+      replace: true
     },
     name: {
-      refreshModel: true
+      refreshModel: true,
+      replace: true
     }
   },
   model(params) {
