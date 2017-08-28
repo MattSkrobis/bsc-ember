@@ -1,6 +1,7 @@
-import { Factory, faker } from 'ember-cli-mirage';
+import { Factory, faker, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
+  category: association(),
   name() {
     return faker.commerce.productName();
   },

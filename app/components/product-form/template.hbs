@@ -1,7 +1,15 @@
-{{paper-input data-test-product-form-name  value=changeset.name onChange=(action (mut changeset.name)) label='Name'}}
+<h1>{{t 'product.newPageHeader'}}</h1>
+{{paper-input data-test-product-form-name  value=changeset.name 
+  onChange=(action (mut changeset.name)) label=(t 'product.attrs.name')}}
 {{paper-input textarea=true block=true maxlength=255 passThru=(hash rows=5 maxRows=10)
-  value=changeset.description onChange=(action (mut changeset.description))}}
-{{paper-input type="number" value=changeset.sku onChange=(action (mut changeset.sku)) label='SKU'}}
+  value=changeset.description onChange=(action (mut changeset.description)) label=(t 'product.attrs.description')}}
+{{paper-input type="number" 
+  value=changeset.sku onChange=(action (mut changeset.sku)) label=(t 'product.attrs.sku')}}
+{{#paper-select label='Category' required=true options=categories 
+  selected=changeset.category onChange=(action (mut changeset.category)) as |category|}} 
+ {{category.name}} 
+ {{/paper-select}}
+
 
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
@@ -11,5 +19,5 @@
   {{/each}}
 </ul>
 
-{{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
-{{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}Cancel{{/paper-button}}
+{{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
+{{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}{{t 'default.cancel'}}{{/paper-button}}

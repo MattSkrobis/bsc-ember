@@ -7,6 +7,11 @@ const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
   router: service(),
+  store: service(),
+  init() {
+    this._super(...arguments);
+    this.set('categories', this.get('store').peekAll('category'));
+  },
   didReceiveAttrs() {
     this._super(...arguments);
     this.changeset = new Changeset(

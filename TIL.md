@@ -1,10 +1,7 @@
 ## Monday
-# Tuesday
 
 ## pg_search
   [documentation](https://github.com/Casecommons/pg_search) extremely intuitive way to make complex queries, either on one (`pg_search_scope`) or on multiple models (`multi-search`)
-
-# Monday
 
 ## Query params
   [documentation](https://guides.emberjs.com/v2.14.0/routing/query-params/#toc_opting-into-a-full-transition)
@@ -14,9 +11,6 @@
 
 ## Ember-concurrency
   [documentation](http://ember-concurrency.com/#/docs/examples/autocomplete) - A silver bullet to problems with concurrent action which in a web app are prevalent. It allows a creation of tasks than can be run together with generators. Their greatest perk is their termination after destruction of the parent compoment, which is a fix for the error with running action on nonexistant component. They can be used for debouncing a filter search or making a autosave after some time. All in all: useful if one is in need of creating a function that is composed of long-running calls which do not guarantee same, repetitive execution. 
-
-# Friday
->>>>>>> Update TIL
 
 ## Friday
   - query params - reload: the params then persist through reload, it is possible to back to the go back in history to every params sent, this is not always wanted, `replace: true` will get rid of entries
