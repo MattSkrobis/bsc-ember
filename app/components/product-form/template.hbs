@@ -7,8 +7,8 @@
   value=changeset.sku onChange=(action (mut changeset.sku)) label=(t 'product.attrs.sku')}}
 {{#paper-select label='Category' required=true options=categories 
   selected=changeset.category onChange=(action (mut changeset.category)) as |category|}} 
- {{category.name}} 
- {{/paper-select}}
+  {{category.name}} 
+{{/paper-select}}
 
 
 <ul data-test-product-form-errors>
