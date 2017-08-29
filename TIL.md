@@ -1,5 +1,10 @@
-# Friday
+## Monday
 
+## Friday
+  - query params - reload: the params then persist through reload, it is possible to back to the go back in history to every params sent, this is not always wanted, `replace: true` will get rid of entries
+  - a contribution was made to ember-paper
+  - ember-paper toaster is much easier to use than it looks `Open a toast via paperToaster service and {{paper-toaster}} component.
+`
 ## Ember-paper 
   [documentation](http://miguelcobain.github.io/ember-paper/#/) - Material Design Bootstrap in Ember. Comes with all necessary components that have wide variety of options.
 
