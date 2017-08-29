@@ -1,4 +1,5 @@
 export default {
+  'appName': 'BSC',
   'default': {
     'cancel': 'Anuluj',
     'edit': 'Edytuj',
@@ -6,7 +7,8 @@ export default {
     'remove': 'Usuń',
     'new': 'Stwórz',
     'save': 'Zapisz',
-    'ok': 'OK'
+    'ok': 'OK',
+    'language': 'Język'
   },
   'product': {
     'attrs': {

@@ -1,6 +1,16 @@
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>{{t 'appName'}}</h2>
+    <span class="flex"></span>
+    {{#paper-button}}
+      {{link-to (t 'product.indexName') 'products' data-test-products-link}}
+    {{/paper-button}}
+    {{#paper-button}}
+      {{link-to (t 'category.indexName')  'categories' data-test-categories-link}}
+    {{/paper-button}}
+    {{language-select}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
 {{application-toast}}
-
-{{link-to (t 'product.indexName') 'products' data-test-products-link}}
-{{link-to (t 'category.indexName')  'categories' data-test-categories-link}}
 {{outlet}}
   

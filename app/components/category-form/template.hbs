@@ -7,9 +7,8 @@
 
 <ul data-test-category-form-errors>
   {{#each changeset.errors as |errorSet|}}
-  
     {{#each errorSet.validation as |error|}}
-      <li>{{translated-error errorMsg=error key=errorSet.key}}</li>
+      <li>{{error}}</li>
     {{/each}}
   {{/each}}
 </ul>
