@@ -15,7 +15,11 @@ export default {
       'name': 'Nazwa',
       'description': 'Opis',
       'sku': 'SKU',
-      'availability': 'Dostępność',
+      'availability': {
+        'name': 'Dostępność',
+        'true': 'Dostępne',
+        'false': 'Niedostępne'
+      },
       'price': 'Cena',
       'currency': 'Waluta',
       'quantity': 'Ilość'

@@ -7,6 +7,7 @@
     <li>{{#link-to "products.product" product}}{{product.name}}{{/link-to}}</li>
   {{/each}}
 </ul>
-
-{{#link-to "categories.edit" model data-test-category-edit-link}} {{t 'default.edit'}} {{/link-to}}
+{{#paper-button}}
+  {{#link-to "categories.edit" model data-test-category-edit-link}} {{t 'default.edit'}} {{/link-to}}
+{{/paper-button}}
 {{#category-destroy category=model}} {{t 'default.remove'}} {{/category-destroy}}

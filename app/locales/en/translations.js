@@ -16,11 +16,16 @@ export default {
       'name': 'Name',
       'description': 'Description',
       'sku': 'SKU',
-      'availability': 'Availability',
+      'availability': {
+        'name': 'Availability',
+        'true': 'Available',
+        'false': 'Out of stock'
+      },
       'price': 'Price',
       'currency': 'Currency',
       'quantity': 'Qty'
     },
+
     'indexName': 'Products',
     'newPageHeader': 'Create product',
     'editPageHeader': 'Edit product',
