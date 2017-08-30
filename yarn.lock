@@ -3002,9 +3002,9 @@ ember-require-module@^0.1.2:
   dependencies:
     ember-cli-babel "^5.1.7"
 
-ember-resolver@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/ember-resolver/-/ember-resolver-4.4.0.tgz#211ad00dea0ff2f3344aea156e556de42fc7ec74"
+ember-resolver@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/ember-resolver/-/ember-resolver-4.5.0.tgz#9248bf534dfc197fafe3118fff538d436078bf99"
   dependencies:
     "@glimmer/resolver" "^0.4.1"
     babel-plugin-debug-macros "^0.1.10"
@@ -5555,9 +5555,9 @@ pretender@^1.4.2:
     fake-xml-http-request "^1.6.0"
     route-recognizer "^0.3.3"
 
-prettier@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.6.0.tgz#23e9c68251f440feb847f558821bead21765919a"
+prettier@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.6.1.tgz#850f411a3116226193e32ea5acfc21c0f9a76d7d"
 
 printf@^0.2.3:
   version "0.2.5"
