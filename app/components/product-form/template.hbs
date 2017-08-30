@@ -1,4 +1,5 @@
 <h1>{{t 'product.newPageHeader'}}</h1>
+{{debugger}}
 {{paper-input data-test-product-form-name  value=changeset.name 
   onChange=(action (mut changeset.name)) label=(t 'product.attrs.name')}}
 {{paper-input textarea=true block=true maxlength=255 passThru=(hash rows=5 maxRows=10)
@@ -9,6 +10,8 @@
   selected=changeset.category onChange=(action (mut changeset.category)) as |category|}} 
   {{category.name}} 
 {{/paper-select}}
+{{picture-list product=changeset
+  newPicture=model.newPicture inForm=true}}
 
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}

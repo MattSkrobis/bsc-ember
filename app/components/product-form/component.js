@@ -14,8 +14,9 @@ export default Component.extend({
   },
   didReceiveAttrs() {
     this._super(...arguments);
+    debugger
     this.changeset = new Changeset(
-      this.model,
+      this.model.product,
       lookupValidator(productValidations),
       productValidations
     );
