@@ -1,0 +1,8 @@
+{{#paper-select
+  label=(t 'default.language')
+  options=languages
+  selected=language
+  onChange=(action 'selectLanguage')
+  as |lang|}}
+  {{lang}}
+{{/paper-select}}

@@ -1,8 +1,8 @@
 {{outlet}}
-<h1>Categories</h1>
+<h1>{{t 'category.indexName' }}</h1>
 {{#link-to "categories.new"}}
   {{#paper-button data-test-categories-new-link raised=true primary=true}}
-    New
+    {{t 'default.new'}}
   {{/paper-button}}
 {{/link-to}}
 {{#each model as |category|}}
