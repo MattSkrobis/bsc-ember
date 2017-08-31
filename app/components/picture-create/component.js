@@ -7,13 +7,14 @@ const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
   paperToaster: service(),
+  store: service(),
   didReceiveAttrs() {
     this._super(...arguments);
-    this.createChangeset();
+    this.pictureChangeset = this.createChangeset();
   },
   createChangeset() {
-    this.changeset = new Changeset(
-      this.newPicture,
+    return new Changeset(
+      this.get('store').createRecord('picture'),
       lookupValidator(pictureValidations),
       pictureValidations
     );
@@ -23,14 +24,14 @@ export default Component.extend({
       this.set('showDialog', false);
     },
     create(product) {
-      this.changeset.validate().then(() => {
-        if (this.changeset.get('isValid')) {
-          this.changeset.set('product', product);
-          this.changeset
+      this.pictureChangeset.validate().then(() => {
+        if (this.pictureChangeset.get('isValid')) {
+          this.pictureChangeset.set('product', product._content);
+          this.pictureChangeset
             .save()
             .then(() => {
               this.get('paperToaster').show('Success!', { duration: 3000 });
-              this.set('changeset.url', '');
+              this.set('pictureChangeset', this.createChangeset());
               this.set('showDialog', false);
             })
             .catch(err => {
@@ -41,7 +42,7 @@ export default Component.extend({
     },
     rollback() {
       this.set('showDialog', false);
-      this.changeset.rollback();
+      this.pictureChangeset.rollback();
     }
   }
 });

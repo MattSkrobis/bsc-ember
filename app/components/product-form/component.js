@@ -10,13 +10,9 @@ export default Component.extend({
   store: service(),
   init() {
     this._super(...arguments);
-    this.set('categories', this.get('store').peekAll('category'));
-  },
-  didReceiveAttrs() {
-    this._super(...arguments);
-    debugger
+    this.set('categories', this.get('store').findAll('category'));
     this.changeset = new Changeset(
-      this.model.product,
+      this.get('model'),
       lookupValidator(productValidations),
       productValidations
     );

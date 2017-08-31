@@ -29,6 +29,13 @@ export default {
     'editPageHeader': 'Dodaj kategorię',
     'deleteMsg': 'Ta akcja usunie produkt, czy chcesz kontunować?'
   },
+  'picture': {
+    'attrs': {
+      'link': 'Link'
+    },
+    'newPageHeader': 'Dodaj zdjęcie',
+    'indexName': 'Zdjęcia'
+  },
   'category': {
     'attrs': {
       'name': 'Nazwa',

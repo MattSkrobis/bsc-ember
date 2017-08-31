@@ -1,9 +1,8 @@
 {{#if inForm}}
-    {{#paper-button onClick=(action 'remove' picture) 
-      iconButton=true}}
+  {{#paper-button onClick=(action 'remove' picture) iconButton=true}}
     {{paper-icon "delete forever" size=36}}
-      {{#paper-tooltip}}
-        Delete
-      {{/paper-tooltip}}
+    {{#paper-tooltip}}
+      {{t 'default.delete'}}
+    {{/paper-tooltip}}
   {{/paper-button}}
 {{/if}}
