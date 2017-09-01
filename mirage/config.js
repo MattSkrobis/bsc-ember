@@ -5,4 +5,5 @@ export default function() {
   this.timing = 50;
   this.resource('products');
   this.resource('categories');
+  this.resource('pictures');
 }

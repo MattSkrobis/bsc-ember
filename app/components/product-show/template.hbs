@@ -1,37 +1,40 @@
 
-<div data-test-product-show-name class='product-show-header'>
+<div class='product-show-header'>
   {{t 'product.attrs.name'}} 
-  <div class='product-show-attr'>
-    {{product.name}} 
+  <div data-test-product-show-name class='product-show-attr'>
+    {{model.name}} 
   </div>
 </div>
 <div class='product-show-header'> 
   {{t 'product.attrs.description'}}
   <div class='product-show-attr'> 
-    {{product.description}} 
+    {{model.description}} 
   </div>
 </div>
 <div class='product-show-header'>
   {{t 'product.attrs.sku'}}
   <div class='product-show-attr'>
-    {{product.sku}} 
+    {{model.sku}} 
   </div>
 </div>
 <div class='product-show-header'>
   {{t 'product.attrs.availability.name'}}
   <div class='product-show-attr'>
-    {{ t (concat "product.attrs.availability." product.availability)}}
+    {{ t (concat "product.attrs.availability." model.availability)}}
   </div>
 </div>
 <div class='product-show-header'>
   {{t 'product.attrs.price'}}
   <div class='product-show-attr'>
-    {{concat product.price " " product.currency}} 
+    {{concat model.price " " model.currency}} 
   </div>
 </div>
 <div class='product-show-header'>
   {{t 'product.attrs.quantity'}}
   <div class='product-show-attr'>
-    {{product.quantity}} 
+    {{model.quantity}} 
   </div>
+</div>
+<div class='product-show-header'>
+  {{picture-list product=model inForm=false}}
 </div>

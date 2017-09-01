@@ -1,0 +1,5 @@
+<h3>{{t 'picture.indexName'}}</h3>
+{{picture-create newPicture=newPicture product=product inForm=inForm}} 
+{{#each product.pictures as |picture index|}}
+  <img src={{picture.url}} alt={{concat "pic_" index}}> {{picture-destroy picture=picture inForm=inForm}} 
+{{/each}}

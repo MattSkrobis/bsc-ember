@@ -11,7 +11,7 @@ describe('Integration | Component | product show', function() {
 
   it('renders', function() {
     this.set('product', { name: 'Phone', description: 'Black', sku: 1 });
-    this.render(hbs`{{product-show product=product}}`);
+    this.render(hbs`{{product-show model=product}}`);
     expect(find('[data-test-product-show-name]').textContent).to.include('Phone');
   });
 });
