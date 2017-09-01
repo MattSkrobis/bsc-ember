@@ -3,6 +3,13 @@
     <h2>{{t 'appName'}}</h2>
     <span class="flex"></span>
     {{#paper-button}}
+      {{#if session.isAuthenticated}}
+        <a {{action 'invalidateSession'}}>Logout</a>
+      {{else}}
+        {{#link-to 'login'}} Login {{/link-to}}
+      {{/if}}
+    {{/paper-button}}  
+    {{#paper-button}}
       {{link-to (t 'product.indexName') 'products' data-test-products-link}}
     {{/paper-button}}
     {{#paper-button}}

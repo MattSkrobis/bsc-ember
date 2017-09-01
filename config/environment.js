@@ -34,6 +34,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'rails') {
+    ENV['ember-simple-auth'] = {
+      baseURL: 'http://localhost:3000'
+    };
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
@@ -49,8 +52,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
-    ENV.APP.host = 'https://bsc-ember-backend.herokuapp.com';
+    ENV['ember-simple-auth'] = {
+      baseURL: 'https://bsc-ember-backend.herokuapp.com'
+    };
+    ENV.APP.host =  'https://bsc-ember-backend.herokuapp.com';
   }
 
   return ENV;

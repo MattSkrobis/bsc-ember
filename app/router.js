@@ -19,6 +19,7 @@ ApplicationRouter.map(function() {
     this.route('edit', { path: '/:category_id/edit' });
     this.route('new', { path: '/new' });
   });
+  this.route('login');
 });
 
 export default ApplicationRouter;
