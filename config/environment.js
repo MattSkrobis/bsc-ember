@@ -37,6 +37,9 @@ module.exports = function(environment) {
     ENV['ember-simple-auth'] = {
       baseURL: 'http://localhost:3000'
     };
+    ENV['simple-auth-devise'] = {
+      serverTokenEndpoint: `${ENV.APP.host}/users/sign_in`
+    };
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
