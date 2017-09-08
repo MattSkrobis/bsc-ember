@@ -1,5 +1,5 @@
 import { validatePresence } from 'ember-changeset-validations/validators';
 
-export const productValidations = {
+export const pictureValidations = {
   url: [validatePresence(true)]
 };
