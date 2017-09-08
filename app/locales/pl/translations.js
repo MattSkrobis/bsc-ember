@@ -8,7 +8,9 @@ export default {
     'new': 'Stwórz',
     'save': 'Zapisz',
     'ok': 'OK',
-    'language': 'Język'
+    'language': 'Język',
+    'login': 'Zaloguj',
+    'logout': 'Wyloguj'
   },
   'product': {
     'attrs': {
@@ -28,6 +30,26 @@ export default {
     'newPageHeader': 'Dodaj produkt',
     'editPageHeader': 'Dodaj kategorię',
     'deleteMsg': 'Ta akcja usunie produkt, czy chcesz kontunować?'
+  },
+  'user': {
+    'attrs': {
+      'firstName': 'Imię',
+      'lastName': 'Nazwisko',
+      'telephone': 'Numer telefonu',
+      'gender': {
+        'female': 'Kobieta',
+        'male': 'Mężczyzna',
+        'name': 'Płeć'
+      },
+      'city': 'Miasto',
+      'street': 'Ulica',
+      'password': 'Hasło',
+      'confirmPassword': 'Potwierdź hasło'
+    },
+    'loggedIn': 'Witaj, ',
+    'passwordInfo': 'Wpisz nowe hasło do obu pól, aby je zmienić. Pozostawienie pól pustymi nie spowoduje zmiany hasła.',
+    'newPageHeader': 'Stwórz profil',
+    'editPageHeader': 'Edytuj profil'
   },
   'picture': {
     'attrs': {
