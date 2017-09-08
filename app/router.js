@@ -20,6 +20,10 @@ ApplicationRouter.map(function() {
     this.route('new', { path: '/new' });
   });
   this.route('login');
+
+  this.route('users', function() {
+    this.route('edit');
+  });
 });
 
 export default ApplicationRouter;
