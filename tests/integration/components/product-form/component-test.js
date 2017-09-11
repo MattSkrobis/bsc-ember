@@ -16,6 +16,7 @@ describe('Integration | Component | product form', function() {
     this.set('product', { name: 'Phone', description: 'Black', sku: 1 });
     this.render(hbs`{{product-form model=product}}`);
   }),
+
   afterEach(function() {
     window.server.shutdown();
   });

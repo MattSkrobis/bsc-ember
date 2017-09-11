@@ -8,14 +8,7 @@ export default Controller.extend({
   currentUser: service('current-user'),
   actions: {
     invalidateSession() {
-      $.ajax({
-        url: `${ENV.APP.host}/users/sign_out`,
-        type: 'DELETE',
-        dataType: 'json',
-        data: { user: { id: this.get('currentUser.user.id') } }
-      }).done(()=>{
-        this.get('session').invalidate(this.get('session.data.authenticated.token'));
-      });
+      this.get('session').invalidate(this.get('session.data.authenticated.token'));
     }
   }
 });
