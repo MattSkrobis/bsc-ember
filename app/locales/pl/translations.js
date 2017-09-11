@@ -10,7 +10,10 @@ export default {
     'ok': 'OK',
     'language': 'Język',
     'login': 'Zaloguj',
-    'logout': 'Wyloguj'
+    'logout': 'Wyloguj',
+    'loginPrompt': 'Proszę wpisać login',
+    'password': 'Hasło',
+    'passwordPrompt': 'Proszę wpisać hasło'
   },
   'product': {
     'attrs': {

@@ -2,22 +2,15 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers'; // different find
 
-describe('Integration | Component | user edit', function() {
+describe('Integration | Component | user form', function() {
   setupComponentTest('user-form', {
     integration: true
   });
   it('renders', function() {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.on('myAction', function(val) { ... });
-    // Template block usage:
-    // this.render(hbs`
-    //   {{#user-form}}
-    //     template content
-    //   {{/user-form}}
-    // `);
-
-    this.render(hbs`{{user-form}}`);
-    expect(this.$()).to.have.length(1);
+    this.set('user', { firstName: 'Fred', lastName: 'Sinatra' });
+    this.render(hbs`{{user-form user=user}}`);
+    expect(find('[data-test-user-form-name] input').value).to.eq('Fred');
   });
 });

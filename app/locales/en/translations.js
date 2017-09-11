@@ -10,7 +10,10 @@ export default {
     'ok': 'OK',
     'language': 'Language',
     'login': 'Login',
-    'logout': 'Logout'
+    'logout': 'Logout',
+    'loginPrompt': 'Enter the login',
+    'password': 'Password',
+    'passwordPrompt': 'Enter the password'
   },
   'product': {
     'attrs': {
