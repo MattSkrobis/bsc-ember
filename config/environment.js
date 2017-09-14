@@ -24,14 +24,12 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.SSL = false;
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
   }
 
   if (environment === 'rails') {
-    ENV.SSL = false;
     ENV['ember-simple-auth'] = {
       baseURL: 'http://localhost:3000'
     };
@@ -44,7 +42,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    ENV.SSL = false;
+    ENV.APP.host = '';
     ENV.locationType = 'none';
 
     ENV.APP.LOG_ACTIVE_GENERATION = false;
@@ -54,7 +52,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV['SSL'] =  true,
     ENV['emberRollbarClient'] = {
       accessToken: '0e7b977b67e94392a6bc8371236af93d'
     },

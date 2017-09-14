@@ -7,6 +7,8 @@ sudo: false
 
 addons:
   chrome: stable
+  hosts: 
+   - app.bsc.local
 
 cache:
   directories:
