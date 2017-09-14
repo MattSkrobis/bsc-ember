@@ -8,7 +8,6 @@
   selected=changeset.category onChange=(action (mut changeset.category)) as |category|}} 
   {{category.name}} 
 {{/paper-select}}
-{{picture-list product=changeset newPicture=newPicture inForm=true}}
 
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
@@ -17,6 +16,10 @@
     {{/each}}
   {{/each}}
 </ul>
+
+{{#if changeset.id}}
+  {{picture-list product=changeset newPicture=newPicture inForm=true}}
+{{/if}}
 
 {{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
 {{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}{{t 'default.cancel'}}{{/paper-button}}
