@@ -62,10 +62,5 @@
   "private": true,
   "dependencies": {
     "cross-env": "5.0.5"
-  },
-  "ember-addon": {
-    "paths": [
-      "lib/redirector"
-    ]
   }
 }
