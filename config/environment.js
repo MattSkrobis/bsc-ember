@@ -7,9 +7,6 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
-    'emberRollbarClient': {
-      accessToken: '0e7b977b67e94392a6bc8371236af93d'
-    },
     EmberENV: {
       FEATURES: {
       },
@@ -17,7 +14,6 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
     APP: {
       host: 'http://localhost:3000'
     }
@@ -34,6 +30,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'rails') {
+    ENV['ember-simple-auth'] = {
+      baseURL: 'http://localhost:3000'
+    };
+    ENV['simple-auth-devise'] = {
+      serverTokenEndpoint: `${ENV.APP.host}/users/sign_in`
+    };
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
@@ -46,11 +48,20 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'production') {
-
-    ENV.APP.host = 'https://bsc-ember-backend.herokuapp.com';
+    ENV['emberRollbarClient'] = {
+      accessToken: '0e7b977b67e94392a6bc8371236af93d'
+    },
+    ENV['ember-simple-auth'] = {
+      baseURL: 'https://bsc-ember-backend.herokuapp.com'
+    };
+    ENV.APP.host =  'https://bsc-ember-backend.herokuapp.com';
   }
 
   return ENV;

@@ -1,27 +1,22 @@
----
+dist: trusty
 language: node_js
 node_js:
-  - "8.2.1"
+  - "6"
 
 sudo: false
 
 addons:
   chrome: stable
+  hosts: 
+   - app.bsc.local
 
 cache:
-  yarn: true
   directories:
      - $HOME/.npm
-
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - npm config set spin false
+     - node_modules
 
 install:
-  - yarn install --non-interactive
-  - yarn add codecov
+  - npm install
 
 script:
-  - codecov
-  - yarn test COVERAGE=true
+  - npm test

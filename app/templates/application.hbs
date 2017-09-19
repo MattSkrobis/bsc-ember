@@ -2,6 +2,25 @@
   {{#paper-toolbar-tools}}
     <h2>{{t 'appName'}}</h2>
     <span class="flex"></span>
+    {{#if session.isAuthenticated}}
+      {{#if currentUser.user}}
+        <p id='user-greeting'>
+          {{t 'user.loggedIn'}}
+          {{#link-to 'users.edit'}}
+            {{currentUser.user.firstName}}
+          {{/link-to}}
+        </p>
+      {{/if}}
+    {{/if}}
+    {{#if session.isAuthenticated}}
+      {{#paper-button  onClick=(action 'invalidateSession')}}
+        {{t 'default.logout'}}
+      {{/paper-button}}
+    {{else}}
+      {{#paper-button }}
+        {{#link-to 'login'}} {{t 'default.login'}} {{/link-to}}
+      {{/paper-button}}
+    {{/if}}
     {{#paper-button}}
       {{link-to (t 'product.indexName') 'products' data-test-products-link}}
     {{/paper-button}}

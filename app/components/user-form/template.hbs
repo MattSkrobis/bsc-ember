@@ -1,0 +1,31 @@
+{{paper-input data-test-user-form-name class="flex-30" label=(t 'user.attrs.lastName') 
+  value=changeset.firstName onChange=(action (mut changeset.firstName))}}
+{{paper-input class="flex-30" label=(t 'user.attrs.lastName') 
+  value=changeset.lastName onChange=(action (mut changeset.lastName))}}
+{{paper-input class="flex-30" label=(t 'user.attrs.street')
+  value=changeset.addressLine1 onChange=(action (mut changeset.addressLine1))}}
+{{paper-input class="flex-30" label=(t 'user.attrs.city')
+  value=changeset.addressLine2 onChange=(action (mut changeset.addressLine2))}}
+{{paper-input class="flex-30" label=(t 'user.attrs.telephone')
+  value=changeset.telephoneNumber onChange=(action (mut changeset.telephoneNumber))}}
+{{#paper-select label=(t 'user.attrs.gender.name') options=genders selected=changeset.gender
+  onChange=(action (mut changeset.gender))  as |gender|}}
+  {{t (concat 'user.attrs.gender.' gender)}}
+{{/paper-select}}
+<div>
+  <p>{{t 'user.passwordInfo'}}</p>
+  {{paper-input class="flex-40" label=(t 'user.attrs.password') type="password" 
+    value=changeset.password onChange=(action (mut changeset.password))}}
+  {{paper-input class="flex-40" label=(t 'user.attrs.confirmPassword') type="password" 
+    value=changeset.passwordConfirmation onChange=(action (mut changeset.passwordConfirmation))}}
+</div>
+<ul data-test-user-form-errors>
+  {{#each changeset.errors as |errorSet|}}
+    {{#each errorSet.validation as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  {{/each}}
+</ul>
+
+{{#paper-button data-test-user-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
+{{#paper-button data-test-user-form-cancel-button raised=true onClick=(action "rollback")}}{{t 'default.cancel'}}{{/paper-button}}
