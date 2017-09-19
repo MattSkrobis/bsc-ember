@@ -9,7 +9,6 @@ export default Component.extend({
   paperToaster: service(),
   currentUser: service(),
   router: service(),
-  store: service(),
   genders: ['male', 'female'],
   init() {
     this._super(...arguments);
