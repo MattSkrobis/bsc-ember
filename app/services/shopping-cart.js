@@ -16,5 +16,10 @@ export default Service.extend({
   }),
   mappedProducts: computed.map('products', function(_product) {
     return { product: _product, inCartCount: this.get(`selectedProducts.${_product.id}`) };
-  })
+  }),
+  actions: {
+    removeFromCart(product) {
+      delete this.get('selectedProducts')[product.get('id')];
+    }
+  }
 });

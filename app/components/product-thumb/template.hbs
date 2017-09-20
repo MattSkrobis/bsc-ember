@@ -6,6 +6,7 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
+    {{add-to-cart product=product}}
     {{#paper-button}}
       {{#link-to "products.product" data-test-product-thumb-link product}} {{t 'default.details'}} {{/link-to}}
     {{/paper-button}}

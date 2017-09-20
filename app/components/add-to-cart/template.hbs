@@ -1,0 +1,15 @@
+{{yield}}
+
+{{#if product.quantity}}
+    {{#paper-button onClick=(action 'decrementQuantity') disabled=lessThanOne}}
+      -
+    {{/paper-button}}
+  {{paper-input type=number label="Quantity" value=quantity onChange=(action (mut quantity))}}
+    {{#paper-button onClick=(action 'incrementQuantity') disabled=moreThanInStock}}
+      +
+    {{/paper-button}}
+  {{#paper-button onClick=(action 'addToCart' product) disabled=buttonDisabled}}
+    Dodaj do koszyka
+  {{/paper-button}}
+{{else}}
+{{/if}}
