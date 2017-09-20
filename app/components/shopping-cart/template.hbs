@@ -1,0 +1,17 @@
+{{yield}}
+{{#each shoppingCart.mappedProducts as |product|}}
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}} {{product.product.name}}{{/text.headline}}
+        {{#text.subhead}} ${{product.product.price}}{{/text.subhead}}
+        {{#text.subhead }} In cart: {{ product.inCartCount }}{{/text.subhead}}
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.actions}}
+      {{#paper-button onClick=(action 'incrementCount' product  )}} Add {{/paper-button}}
+      {{#paper-button onClick=(action 'decrementCount' product  )}} Remove {{/paper-button}}
+      {{#paper-button}}{{t 'default.remove'}}{{/paper-button}}
+    {{/card.actions}}
+  {{/paper-card}}
+{{/each}}

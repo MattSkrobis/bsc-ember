@@ -24,6 +24,7 @@ ApplicationRouter.map(function() {
   this.route('users', function() {
     this.route('edit');
   });
+  this.route('checkout');
 });
 
 export default ApplicationRouter;
