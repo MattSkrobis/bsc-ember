@@ -1,21 +1,22 @@
 import Ember from 'ember';
 
-const { Component, inject: { service } } = Ember;
+const { Component, inject: { service }, computed } = Ember;
 
 export default Component.extend({
   shoppingCart: service(),
+  products: computed.alias('shoppingCart.mappedProducts'),
+  total: computed.alias('shoppingCart.total'),
+
   actions: {
     incrementCount(product) {
       let productId = product.product.get('id');
-      console.log(this.get('shoppingCart.selectedProducts')[productId]);
-      this.set(`shoppingCart.selectedProducts.${productId}`,
-        this.get('shoppingCart.selectedProducts')[productId] + 1);
+      this.set(`products.${productId}`,
+        this.get('products')[productId] + 1);
     },
     decrementCount(product) {
       let productId = product.product.get('id');
-      console.log(this.get('shoppingCart.selectedProducts')[productId]);
-      this.set(`shoppingCart.selectedProducts.${productId}`,
-        this.get('shoppingCart.selectedProducts')[productId] - 1);
+      this.set(`products.${productId}`,
+        this.get('products')[productId] - 1);
     }
   }
 });

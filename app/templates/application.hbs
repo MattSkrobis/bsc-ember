@@ -13,6 +13,16 @@
       {{/if}}
     {{/if}}
     {{#if session.isAuthenticated}}
+      <div class='cartButton'>
+        {{#link-to  "checkout" data-test-checkout-link}}
+          <div class="numberCircle">
+            {{totalItemCount}}
+          </div>
+           <div class="cartIcon">
+            {{paper-icon "local-grocery-store" size=32}}
+          </div>
+        {{/link-to}}
+      </div>
       {{#paper-button  onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}
