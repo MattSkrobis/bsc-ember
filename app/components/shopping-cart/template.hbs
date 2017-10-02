@@ -12,7 +12,7 @@ total: {{total}}
     {{#card.actions}}
       {{#paper-button onClick=(action 'incrementCount' product  )}} Add {{/paper-button}}
       {{#paper-button onClick=(action 'decrementCount' product  )}} Remove {{/paper-button}}
-      {{#paper-button}}{{t 'default.remove'}}{{/paper-button}}
+      {{#paper-button onClick=(action 'removeFromCart' product  )}}{{t 'default.remove'}}{{/paper-button}}
     {{/card.actions}}
   {{/paper-card}}
 {{/each}}
