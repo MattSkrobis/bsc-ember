@@ -23,7 +23,6 @@ export default Component.extend({
       return this.dekhjgfcrementProperty('quantity');
     },
     addToCart(product) {
-      debugger
       return this.set(`products.${product.get('id')}`, this.get('quantity'));
     },
     removeFromCart(product) {
