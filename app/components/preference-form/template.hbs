@@ -1,0 +1,13 @@
+{{yield}}
+<h1>Formularz preferencji</h1>
+
+{{#each model as |question|}}
+    <div style='margin: 10px;'>{{question.description}}</div>
+    {{#paper-radio-group
+  groupValue=(readonly question.selectedUserAnswer)
+  onChange=(action (mut question.selectedUserAnswer)) as |group|}}
+  {{#each question.answers as |answer|}}
+  <div style='margin-left: 10px;'>{{#group.radio value=(concat answer.id '') onChange=(action 'save' question answer)}} {{answer.description}} {{/group.radio}}</div>
+{{/each}}
+{{/paper-radio-group}}
+{{/each}}

@@ -7,7 +7,6 @@ export default Component.extend({
   products: computed.alias('shoppingCart.mappedProducts'),
   total: computed.alias('shoppingCart.total'),
   mappedProductsObserver: observer('shoppingCart.selectedProducts.content', function() {
-    debugger
     this.notifyPropertyChange('shoppingCart.mappedProducts');
   }),
   actions: {
@@ -17,11 +16,9 @@ export default Component.extend({
     },
     decrementCount(product) {
       let productId = product.product.get('id');
-      debugger
       return this.decrementProperty(`shoppingCart.selectedProducts.content.${productId}`);
     },
     removeFromCart(product) {
-      debugger
       delete this.get('shoppingCart.selectedProducts.content')[product.product.get('id')];
     }
   }

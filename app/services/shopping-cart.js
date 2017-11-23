@@ -15,7 +15,6 @@ export default Service.extend({
   total: computed.sum('productPrices'),
 
   products: computed('selectedProducts.content.[]', function() {
-    debugger
     let products = [];
     if (Object.keys(this.get('selectedProducts.content')).length) {
       products = this.get('store').query('product', {

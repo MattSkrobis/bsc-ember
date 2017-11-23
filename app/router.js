@@ -25,6 +25,7 @@ ApplicationRouter.map(function() {
     this.route('edit');
   });
   this.route('checkout');
+  this.route('preference-form');
 });
 
 export default ApplicationRouter;
