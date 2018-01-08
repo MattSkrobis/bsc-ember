@@ -17,12 +17,12 @@
     {{model.sku}} 
   </div>
 </div>
-<div class='product-show-header'>
+{{!-- <div class='product-show-header'>
   {{t 'product.attrs.availability.name'}}
   <div class='product-show-attr'>
     {{ t (concat "product.attrs.availability." model.availability)}}
   </div>
-</div>
+</div> --}}
 <div class='product-show-header'>
   {{t 'product.attrs.price'}}
   <div class='product-show-attr'>
@@ -30,9 +30,33 @@
   </div>
 </div>
 <div class='product-show-header'>
+  Płeć
+  <div class='product-show-attr'>
+    {{concat model.price " " model.currency}} 
+  </div>
+</div>
+{{!-- <div class='product-show-header'>
   {{t 'product.attrs.quantity'}}
   <div class='product-show-attr'>
     {{model.quantity}} 
+  </div>
+</div> --}}
+<div class='product-show-header'>
+  Płeć
+  <div class='product-show-attr'>
+    {{model.gender}} 
+  </div>
+</div>
+<div class='product-show-header'>
+  Kolor
+  <div class='product-show-attr'>
+    {{model.color}} 
+  </div>
+</div>
+<div class='product-show-header'>
+  Materiał
+  <div class='product-show-attr'>
+    {{model.material}} 
   </div>
 </div>
 <div class='product-show-header'>

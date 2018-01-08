@@ -35,9 +35,12 @@
       {{link-to (t 'product.indexName') 'products' data-test-products-link}}
     {{/paper-button}}
     {{#paper-button}}
-      {{link-to (t 'category.indexName')  'categories' data-test-categories-link}}
+      {{link-to (t 'category.indexName') 'categories' data-test-categories-link}}
     {{/paper-button}}
-    {{language-select}}
+    {{#paper-button}}
+      {{link-to (t 'Wyślij wiadomość') 'messages.new' data-test-categories-link}}
+    {{/paper-button}}
+    {{!-- {{language-select}} --}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 

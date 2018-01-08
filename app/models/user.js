@@ -11,5 +11,6 @@ export default Model.extend({
   gender: attr('string'),
   password: attr('string'),
   passwordConfirmation: attr('string'),
-  telephoneNumber: attr('string')
+  telephoneNumber: attr('string'),
+  isAdmin: attr('string')
 });

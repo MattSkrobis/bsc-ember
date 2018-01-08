@@ -1,9 +1,9 @@
 {{outlet}}
 <h1>{{t 'product.indexName'}}</h1>
 
-{{#paper-switch value=availability label="Availability" onChange=(action (mut availability))}}
+{{!-- {{#paper-switch value=availability label="Availability" onChange=(action (mut availability))}}
   {{availability}}
-{{/paper-switch}}
+{{/paper-switch}} --}}
 {{paper-input label="Search by name"  value=searchQuery onChange=(perform nameUpdate)}}
 
 {{#link-to "products.new"}}

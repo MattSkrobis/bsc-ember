@@ -1,12 +1,14 @@
 {{yield}}
-total: {{total}}
+<h1> Koszyk </h1>  
+
+<h3> Produkty </h3>
 {{#each shoppingCart.mappedProducts as |product|}}
   {{#paper-card as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
         {{#text.headline}} {{product.product.name}}{{/text.headline}}
-        {{#text.subhead}} ${{product.product.price}}{{/text.subhead}}
-        {{#text.subhead }} In cart: {{ product.inCartCount }}{{/text.subhead}}
+        {{#text.subhead}} {{product.product.price}} zł{{/text.subhead}}
+        {{#text.subhead }} W koszyku: {{ product.inCartCount }}{{/text.subhead}}
       {{/title.text}}
     {{/card.title}}
     {{#card.actions}}
@@ -16,3 +18,14 @@ total: {{total}}
     {{/card.actions}}
   {{/paper-card}}
 {{/each}}
+
+<h3> Opcje dostawy </h3>  
+{{#paper-radio-group
+  groupValue=(readonly selectedShippingOption)
+  onChange=(action (mut selectedShippingOption)) as |group|}}
+  {{#each shippingOptions as |option|}}
+    {{#group.radio value=option.name primary=true}} {{option.name}} - {{option.value}} zł {{/group.radio}}
+  {{/each}}
+{{/paper-radio-group}}
+
+<h3> Suma: {{totalWithShipping}} zł </h3>

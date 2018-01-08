@@ -12,5 +12,8 @@ export default Model.extend({
   availability: attr('boolean'),
   price: attr('number'),
   currency: attr('string'),
-  quantity: attr('number')
+  quantity: attr('number'),
+  gender: attr('string'),
+  material: attr('string'),
+  color: attr('string')
 });
