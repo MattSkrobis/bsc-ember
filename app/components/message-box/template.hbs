@@ -1,1 +1,7 @@
-{{yield}}
+  <h1>Napisz wiadomość</h1>
+  <p>Postaramy się odpowidzieć na wszelkie pytania</p>
+  {{paper-input label="Adres E-mail" type="email" value=model.email onChange=(action (mut model.email)) icon="email" required=true}}
+  {{paper-input textarea=true block=true label="Treść" maxlength=1000
+    value=model.body onChange=(action (mut model.body))}}
+
+  {{#paper-button data-test-category-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}

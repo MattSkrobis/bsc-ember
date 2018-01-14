@@ -13,6 +13,14 @@
       {{/if}}
     {{/if}}
     {{#if session.isAuthenticated}}
+      {{#if currentUser.user.isAdmin}}
+        {{#paper-button }}
+          {{#link-to 'messages.index'}} Wiadomosci {{/link-to}}
+        {{/paper-button}}
+      {{/if}}
+    {{/if}}
+    {{#if session.isAuthenticated}}
+     {{#if currentUser.user.isAdmin}}
       <div class='cartButton'>
         {{#link-to  "checkout" data-test-checkout-link}}
           <div class="numberCircle">
@@ -23,6 +31,7 @@
           </div>
         {{/link-to}}
       </div>
+      {{/if}}
       {{#paper-button  onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}
@@ -38,7 +47,7 @@
       {{link-to (t 'category.indexName') 'categories' data-test-categories-link}}
     {{/paper-button}}
     {{#paper-button}}
-      {{link-to (t 'Wyślij wiadomość') 'messages.new' data-test-categories-link}}
+      {{link-to 'Wyślij wiadomość' 'messages.new'}}
     {{/paper-button}}
     {{!-- {{language-select}} --}}
   {{/paper-toolbar-tools}}

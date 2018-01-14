@@ -1,4 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component, inject: { service } } = Ember;
+
+export default Component.extend({
+  router: service(),
+  store: service(),
+  actions: {
+    save() {
+      this.get('model')
+        .save()
+        .then(() => {
+          this.get('router').transitionTo('/');
+        });
+    }
+  }
 });

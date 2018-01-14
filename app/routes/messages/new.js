@@ -5,8 +5,5 @@ const { Route } = Ember;
 export default Route.extend({
   model() {
     return this.store.createRecord('message');
-  },
-  afterModel() {
-    this.store.findAll('category');
   }
 });

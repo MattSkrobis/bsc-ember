@@ -24,8 +24,15 @@ ApplicationRouter.map(function() {
   this.route('users', function() {
     this.route('edit');
   });
+  this.route('messages', function() {
+    this.route('new', { path: '/new' });
+  }),
   this.route('checkout');
   this.route('preference-form');
+
+  this.route('replies', function() {
+    this.route('new', { path: '/:message_id/new' });
+  });
 });
 
 export default ApplicationRouter;

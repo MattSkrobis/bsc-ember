@@ -1,0 +1,16 @@
+{{#each model as |message|}}
+  {{#paper-card as |messageCard|}}
+
+    Od: {{message.email}}
+    <p>{{message.body}}</p>
+      <li>{{#link-to "replies.new" message.id }}Napisz odpowiedz{{/link-to}}</li>
+    {{#if message.replies}}
+        <h4>Odpowiedzi</h4>
+      {{#each message.replies as |reply|}}
+      {{#paper-card}}
+      <p>{{reply.body}}</p>
+      {{/paper-card}}
+      {{/each}}
+      {{/if}}
+  {{/paper-card}}
+{{/each}}
