@@ -3,7 +3,7 @@ import { replyValidations } from 'bsc-ember/validations/reply';
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 
-const { Component, inject: { service }, computed, run } = Ember;
+const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
   store: service(),
@@ -11,7 +11,7 @@ export default Component.extend({
   router: service(),
   didReceiveAttrs() {
     this._super(...arguments);
-    let message = this.get('store').findRecord('message', this.get('router.location.history.state.path').split('/')[2]);
+    let message = this.get('store').findRecord('message', this.get('router.location.history.state.path').split('/')[3]);
     this.set('message', message);
     this.changeset = new Changeset(
       this.reply,

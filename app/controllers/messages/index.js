@@ -7,14 +7,10 @@ export default Controller.extend({
   queryParams: ['email'],
   email: null,
   actions: {
-    updateEmail(query) {
-      this.set('searchQuery', query);
-      this.get('emailUpdate').perform(query);
-    }
   },
   emailUpdate: task(function* (email) {
     this.set('searchQuery', email);
-    yield timeout(2000);
+    yield timeout(500);
     return this.set('email', email);
   }).restartable()
 });

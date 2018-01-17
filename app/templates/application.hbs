@@ -15,14 +15,14 @@
     {{#if session.isAuthenticated}}
       {{#if currentUser.user.isAdmin}}
         {{#paper-button }}
-          {{#link-to 'messages.index'}} Wiadomosci {{/link-to}}
+          {{#link-to 'admin.index'}} Panel administratora {{/link-to}}
         {{/paper-button}}
       {{/if}}
     {{/if}}
     {{#if session.isAuthenticated}}
-     {{#if currentUser.user.isAdmin}}
+     {{#unless currentUser.user.isAdmin}}
       <div class='cartButton'>
-        {{#link-to  "checkout" data-test-checkout-link}}
+        {{#link-to "checkout" data-test-checkout-link}}
           <div class="numberCircle">
             {{totalItemCount}}
           </div>
@@ -31,7 +31,7 @@
           </div>
         {{/link-to}}
       </div>
-      {{/if}}
+      {{/unless}}
       {{#paper-button  onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}

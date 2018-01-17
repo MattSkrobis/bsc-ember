@@ -4,7 +4,7 @@ const { Route } = Ember;
 
 export default Route.extend({
   queryParams: {
-    name: {
+    email: {
       refreshModel: true,
       replace: true
     }

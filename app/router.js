@@ -30,11 +30,21 @@ ApplicationRouter.map(function() {
   this.route('checkout');
   this.route('preference-form');
 
-  this.route('replies', function() {
-    this.route('new', { path: '/:message_id/new' });
-  });
   this.route('password-reset');
   this.route('password-forgotten');
+
+  this.route('admin', function() {
+    this.route('messages', function() {
+      this.route('index');
+    }),
+    this.route('orders', function() {
+      this.route('index');
+      this.route('edit', { path: '/:order_id/edit' });
+    });
+    this.route('replies', function() {
+      this.route('new', { path: '/:message_id/new' });
+    });
+  });
 });
 
 export default ApplicationRouter;

@@ -1,5 +1,6 @@
-{{paper-input  value=changeset.body 
-  onChange=(action (mut changeset.body)) label="Treść"}}
+{{paper-input textarea=true block=true label="Treść" maxlength=1500 
+  passThru=(hash rows=5 maxRows=5)
+  value=changeset.body onChange=(action (mut changeset.body))}}
 <ul>
   {{#each changeset.errors as |errorSet|}}
     {{#each errorSet.validation as |error|}}
@@ -8,5 +9,4 @@
   {{/each}}
 </ul>
 
-{{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
-{{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}{{t 'default.cancel'}}{{/paper-button}}
+{{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}Wyślij{{/paper-button}}
