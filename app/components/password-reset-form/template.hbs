@@ -1,0 +1,16 @@
+<h1>Zmień hasło</h1>
+<div>
+  <p>Wpisz nowe hasło do obu pól, aby je zmienić.</p>
+  {{paper-input class="flex-40" label=(t 'user.attrs.password') type="password" 
+    value=password onChange=(action (mut password))}}
+  {{paper-input class="flex-40" label=(t 'user.attrs.confirmPassword') type="password" 
+    value=passwordConfirmation onChange=(action (mut passwordConfirmation))}}
+</div>
+
+<ul>
+  {{#if error}}
+    <li>Hasło musi być dłuzsze niz 6 liter, hasła w obu polach muszą być takie same</li>
+  {{/if}}
+</ul>
+
+{{#paper-button data-test-user-form-save-button raised=true primary=true onClick=(action "sendRequest")}}Wyślij{{/paper-button}}

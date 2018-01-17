@@ -33,6 +33,8 @@ ApplicationRouter.map(function() {
   this.route('replies', function() {
     this.route('new', { path: '/:message_id/new' });
   });
+  this.route('password-reset');
+  this.route('password-forgotten');
 });
 
 export default ApplicationRouter;
