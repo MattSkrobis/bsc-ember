@@ -5,5 +5,6 @@ const { Model, attr, belongsTo } = DS;
 export default Model.extend({
   product: belongsTo('product'),
   order: belongsTo('order'),
-  count: attr('number')
+  count: attr('number'),
+  size: attr('string')
 });

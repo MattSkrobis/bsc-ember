@@ -1,4 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { Component, inject: { service }, computed } = Ember;
+
+export default Component.extend({
+  user: computed.alias('model.user')
 });

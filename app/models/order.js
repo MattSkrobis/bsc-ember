@@ -6,5 +6,8 @@ export default Model.extend({
   user: belongsTo('user'),
   orderLines: hasMany('orderLines'),
   status: attr('string'),
-  createdAt: attr('date')
+  createdAt: attr('date'),
+  total: attr('number'),
+  transactionNumber: attr('string'),
+  discount: attr('number')
 });
