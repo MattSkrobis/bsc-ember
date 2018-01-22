@@ -1,0 +1,22 @@
+{{#paper-list}}
+    {{#paper-subheader}}Produkty{{/paper-subheader}}
+    {{#each model.orderLines as |line|}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+            <h3>{{line.product.name}}</h3>
+              {{paper-input class="flex-30" label="Ilość"
+                value=line.count onChange=(action (mut line.count))}}
+              {{#paper-select
+              label="Rozmiar"
+              options=statuses
+              selected=line.size
+              onChange=(action (mut line.size))
+              as |size|}}
+              {{size}}
+          {{/paper-select}}
+            <p>Cena: {{line.product.price}}zł (za szt.)</p>
+        </div>
+      {{/paper-item}}
+      {{paper-divider}}
+    {{/each}}
+{{/paper-list}}

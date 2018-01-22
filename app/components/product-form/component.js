@@ -26,7 +26,7 @@ export default Component.extend({
             .save()
             .then(() => {
               this.get('paperToaster').show('Success!', { duration: 3000 });
-              this.get('router').transitionTo('products.index', { queryParams: { availability: 'true' } });
+              this.get('router').transitionTo('products.index', { queryParams: {  name: null } });
             })
             .catch(err => {
               this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });

@@ -23,6 +23,7 @@ ApplicationRouter.map(function() {
 
   this.route('users', function() {
     this.route('edit');
+    this.route('new');
   });
   this.route('messages', function() {
     this.route('new', { path: '/new' });
@@ -37,6 +38,9 @@ ApplicationRouter.map(function() {
     this.route('messages', function() {
       this.route('index');
     }),
+    // this.route('lines', function() {
+    //   this.route('edit'), { path: '/:line_id/edit' };
+    // });
     this.route('orders', function() {
       this.route('index');
       this.route('edit', { path: '/:order_id/edit' });

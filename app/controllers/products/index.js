@@ -4,8 +4,7 @@ import { task, timeout } from 'ember-concurrency';
 const { Controller } = Ember;
 
 export default Controller.extend({
-  queryParams: ['availability', 'name'],
-  availability: true,
+  queryParams: ['name'],
   name: null,
   actions: {
     updateName(query) {

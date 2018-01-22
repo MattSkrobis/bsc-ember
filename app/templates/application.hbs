@@ -11,6 +11,10 @@
           {{/link-to}}
         </p>
       {{/if}}
+    {{else}}
+      {{#paper-button }}
+        {{#link-to 'users.new'}} Zarejestruj się {{/link-to}}
+      {{/paper-button}}
     {{/if}}
     {{#if session.isAuthenticated}}
       {{#if currentUser.user.isAdmin}}

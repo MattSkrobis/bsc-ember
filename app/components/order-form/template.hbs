@@ -1,0 +1,48 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}} Zamówienie nr {{model.id}}{{/text.headline}}
+      {{#text.subhead}}
+        <p>
+          z dnia {{moment-format model.createdAt 'DD-MM-YYYY HH:mm'}}<br>
+          Status: {{model.status}}<br>
+          {{#paper-select
+             label="Status"
+             options=statuses
+             selected=model.status
+             onChange=(action (mut model.status))
+             as |status|}}
+            {{status}}
+          {{/paper-select}}
+          Klient: {{model.user.firstName}} {{model.user.lastName}}<br>
+          Adres: {{model.user.addressLine1}}, {{model.user.addressLine2}}
+        </p>
+      {{/text.subhead}}
+      {{/title.text}}
+  {{/card.title}}
+  {{#paper-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
+  {{#if currentUser.user.isAdmin}}
+  {{#paper-list}}
+    {{#paper-subheader}}Produkty{{/paper-subheader}}
+    {{#each model.orderLines as |line|}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+            <h3>{{line.product.name}}</h3>
+              {{paper-input class="flex-30" label="Ilość"
+                value=line.count onChange=(action (mut line.count))}}
+              {{#paper-select
+              label="Rozmiar"
+              options=statuses
+              selected=line.size
+              onChange=(action (mut line.size))
+              as |size|}}
+              {{size}}
+          {{/paper-select}}
+            <p>Cena: {{line.product.price}}zł (za szt.)</p>
+        </div>
+      {{/paper-item}}
+      {{paper-divider}}
+    {{/each}}
+  {{/paper-list}}
+{{/if}}
+{{/paper-card}}

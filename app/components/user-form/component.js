@@ -6,6 +6,7 @@ import lookupValidator from 'ember-changeset-validations';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
+  ajax: service(),
   paperToaster: service(),
   currentUser: service(),
   router: service(),
@@ -20,6 +21,34 @@ export default Component.extend({
     );
   },
   actions: {
+    saveNew() {
+      this.changeset.validate().then(() => {
+        if (this.changeset.get('isValid')) {
+          return this.get('ajax').request('/users', {
+            method: 'POST',
+            data: {
+              user: {
+                first_name: this.get('changeset.firstName'),
+                last_name: this.get('changeset.lastName'),
+                address_line1: this.get('changeset.addressLine1'),
+                address_line2: this.get('changeset.addressLine2'),
+                gender: this.get('changeset.gender'),
+                telephone_number: this.get('changeset.telephoneNumber'),
+                email: this.get('changeset.email'),
+                password: this.get('changeset.password'),
+                password_confirmation: this.get('changeset.passwordConfirmation'),
+              }
+            }
+          }).then(response => {
+            let userId = response.user_id;
+            this.get('store').findRecord('user', userId).then(user => {
+              this.set('user', user);
+              this.get('router').transitionTo('products.index', { queryParams: {  name: null } });
+            });
+          });
+        }
+      });
+    },
     save() {
       this.changeset.validate().then(() => {
         if (this.changeset.get('isValid')) {

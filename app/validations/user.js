@@ -9,5 +9,6 @@ export const userValidations = {
   addressLine1: validatePresence(true),
   addressLine2: [validatePresence(true), validateLength({ max: 80 })],
   telephoneNumber: [validatePresence(true), validateLength({ min: 9, max: 15 })],
-  gender: validatePresence(true)
+  gender: validatePresence(true),
+  email: validatePresence(true)
 };
