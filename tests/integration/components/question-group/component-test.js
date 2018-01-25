@@ -3,8 +3,8 @@ import { describe, it } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-describe('Integration | Component | add to cart', function() {
-  setupComponentTest('add-to-cart', {
+describe('Integration | Component | question group', function() {
+  setupComponentTest('question-group', {
     integration: true
   });
   it('renders', function() {
@@ -12,12 +12,12 @@ describe('Integration | Component | add to cart', function() {
     // Handle any actions with this.on('myAction', function(val) { ... });
     // Template block usage:
     // this.render(hbs`
-    //   {{#add-to-cart}}
+    //   {{#question-group}}
     //     template content
-    //   {{/add-to-cart}}
+    //   {{/question-group}}
     // `);
 
-    this.render(hbs`{{add-to-cart}}`);
+    this.render(hbs`{{question-group}}`);
     expect(this.$()).to.have.length(1);
   });
 });

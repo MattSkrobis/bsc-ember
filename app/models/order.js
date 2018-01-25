@@ -9,5 +9,7 @@ export default Model.extend({
   createdAt: attr('date'),
   total: attr('number'),
   transactionNumber: attr('string'),
-  discount: attr('number')
+  discount: attr('number'),
+  priceAfterDiscount: attr('number'),
+  courier: attr('string')
 });

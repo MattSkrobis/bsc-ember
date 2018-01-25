@@ -5,6 +5,16 @@ const { Component, inject: { service }, computed } = Ember;
 export default Component.extend({
   store: service(),
   currentUser: service(),
+
+  selectedAnswer: computed('question', function() {
+    let questionId = this.get('question.id');
+    return this.get('question.userAnswers').find(function(userAnswer) {
+      if (userAnswer.get('question.id') == questionId) {
+        return userAnswer.get('answer.id');
+      }
+    });
+  }),
+
   actions: {
     save(question, answer) {
       this.get('store')
@@ -23,9 +33,6 @@ export default Component.extend({
         .catch(err => {
           this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
         });
-    },
-    rollback() {
-      this.changeset.rollback();
     }
   }
 });

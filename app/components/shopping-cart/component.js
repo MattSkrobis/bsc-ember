@@ -1,46 +1,66 @@
 import Ember from 'ember';
 import { find } from 'lodash';
 
-const { Component, inject: { service }, computed, observer } = Ember;
+const { Component, inject: { service }, computed, RSVP, observer } = Ember;
 
 export default Component.extend({
+  store: service(),
+  currentUser: service(),
   shoppingCart: service(),
-  products: computed.alias('shoppingCart.mappedProducts'),
-  total: computed.alias('shoppingCart.total'),
-  totalWithShipping: computed('total', 'selectedShippingOption', function() {
-    if (!this.get('selectedShippingOption')) {
-      return this.get('total');
+  totalWithShipping: computed('model.orderLines.[]', function() {
+    if (this.get('model')) {
+      let prices = this.get('model.orderLines').map(ol => ol.product.price * ol.count);
+      return prices.reduce((previous, current)=> {
+        previous = previous + current;
+        return previous;
+      }, 0) + (this.get('selectedShippingOption') || 0);
     }
-    let selectedShippingOption = find(this.get('shippingOptions'), { 'name': this.get('selectedShippingOption') });
-    return this.get('total') + selectedShippingOption.value;
+    return 0;
   }),
-  mappedProductsObserver: observer('shoppingCart.selectedProducts.content', function() {
-    this.notifyPropertyChange('shoppingCart.mappedProducts');
-  }),
-  actions: {
-    incrementCount(product) {
-      let productId = product.product.get('id');
-      return this.incrementProperty(`shoppingCart.selectedProducts.content.${productId}`);
-    },
-    decrementCount(product) {
-      let productId = product.product.get('id');
-      return this.decrementProperty(`shoppingCart.selectedProducts.content.${productId}`);
-    },
-    removeFromCart(product) {
-      delete this.get('shoppingCart.selectedProducts.content')[product.product.get('id')];
-    }
-  },
+
   init() {
     this._super(...arguments);
     this.set('shippingOptions', [{
-      name: 'Poczta Polska',
-      value: 10
-    }, {
-      name: 'SPU',
+      name: 'DSD',
       value: 12
     }, {
-      name: 'PDP',
+      name: 'QRS',
       value: 11
+    }, {
+      name: 'Poczta Polska',
+      value: 9
     }]);
+    console.log(this.get('model.orderLines'));
+    // this._draftOrder();
+  },
+
+  // _draftOrder() {
+  //   let userId = this.get('currentUser.user.id');
+  //   return this.get('store').query('order', { filter: {
+  //     cart: {
+  //       userId,
+  //       status: 'Koszyk'
+  //     }
+  //   }
+  //   }).then(order => {
+  //     this.set('order', order);
+  //     order.get('orderLines');
+  //   });
+  // },
+
+  _saveOrder() {
+    this.get('order').save();
+  },
+
+  actions: {
+    removeOrderLine(orderLine) {
+      this.get('shoppingCart.removeOrderLine')(orderLine);
+    },
+    incrementCount(orderLine) {
+      this.set(orderLine.count,  this.get(orderLine.count) + 1);
+    },
+    decrementCount(orderLine) {
+      this.set(orderLine.count,  this.get(orderLine.count) - 1);
+    }
   }
 });

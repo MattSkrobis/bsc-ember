@@ -2,19 +2,20 @@
   {{#card.title as |title|}}
     {{#title.text as |text|}}
       {{#text.headline data-test-product-thumb-name}} {{product.name}} {{/text.headline}}
-      {{#text.subhead}} {{product.id}} {{/text.subhead}}
+      {{#text.subhead}} {{product.description}} {{/text.subhead}}
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
-    {{add-to-cart product=product}}
     {{#paper-button}}
       {{#link-to "products.product" data-test-product-thumb-link product}} {{t 'default.details'}} {{/link-to}}
     {{/paper-button}}
-    {{#paper-button}}
-      {{#link-to "products.edit" data-test-product-thumb-edit-link product}} {{t 'default.edit'}} {{/link-to}}
-    {{/paper-button}}
+    {{#if currentUser.user.isAdmin}}
+      {{#paper-button}}
+        {{#link-to "products.edit" data-test-product-thumb-edit-link product}} {{t 'default.edit'}} {{/link-to}}
+      {{/paper-button}}
+      <div class='layout-row layout-align-end-end'>
+        {{#product-destroy product=product}} {{t 'default.remove'}} {{/product-destroy}} 
+      </div>
+   {{/if }}
   {{/card.actions}}
-  <div class='layout-row layout-align-end-end'>
-    {{#product-destroy product=product}} {{t 'default.remove'}} {{/product-destroy}} 
-  </div>
 {{/paper-card}}

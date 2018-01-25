@@ -1,4 +1,16 @@
 
+<div>
+  {{#paper-button onClick=(action 'decrementQuantity') disabled=countEqualToOne}}
+      -
+    {{/paper-button}}
+  {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
+    {{#paper-button onClick=(action 'incrementQuantity') }}
+      +
+    {{/paper-button}}
+  {{#paper-button onClick=(action 'addToCart' model) disabled=buttonDisabled}}
+    Dodaj do koszyka
+  {{/paper-button}}
+</div>
 <div class='product-show-header'>
   {{t 'product.attrs.name'}} 
   <div data-test-product-show-name class='product-show-attr'>
@@ -60,5 +72,5 @@
   </div>
 </div>
 <div class='product-show-header'>
-  {{picture-list product=model inForm=false}}
+  {{!-- {{picture-list product=model inForm=false}} --}}
 </div>
