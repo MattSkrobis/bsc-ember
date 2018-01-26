@@ -1,3 +1,17 @@
 {{outlet}}
-{{#link-to 'admin.messages.index'}} Wiadomości {{/link-to}}
-{{#link-to 'admin.orders.index'}} Zamówienia {{/link-to}}
+<h1>Panel administratora</h1>
+{{#link-to 'admin.messages.index'}}
+  {{#paper-button data-test-categories-new-link raised=true primary=true}}
+    Wiadomości
+  {{/paper-button}}
+{{/link-to}}
+{{#link-to 'admin.orders.index'}}
+  {{#paper-button data-test-categories-new-link raised=true primary=true}}
+    Zamówienia
+  {{/paper-button}}
+{{/link-to}}
+{{#link-to "categories.new"}}
+  {{#paper-button data-test-categories-new-link raised=true primary=true}}
+    Stwórz kategorię
+  {{/paper-button}}
+{{/link-to}}

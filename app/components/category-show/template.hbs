@@ -4,7 +4,7 @@
 <div> {{t 'category.categoryProducts'}}</div>
 <ul  data-test-category-show-products>
   {{#each model.products as |product|}}
-    <li>{{#link-to "products.product" product}}{{product.name}}{{/link-to}}</li>
+    {{product-thumb product=product class="thumb"}}
   {{/each}}
 </ul>
 {{#paper-button}}

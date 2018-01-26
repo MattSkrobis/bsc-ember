@@ -1,13 +1,14 @@
 
 <div>
-  {{#paper-button onClick=(action 'decrementQuantity') disabled=countEqualToOne}}
+  
+  {{#paper-button  disabled=countEqualToOne}}
       -
     {{/paper-button}}
   {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
-    {{#paper-button onClick=(action 'incrementQuantity') }}
+    {{#paper-button }}
       +
     {{/paper-button}}
-  {{#paper-button onClick=(action 'addToCart' model) disabled=buttonDisabled}}
+  {{#paper-button   disabled=buttonDisabled}}
     Dodaj do koszyka
   {{/paper-button}}
 </div>
@@ -53,10 +54,19 @@
     {{model.quantity}} 
   </div>
 </div> --}}
+ {{!-- 'user': {
+    'attrs': {
+      'firstName': 'First name',
+      'lastName': 'Last name',
+      'telephone': 'Description',
+      'gender': {
+        'female': 'Female',
+        'male': 'Male',
+        'name': 'Gender' --}}
 <div class='product-show-header'>
   Płeć
   <div class='product-show-attr'>
-    {{model.gender}} 
+    {{t (concat 'user.attrs.gender.' model.gender )}} 
   </div>
 </div>
 <div class='product-show-header'>

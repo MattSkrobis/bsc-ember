@@ -1,10 +1,5 @@
 {{outlet}}
 <h1>Zamówienia</h1>
-{{#link-to "categories.new"}}
-  {{#paper-button data-test-categories-new-link raised=true primary=true}}
-    {{t 'default.new'}}
-  {{/paper-button}}
-{{/link-to}}
 {{#each model as |order|}}
   {{order-item model=order}}
 {{/each}}

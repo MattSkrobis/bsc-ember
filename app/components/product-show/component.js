@@ -5,7 +5,7 @@ const { Component, inject: { service }, computed } = Ember;
 export default Component.extend({
   shoppingCart: service(),
   count: 1,
-  countEqualToOne: computed.eq('count', 1),
+  countEqualToOne: false,
   actions: {
     addToCart(product, count) {
       this.get('addOrderLine')(product, count);

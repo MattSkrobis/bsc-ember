@@ -15,7 +15,12 @@
       {{/title.text}}
   {{/card.title}}
   {{#paper-list}}
-    {{#link-to "admin.orders.edit" model.id}}Edytuj{{/link-to}}
+
+    {{#link-to "admin.orders.edit" model.id}}
+      {{#paper-button data-test-categories-new-link raised=true primary=true}}
+        Edytuj
+      {{/paper-button}}
+    {{/link-to}}
     {{#paper-subheader}}Produkty{{/paper-subheader}}
     {{#each model.orderLines as |line|}}
       {{#paper-item class="md-3-line"}}

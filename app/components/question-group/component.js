@@ -5,12 +5,15 @@ const { Component, inject: { service }, computed } = Ember;
 export default Component.extend({
   store: service(),
   currentUser: service(),
+  selectedAnswerId: computed('selectedAnswer', function() {
+    return this.get('selectedAnswer').get('answer.id');
+  }),
 
   selectedAnswer: computed('question', function() {
     let questionId = this.get('question.id');
     return this.get('question.userAnswers').find(function(userAnswer) {
       if (userAnswer.get('question.id') == questionId) {
-        return userAnswer.get('answer.id');
+        return userAnswer;
       }
     });
   }),

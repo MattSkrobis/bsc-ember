@@ -19,7 +19,12 @@ export default Route.extend({
           status: 'Koszyk'
         }
       },
-      include: 'order-lines'
+      include: 'order-lines.product'
     });
+  },
+  actions: {
+    reloadModel() {
+      this.refresh();
+    }
   }
 });
