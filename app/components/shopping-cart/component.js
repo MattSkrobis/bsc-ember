@@ -8,17 +8,17 @@ const {
   inject: {
     service
   },
-  computed,
-  RSVP,
-  observer
+  computed
 } = Ember;
 
 export default Component.extend({
   store: service(),
   currentUser: service(),
   shoppingCart: service(),
-  totalWithShipping: computed('model.firstObject.orderLines.{product}', 'selectedShippingOption', function() {
-    if (this.get('model.firstObject.orderLines.firstObject.product.price')) {
+  sortingParams: ['id:desc'],
+  sortedLines: computed.sort('model.firstObject.orderLines', 'sortingParams'),
+  totalWithShipping: computed('model.[]', 'selectedShippingOption', function() {
+    if (this.get('model.firstObject.orderLines')) {
       let prices = this.get('model.firstObject.orderLines').map(function(ol) {
         return ol.get('product.price') * ol.get('count');
       });
@@ -26,7 +26,6 @@ export default Component.extend({
         previous = previous + current;
         return previous;
       }, 0);
-      
       return sum + this.get('shippingOptionCost');
     }
     return 0;
@@ -71,27 +70,28 @@ export default Component.extend({
     });
   },
 
-  _saveOrder() {
-    this.get('model').save().then(function(response) {
-     
-    });
-  },
-
   actions: {
     removeOrderLine(orderLine) {
-      this.get('shoppingCart.removeOrderLine')(orderLine);
+      orderLine.destroyRecord();
+      this.get('reloadModel')();
     },
+
     incrementCount(orderLine) {
       let _this = this;
       orderLine.set('count', orderLine.get('count') + 1);
-      // orderLine.save();
       orderLine.save().then(function() {
-        _this.sendAction('reloadModel');
+        _this.get('reloadModel')();
       });
-      // this.get('model').reload();
     },
+
     decrementCount(orderLine) {
-      this.set(orderLine.count, this.get(orderLine.count) - 1);
+      if (orderLine.get('count') > 1) {
+        let _this = this;
+        orderLine.set('count', orderLine.get('count') - 1);
+        orderLine.save().then(function() {
+          _this.get('reloadModel')();
+        });
+      }
     }
   }
 });

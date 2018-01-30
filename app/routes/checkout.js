@@ -13,6 +13,7 @@ export default Route.extend({
   model() {
     let userId = this.get('currentUser.user.id');
     return this.store.query('order', {
+      reload: true,
       filter: {
         cart: {
           userId,

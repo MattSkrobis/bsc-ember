@@ -1,8 +1,8 @@
 {{yield}}
 <h1> Koszyk </h1>  
-{{#if model.firstObject.orderLines}}
+{{#if sortedLines}}
   <h3> Produkty </h3>
-    {{#each model.firstObject.orderLines as |orderLine|}}
+    {{#each sortedLines as |orderLine|}}
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
           {{#title.text as |text|}}
