@@ -13,6 +13,7 @@ const {
 
 export default Component.extend({
   store: service(),
+  router: service(),
   currentUser: service(),
   shoppingCart: service(),
   sortingParams: ['id:desc'],
@@ -40,6 +41,7 @@ export default Component.extend({
     }
     return 0;
   }),
+
   totalWithShippingAfterDiscount: computed('totalWithShipping', function() {
     let total = this.get('totalWithShipping');
     if (total < 500) {
@@ -48,6 +50,25 @@ export default Component.extend({
       return Math.round((total * this.get('discounts.medium')) * 100) / 100;
     } else {
       return Math.round((total * this.get('discounts.large')) * 100) / 100;
+    }
+  }),
+
+  discount: computed('totalWithShipping', function() {
+    let total = this.get('totalWithShipping');
+    if (total < 500) {
+      return this.get('discounts.small');
+    } else if (total < 1000) {
+      return this.get('discounts.medium');
+    } else {
+      return this.get('discounts.large');
+    }
+  }),
+
+  orderCorrect: computed('model.firstObject.orderLines', 'selectedShippingOption', function() {
+    if (this.get('model.firstObject.orderLines.length') > 0 && this.get('selectedShippingOption')) {
+      return false;
+    } else {
+      return true;
     }
   }),
 
@@ -92,6 +113,25 @@ export default Component.extend({
           _this.get('reloadModel')();
         });
       }
+    },
+    saveOrder() {
+      let order = this.get('model.firstObject');
+      order.setProperties({
+        discount: this.get('discount'),
+        total: this.get('totalWithShipping'),
+        courier: this.get('selectedShippingOption'),
+        priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
+        status: 'Niezrealizowane'
+      });
+      order
+        .save()
+        .then(() => {
+          this.get('paperToaster').show('Success!', { duration: 3000 });
+          this.get('router').transitionTo('payment', order);
+        })
+        .catch(err => {
+          this.get('paperToaster').show(`Error: ${err}`);
+        });
     }
   }
 });

@@ -49,6 +49,7 @@ ApplicationRouter.map(function() {
       this.route('new', { path: '/:message_id/new' });
     });
   });
+  this.route('payment');
 });
 
 export default ApplicationRouter;

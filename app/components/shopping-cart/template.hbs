@@ -29,7 +29,7 @@
   {{/paper-radio-group}}
   <h4> Suma: {{totalWithShipping}} zł </h4>
   <h3> Do zapłaty (ze znizką): {{totalWithShippingAfterDiscount}} zł </h3>
-  {{#paper-button raised=true }} 
+  {{#paper-button raised=true disabled=orderCorrect onClick=(action 'saveOrder')}} 
   Przejdź do strony płatności {{/paper-button}}
  {{else}}
   <p>Twój koszyk jest pusty!</p>
