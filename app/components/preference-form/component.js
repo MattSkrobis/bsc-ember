@@ -5,6 +5,7 @@ const { Component, inject: { service }, computed } = Ember;
 export default Component.extend({
   store: service(),
   currentUser: service(),
+  router: service(),
   actions: {
     save(question, answer) {
       this.get('store')

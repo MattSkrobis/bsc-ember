@@ -1,12 +1,22 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const { Route, RSVP } = Ember;
 
 export default Route.extend({
-  model() {
-    return this.store.query('question', {
-      include: 'answers,user-answers',
-      // filter: { 'userSelectedAnswers': true }
+  model(params) {
+    return RSVP.hash({
+      userAnswers: this.store.query('userAnswer', {
+        filter: { userId: params.user_id },
+        include: 'answer,question'
+      }),
+      questions: this.store.findAll('question', {
+        include: 'answers'
+      })
     });
+  },
+  actions: {
+    reloadModel() {
+      this.refresh();
+    }
   }
 });

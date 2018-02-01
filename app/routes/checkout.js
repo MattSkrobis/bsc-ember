@@ -26,6 +26,7 @@ export default Route.extend({
   actions: {
     reloadModel() {
       this.refresh();
+      return 20;
     }
   }
 });

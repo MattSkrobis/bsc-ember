@@ -36,7 +36,7 @@
         {{/link-to}}
       </div>
       {{/unless}}
-      {{#paper-button  onClick=(action 'invalidateSession')}}
+      {{#paper-button onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}
     {{else}}
@@ -50,6 +50,13 @@
     {{#paper-button}}
       {{link-to (t 'category.indexName') 'categories' data-test-categories-link}}
     {{/paper-button}}
+    {{#if currentUser.user.userHasPreferences}}
+      {{#unless currentUser.user.isAdmin}}
+        {{#paper-button}}
+          {{link-to 'Polecane produkty' 'preferred-products' currentUser.user.id}}
+        {{/paper-button}}
+      {{/unless}}
+    {{/if}}
     {{#paper-button}}
       {{link-to 'Wyślij wiadomość' 'messages.new'}}
     {{/paper-button}}

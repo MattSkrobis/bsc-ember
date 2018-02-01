@@ -17,7 +17,6 @@ export default Service.extend({
   session: service(),
 
   inCartCount: computed('model.[]', function() {
-    debugger
   }),
 
   saveOrder() {

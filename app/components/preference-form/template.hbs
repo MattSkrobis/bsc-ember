@@ -1,6 +1,5 @@
 {{yield}}
 <h1>Formularz preferencji</h1>
-
-{{#each model as |question|}}
-  {{question-group question=question}}
+{{#each model.questions as |question|}}
+  {{question-group question=question userAnswers=model.userAnswers reloadModel=reloadModel}}
 {{/each}}

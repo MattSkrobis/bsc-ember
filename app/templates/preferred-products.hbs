@@ -1,1 +1,35 @@
-{{outlet}}
+<h1>Preferowane produkty</h1>
+<p>Prezentujemy Ci ponizej produkty, które spełniają kryteria podane w formularzu preferencji.</p>
+{{#each model.customer.firstObject.userAnswers as |ua|}}
+<p>Na pytanie <b>"{{ua.questionDescription}}"</b> odpowiedziałeś/łaś: <b>"{{ua.answerDescription}}"</b>.</p>
+{{/each}}
+<h3>Znaleziono: {{model.products.length}}</h3>
+{{#each model.products as |product|}}
+  {{#paper-card class="thumb" as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline data-test-product-thumb-name}} {{product.name}} {{/text.headline}}
+        {{#text.subhead}} {{product.description}} {{/text.subhead}}
+        <ul style="margin: 0px;font-size: 14px;padding: 0px 18px;">
+          <li>Kolor: {{product.color}}</li>
+          <li>Płeć: {{t (concat 'user.attrs.gender.' product.gender )}}</li>
+          <li>Materiał: {{product.material}}</li>
+          <li>Kategoria: {{product.category.name}}</li>
+        </ul>
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.actions}}
+      {{#paper-button}}
+        {{#link-to "products.product" data-test-product-thumb-link product}} {{t 'default.details'}} {{/link-to}}
+      {{/paper-button}}
+      {{#if currentUser.user.isAdmin}}
+        {{#paper-button}}
+          {{#link-to "products.edit" data-test-product-thumb-edit-link product}} {{t 'default.edit'}} {{/link-to}}
+        {{/paper-button}}
+        <div class='layout-row layout-align-end-end'>
+          {{#product-destroy product=product}} {{t 'default.remove'}} {{/product-destroy}} 
+        </div>
+    {{/if }}
+    {{/card.actions}}
+  {{/paper-card}}
+{{/each}}

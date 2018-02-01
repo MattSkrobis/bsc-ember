@@ -5,17 +5,14 @@ const { Component, inject: { service }, computed } = Ember;
 export default Component.extend({
   store: service(),
   currentUser: service(),
-  selectedAnswerId: computed('selectedAnswer', function() {
-    return this.get('selectedAnswer').get('answer.id');
-  }),
-
-  selectedAnswer: computed('question', function() {
+  router: service(),
+  selectedAnswer: computed('question', 'userAnswers.content.[]', function() {
     let questionId = this.get('question.id');
-    return this.get('question.userAnswers').find(function(userAnswer) {
+    return this.get('userAnswers').map(function(userAnswer) {
       if (userAnswer.get('question.id') == questionId) {
-        return userAnswer;
+        return userAnswer.get('answer.id');
       }
-    });
+    }).filter(Boolean)[0];
   }),
 
   actions: {
@@ -32,9 +29,7 @@ export default Component.extend({
           let record = this.get('store').peekRecord('userAnswer', id);
           record.set('answer', answer);
           record.save();
-        })
-        .catch(err => {
-          this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+          location.reload(true);
         });
     }
   }

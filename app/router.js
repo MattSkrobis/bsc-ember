@@ -29,7 +29,7 @@ ApplicationRouter.map(function() {
     this.route('new', { path: '/new' });
   }),
   this.route('checkout');
-  this.route('preference-form');
+  this.route('preference-form', { path: 'preference-form/:user_id/' });
 
   this.route('password-reset');
   this.route('password-forgotten');
@@ -38,9 +38,6 @@ ApplicationRouter.map(function() {
     this.route('messages', function() {
       this.route('index');
     }),
-    // this.route('lines', function() {
-    //   this.route('edit'), { path: '/:line_id/edit' };
-    // });
     this.route('orders', function() {
       this.route('index');
       this.route('edit', { path: '/:order_id/edit' });
@@ -50,6 +47,7 @@ ApplicationRouter.map(function() {
     });
   });
   this.route('payment');
+  this.route('preferred-products', { path: 'preferred-products/:user_id/' });
 });
 
 export default ApplicationRouter;
