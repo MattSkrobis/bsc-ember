@@ -43,7 +43,7 @@ export default Component.extend({
             let userId = response.user_id;
             this.get('store').findRecord('user', userId).then(user => {
               this.set('user', user);
-              this.get('router').transitionTo('products.index', { queryParams: {  name: null } });
+              this.get('router').transitionTo('login');
             });
           });
         }

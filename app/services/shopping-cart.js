@@ -24,11 +24,12 @@ export default Service.extend({
   },
 
   addOrderLine(product, count, size) {
+    debugger;
     return this.get('store').createRecord('orderLine', {
       product,
       count,
       size,
-      order: this.get('order')
+      order: this.get('order.firstObject ')
     }).save();
   },
 

@@ -28,7 +28,7 @@ export default Component.extend({
             .save()
             .then(() => {
               this.get('paperToaster').show('Success!', { duration: 3000 });
-              this.get('router').transitionTo('messages.index', { queryParams: { name: '' } });
+              this.get('router').transitionTo('admin');
             })
             .catch(err => {
               this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });

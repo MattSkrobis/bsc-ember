@@ -9,6 +9,9 @@
   {{category.name}} 
 {{/paper-select}}
 
+{{paper-input type="number" 
+  value=changeset.sku onChange=(action (mut changeset.color)) label=(t 'product.attrs.sku')}}
+
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
     {{#each errorSet.validation as |error|}}
