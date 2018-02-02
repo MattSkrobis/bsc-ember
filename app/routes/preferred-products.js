@@ -5,7 +5,6 @@ const { Route, inject: { service }, computed, RSVP } = Ember;
 export default Route.extend({
   currentUser: service(),
   kot: computed('model.products.[]', function() {
-    debugger
     return this.get('currentUser.user');
   }),
   model(params) {

@@ -4,6 +4,7 @@ const { Controller, inject: { service } } = Ember;
 
 export default Controller.extend({
   ajax: service(),
+  router: service(),
   actions: {
     sendRequest() {
       return this.get('ajax').request('/users/password', {

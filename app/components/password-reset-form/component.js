@@ -9,9 +9,11 @@ const {
 
 export default Component.extend({
   ajax: service(),
+  router: service(),
   error: '',
   actions: {
     sendRequest() {
+      let _this = this;
       let password = this.get('password');
       let passwordConfirmation = this.get('passwordConfirmation');
       let token = this.get('token');
@@ -25,8 +27,8 @@ export default Component.extend({
               password_confirmation: passwordConfirmation,
             }
           }
-        }).then(() => {
-          this.get('router').transitionTo('/');
+        }).then(function() {
+          _this.get('router').transitionTo('/');
         });
       }
     }

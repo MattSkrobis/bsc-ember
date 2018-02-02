@@ -1,16 +1,26 @@
 
 <div>
-  
-  {{#paper-button  disabled=countEqualToOne}}
+  {{#if currentUser.user}}
+  <h3>Dodaj do koszyka</h3>
+   {{#paper-select
+              label="Rozmiar"
+              options=sizes
+              selected=size
+              onChange=(action (mut size))
+              as |size|}}
+              {{size}}
+    {{/paper-select}}
+  {{#paper-button  disabled=countEqualToOne onClick=(action 'decrementCount')}}
       -
     {{/paper-button}}
   {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
-    {{#paper-button }}
+    {{#paper-button onClick=(action 'incrementCount')}}
       +
     {{/paper-button}}
-  {{#paper-button   disabled=buttonDisabled}}
-    Dodaj do koszyka
+  {{#paper-button onClick=(action 'addToCart') }}
+    Dodaj 
   {{/paper-button}}
+  {{/if}}
 </div>
 <div class='product-show-header'>
   {{t 'product.attrs.name'}} 
@@ -30,12 +40,6 @@
     {{model.sku}} 
   </div>
 </div>
-{{!-- <div class='product-show-header'>
-  {{t 'product.attrs.availability.name'}}
-  <div class='product-show-attr'>
-    {{ t (concat "product.attrs.availability." model.availability)}}
-  </div>
-</div> --}}
 <div class='product-show-header'>
   {{t 'product.attrs.price'}}
   <div class='product-show-attr'>
@@ -45,28 +49,7 @@
 <div class='product-show-header'>
   Płeć
   <div class='product-show-attr'>
-    {{concat model.price " " model.currency}} 
-  </div>
-</div>
-{{!-- <div class='product-show-header'>
-  {{t 'product.attrs.quantity'}}
-  <div class='product-show-attr'>
-    {{model.quantity}} 
-  </div>
-</div> --}}
- {{!-- 'user': {
-    'attrs': {
-      'firstName': 'First name',
-      'lastName': 'Last name',
-      'telephone': 'Description',
-      'gender': {
-        'female': 'Female',
-        'male': 'Male',
-        'name': 'Gender' --}}
-<div class='product-show-header'>
-  Płeć
-  <div class='product-show-attr'>
-    {{t (concat 'user.attrs.gender.' model.gender )}} 
+    {{t (concat 'user.attrs.gender.' model.gender)}}
   </div>
 </div>
 <div class='product-show-header'>
@@ -82,5 +65,4 @@
   </div>
 </div>
 <div class='product-show-header'>
-  {{!-- {{picture-list product=model inForm=false}} --}}
 </div>

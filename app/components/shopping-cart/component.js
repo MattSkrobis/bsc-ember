@@ -15,7 +15,7 @@ export default Component.extend({
   store: service(),
   router: service(),
   currentUser: service(),
-  shoppingCart: service(),
+  // shoppingCart: service(),
   sortingParams: ['id:desc'],
   sortedLines: computed.sort('model.firstObject.orderLines', 'sortingParams'),
   totalWithShipping: computed('model.[]', 'selectedShippingOption', function() {

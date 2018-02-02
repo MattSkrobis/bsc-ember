@@ -5,28 +5,39 @@ const {
   inject: {
     service
   },
-  RSVP,
   computed,
-  run
 } = Ember;
 
 export default Service.extend({
   currentUser: service(),
-  shoppingCart: service(),
   store: service(),
-  session: service(),
 
   inCartCount: computed('model.[]', function() {
   }),
+
+  init() {
+    this.set('order', this.getCartOrder(this.get('currentUser.user.id')));
+  },
 
   saveOrder() {
     this.get('order').save();
   },
 
-  getCartOrder(isAuthenticated) {
-    // run.later(function() {
-    if (isAuthenticated) {
-      let userId = this.get('currentUser.user.id');
+  addOrderLine(product, count, size) {
+    return this.get('store').createRecord('orderLine', {
+      product,
+      count,
+      size,
+      order: this.get('order')
+    }).save();
+  },
+
+  removeOrderLine(orderLine) {
+    orderLine.deleteRecord();
+  },
+
+  getCartOrder(userId) {
+    if (userId) {
       return this.get('store').query('order', {
         reload: true,
         filter: {
@@ -36,24 +47,7 @@ export default Service.extend({
           }
         },
         include: 'order-lines.product'
-      }).then(order => {
-        this.set('order', order);
       });
-    }
-    // }, 2000);
-  },
-
-  actions: {
-    addOrderLine(product, count) {
-      this.get('store').createRecord('orderLine', {
-        product,
-        count,
-        order: this.get('order')
-      });
-    },
-
-    removeOrderLine(orderLine) {
-      orderLine.deleteRecord();
     }
   }
 });

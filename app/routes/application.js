@@ -6,7 +6,6 @@ const { Route, inject: { service }, computed, run } = Ember;
 export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   currentUser: service(),
-  shoppingCart: service(),
 
   inCartCount: computed.alias('shoppingCart.inCartCount'),
 
