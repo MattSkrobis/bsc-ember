@@ -3,6 +3,12 @@
     {{#title.text as |text|}}
       {{#text.headline data-test-product-thumb-name}} {{product.name}} {{/text.headline}}
       {{#text.subhead}} {{product.description}} {{/text.subhead}}
+      <ul style="margin: 0px;font-size: 14px;padding: 0px 18px;">
+          <li>Kolor: {{product.color}}</li>
+          <li>Płeć: {{t (concat 'user.attrs.gender.' product.gender )}}</li>
+          <li>Materiał: {{product.material}}</li>
+          <li>Kategoria: {{product.category.name}}</li>
+        </ul>
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}

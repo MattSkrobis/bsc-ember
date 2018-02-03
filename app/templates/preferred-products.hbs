@@ -1,7 +1,9 @@
 <h1>Preferowane produkty</h1>
 <p>Prezentujemy Ci ponizej produkty, które spełniają kryteria podane w formularzu preferencji.</p>
 {{#each model.customer.firstObject.userAnswers as |ua|}}
+ {{#if ua.answerDescription}}
 <p>Na pytanie <b>"{{ua.questionDescription}}"</b> odpowiedziałeś/łaś: <b>"{{ua.answerDescription}}"</b>.</p>
+{{/if}}
 {{/each}}
 <h3>Znaleziono: {{model.products.length}}</h3>
 {{#each model.products as |product|}}

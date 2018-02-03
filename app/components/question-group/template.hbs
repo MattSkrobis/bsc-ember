@@ -1,13 +1,12 @@
 {{!-- {{#if selectedAnswer.isLoaded}} --}}
 <div style='margin: 10px;'> {{question.description}} </div>
-----{{selectedAnswer}}
   {{#paper-radio-group
   groupValue=(readonly selectedAnswer)
   onChange=(action (mut selectedAnswer)) as |group|}}
     {{#each question.answers as |answer|}}
     <div style='margin-left: 10px;'>
       {{#group.radio value=(concat answer.id '') onChange=(action 'save' question answer)}} 
-        {{answer.description}} - {{ answer.id}}
+        {{answer.description}}
       {{/group.radio}}
     </div>
     {{/each}}

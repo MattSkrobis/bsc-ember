@@ -36,25 +36,3 @@
 {{/if}}
 
 
-<div id="payu-widget"></div>
-
-<script>
-      function test($data) {
-           console.log("callback");
-           console.log($data);
-      }
-</script>
-<script
-    src="https://secure.payu.com/front/widget/js/payu-bootstrap.js"
-    merchant-pos-id="145227"
-    shop-name="TEST"
-    total-amount="12345"
-    currency-code="PLN"
-    customer-language="en"
-    store-card="false"
-    payu-brand="false"
-    success-callback="test"
-    widget-mode="use"
-    customer-email="test@test.com"
-    sig="203ec8c4b9571ce6b4c03058f57264f04d06d00a86da19390d47ba1be4551578">
-</script>
