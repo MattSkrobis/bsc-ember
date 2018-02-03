@@ -1,16 +1,6 @@
 {{outlet}}
 <h1>{{t 'product.indexName'}}</h1>
-
-{{!-- {{#paper-switch value=availability label="Availability" onChange=(action (mut availability))}}
-  {{availability}}
-{{/paper-switch}} --}}
-{{paper-input label="Search by name"  value=searchQuery onChange=(perform nameUpdate)}}
-
-{{#link-to "products.new"}}
-  {{#paper-button data-test-product-index-new-link raised=true primary=true}}
-    {{t 'default.new'}}
-  {{/paper-button}}
-{{/link-to}}
+{{paper-input label="Znajdź produkt"  value=searchQuery onChange=(perform nameUpdate)}}
 
 {{#each model as |product|}}
   {{product-thumb product=product class="thumb"}}

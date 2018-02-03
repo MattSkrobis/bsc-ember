@@ -6,7 +6,7 @@ import lookupValidator from 'ember-changeset-validations';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  paperToaster: service(),
+  // paperToaster: service(),
   router: service(),
   didReceiveAttrs() {
     this._super(...arguments);

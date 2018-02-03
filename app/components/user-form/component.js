@@ -7,7 +7,7 @@ const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
   ajax: service(),
-  paperToaster: service(),
+  // paperToaster: service(),
   currentUser: service(),
   router: service(),
   store: service(),
