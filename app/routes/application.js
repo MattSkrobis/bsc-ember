@@ -7,15 +7,8 @@ export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   currentUser: service(),
 
-  inCartCount: computed.alias('shoppingCart.inCartCount'),
-
   beforeModel() {
     this._loadCurrentUser();
-  },
-
-  afterModel() {
-    // debugger
-    // this.get('shoppingCart.getCartOrder')(this.get('session.isAuthenticated'));
   },
 
   sessionAuthenticated() {
