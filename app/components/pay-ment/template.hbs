@@ -1,0 +1,48 @@
+<div id="payu-widget"></div>
+
+{{pos}}///
+<script>
+      function test($data) {
+        debugger
+           console.log("callback");
+           console.log($data);
+      }
+</script>
+
+{{!-- <script
+    src="https://secure.payu.com/front/widget/js/payu-bootstrap.js"
+    pay-button="#pay-button"
+    merchant-pos-id="145227"
+    shop-name="Nazwa sklepu"
+    total-amount="9.99"
+    currency-code="PLN"
+    customer-language="pl"
+    success-callback="test"
+    store-card="true"
+    customer-email="email@exampledomain.com"
+    sig="250f5f53e465777b6fefb04f171a21b598ccceb2899fc9f229604ad529c69532">
+</script> --}}
+{{#if computedSHA256}}
+computedSHA256: {{computedSHA256}} //
+pos: {{pos}} ??
+total: {{totalAmount}} ??
+sjope: {{shop}} ??
+curr: {{currency}} ??
+cents: {{totalAmountCents}} ??
+email: {{customerEmail}} ??
+country: {{country}} ??
+<script
+    src="https://secure.payu.com/front/widget/js/payu-bootstrap.js"
+    pay-button="#pay-button"
+    merchant-pos-id="300746"
+    shop-name={{shop}}
+    total-amount={{totalAmount}}
+    currency-code={{currency}}
+    customer-language={{country}}
+    success-callback="test"
+    store-card="true"
+    customer-email={{customerEmail}}
+    sig="c9fdc4c9427142ab61f1e23482db8f7cebfd4079c6d5934e412ef3d635475d15">
+</script>
+{{/if}}
+    {{!-- sig={{5afa6e484d06953fc86f2ae4df0ba8f83b6d60615b7d6b8b3e0983dbd70d0932}}{{computedSHA256}}> --}}
