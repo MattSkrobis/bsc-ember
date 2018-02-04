@@ -15,7 +15,8 @@ export default Component.extend({
   store: service(),
   router: service(),
   currentUser: service(),
-  // shoppingCart: service(),
+  shoppingCart: service(),
+  model: computed.alias('shoppingCart.order'),
   sortingParams: ['id:desc'],
   sortedLines: computed.sort('model.firstObject.orderLines', 'sortingParams'),
   totalWithShipping: computed('model.[]', 'selectedShippingOption', function() {
@@ -94,43 +95,51 @@ export default Component.extend({
   actions: {
     removeOrderLine(orderLine) {
       orderLine.destroyRecord();
-      this.get('reloadModel')();
     },
 
     incrementCount(orderLine) {
-      let _this = this;
-      orderLine.set('count', orderLine.get('count') + 1);
-      orderLine.save().then(function() {
-        _this.get('reloadModel')();
-      });
+      this.get('shoppingCart').incrementCount(orderLine);
     },
 
     decrementCount(orderLine) {
-      if (orderLine.get('count') > 1) {
-        let _this = this;
-        orderLine.set('count', orderLine.get('count') - 1);
-        orderLine.save().then(function() {
-          _this.get('reloadModel')();
-        });
-      }
+      this.get('shoppingCart').decrementCount(orderLine);
     },
-    saveOrder() {
+
+    saveTransferOrder() {
       let order = this.get('model.firstObject');
       order.setProperties({
         discount: this.get('discount'),
         total: this.get('totalWithShipping'),
         courier: this.get('selectedShippingOption'),
         priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
-        status: 'Niezrealizowane'
+        status: 'Niezrealizowane',
+        paymentMethod: 'transfer'
       });
       order
         .save()
         .then(() => {
-          this.get('paperToaster').show('Success!', { duration: 3000 });
-          this.get('router').transitionTo('payment', order);
+          this.get('router').transitionTo('users.edit');
         })
         .catch(err => {
-          this.get('paperToaster').show(`Error: ${err}`);
+        });
+    },
+
+    savePayUOrder() {
+      let order = this.get('model.firstObject');
+      order.setProperties({
+        discount: this.get('discount'),
+        total: this.get('totalWithShipping'),
+        courier: this.get('selectedShippingOption'),
+        priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
+        // status: 'Niezrealizowane',
+        paymentMethod: 'payu'
+      });
+      order
+        .save()
+        .then(() => {
+          this.get('router').transitionTo('payment');
+        })
+        .catch(err => {
         });
     }
   }

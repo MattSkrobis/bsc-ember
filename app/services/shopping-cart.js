@@ -11,7 +11,6 @@ const {
 export default Service.extend({
   currentUser: service(),
   store: service(),
-
   inCartCount() {
     let orderLinesLength = this.get('order.firstObject.orderLines.content.length');
     if (orderLinesLength) {
@@ -31,21 +30,45 @@ export default Service.extend({
     });
   },
 
-  saveOrder() {
-    this.get('order').save();
+  incrementCount(orderLine) {
+    let _this = this;
+    orderLine.set('count', orderLine.get('count') + 1);
+    orderLine.save().then(function() {
+      _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+    });
+  },
+
+  decrementCount(orderLine) {
+    if (orderLine.get('count') > 1) {
+      let _this = this;
+      orderLine.set('count', orderLine.get('count') - 1);
+      orderLine.save().then(function() {
+        _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+      });
+    }
+  },
+
+  setOrder() {
+    this.set('order', this.getCartOrder(this.get('currentUser.user.id')));
   },
 
   addOrderLine(product, count, size) {
-    return this.get('store').createRecord('orderLine', {
+    let _this = this;
+    this.get('store').createRecord('orderLine', {
       product,
       count,
       size,
-      order: this.get('order.firstObject ')
-    }).save();
+      order: this.get('order.firstObject')
+    }).save().then(function() {
+      _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+    });
   },
 
   removeOrderLine(orderLine) {
-    orderLine.deleteRecord();
+    let _this = this;
+    orderLine.deleteRecord().then(function() {
+      _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+    });
   },
 
   getCartOrder(userId) {

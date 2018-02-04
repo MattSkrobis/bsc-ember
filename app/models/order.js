@@ -11,5 +11,6 @@ export default Model.extend({
   transactionNumber: attr('string'),
   discount: attr('number'),
   priceAfterDiscount: attr('number'),
-  courier: attr('string')
+  courier: attr('string'),
+  paymentMethod: attr('string')
 });

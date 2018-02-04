@@ -23,10 +23,4 @@ export default Route.extend({
       include: 'order-lines.product'
     });
   },
-  actions: {
-    reloadModel() {
-      this.refresh();
-      return 20;
-    }
-  }
 });
