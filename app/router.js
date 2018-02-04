@@ -24,6 +24,7 @@ ApplicationRouter.map(function() {
   this.route('users', function() {
     this.route('edit');
     this.route('new');
+    this.route('orders',  { path: '/:user_id/orders' });
   });
   this.route('messages', function() {
     this.route('new', { path: '/new' });
@@ -46,7 +47,6 @@ ApplicationRouter.map(function() {
       this.route('new', { path: '/:message_id/new' });
     });
   });
-  this.route('payment');
   this.route('preferred-products', { path: 'preferred-products/:user_id/' });
 });
 

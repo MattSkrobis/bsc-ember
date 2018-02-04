@@ -59,11 +59,13 @@
       {{/unless}}
     {{/if}}
     {{#paper-button}}
-      {{link-to 'Wyślij wiadomość' 'messages.new'}}
+      {{link-to 'Kontakt' 'messages.new'}}
     {{/paper-button}}
     {{!-- {{language-select}} --}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 
 {{application-toast}}
-{{outlet}}
+<div class="body-main">
+  {{outlet}}
+</div>

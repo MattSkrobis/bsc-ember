@@ -29,10 +29,8 @@
   {{/paper-radio-group}}
   <h4> Suma: {{totalWithShipping}} zł </h4>
   <h3> Do zapłaty (ze znizką): {{totalWithShippingAfterDiscount}} zł </h3>
-  {{#paper-button raised=true disabled=orderCorrect onClick=(action 'savePayUOrder')}} 
-  Przejdź do strony płatności (PayU) {{/paper-button}}
   {{#paper-button raised=true disabled=orderCorrect onClick=(action 'saveTransferOrder')}} 
   Złóz zamówienie z obowiązkiem zapłaty przelewem {{/paper-button}}
  {{else}}
-  {{!-- <p>Twój koszyk jest pusty!</p> --}}
+
 {{/if}}

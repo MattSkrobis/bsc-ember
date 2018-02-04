@@ -106,22 +106,24 @@ export default Component.extend({
     },
 
     saveTransferOrder() {
-      let order = this.get('model.firstObject');
-      order.setProperties({
-        discount: this.get('discount'),
-        total: this.get('totalWithShipping'),
-        courier: this.get('selectedShippingOption'),
-        priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
-        status: 'Niezrealizowane',
-        paymentMethod: 'transfer'
-      });
-      order
-        .save()
-        .then(() => {
-          this.get('router').transitionTo('users.edit');
-        })
-        .catch(err => {
-        });
+      this.get('shoppingCart').saveTransferOrder();
+      // let order = this.get('model.firstObject');
+      // order.setProperties({
+      //   discount: this.get('discount'),
+      //   total: this.get('totalWithShipping'),
+      //   courier: this.get('selectedShippingOption'),
+      //   priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
+      //   status: 'Niezrealizowane',
+      //   paymentMethod: 'transfer'
+      // });
+      // order
+      //   .save()
+      //   .then(() => {
+      //     _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+      //     this.get('router').transitionTo('users.edit');
+      //   })
+      //   .catch(err => {
+      //   });
     },
 
     savePayUOrder() {

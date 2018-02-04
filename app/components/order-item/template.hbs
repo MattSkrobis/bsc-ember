@@ -6,8 +6,10 @@
         <p>
           z dnia {{moment-format model.createdAt 'DD-MM-YYYY HH:mm'}}<br>
           Status: {{model.status}}<br>
+          {{#unless isUser}}
           Klient: {{user.firstName}} {{user.lastName}}<br>
           Adres: {{user.addressLine1}}, {{user.addressLine2}}
+          {{/unless}}
         </p>
       {{/text.subhead}}
         {{paper-divider}}
@@ -16,11 +18,14 @@
   {{/card.title}}
   {{#paper-list}}
 
-    {{#link-to "admin.orders.edit" model.id}}
-      {{#paper-button data-test-categories-new-link raised=true primary=true}}
-        Edytuj
-      {{/paper-button}}
-    {{/link-to}}
+    {{#unless isUser}}
+      {{#link-to "admin.orders.edit" model.id}}
+        {{#paper-button data-test-categories-new-link raised=true primary=true}}
+          Edytuj
+        {{/paper-button}}
+      {{/link-to}}
+    {{/unless}}
+    
     {{#paper-subheader}}Produkty{{/paper-subheader}}
     {{#each model.orderLines as |line|}}
       {{#paper-item class="md-3-line"}}

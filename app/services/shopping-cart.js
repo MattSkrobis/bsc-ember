@@ -11,6 +11,7 @@ const {
 export default Service.extend({
   currentUser: service(),
   store: service(),
+  router: service(),
   inCartCount() {
     let orderLinesLength = this.get('order.firstObject.orderLines.content.length');
     if (orderLinesLength) {
@@ -50,6 +51,27 @@ export default Service.extend({
 
   setOrder() {
     this.set('order', this.getCartOrder(this.get('currentUser.user.id')));
+  },
+
+  saveTransferOrder() {
+    let _this = this;
+    let order = this.get('order.firstObject');
+    order.setProperties({
+      discount: this.get('discount'),
+      total: this.get('totalWithShipping'),
+      courier: this.get('selectedShippingOption'),
+      priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
+      status: 'Niezrealizowane',
+      paymentMethod: 'transfer'
+    });
+    order
+      .save()
+      .then(() => {
+        _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+        _this.get('router').transitionTo('users.edit');
+      })
+      .catch(err => {
+      });
   },
 
   addOrderLine(product, count, size) {
