@@ -1,25 +1,27 @@
 
 <div>
-  {{#if currentUser.user}}
-  <h3>Dodaj do koszyka</h3>
-   {{#paper-select
-              label="Rozmiar"
-              options=sizes
-              selected=size
-              onChange=(action (mut size))
-              as |size|}}
-              {{size}}
-    {{/paper-select}}
-  {{#paper-button  disabled=countEqualToOne onClick=(action 'decrementCount')}}
-      -
+  {{#if currentUser.user }}
+    {{#unless currentUser.user.isAdmin}}
+    <h3>Dodaj do koszyka</h3>
+    {{#paper-select
+                label="Rozmiar"
+                options=sizes
+                selected=size
+                onChange=(action (mut size))
+                as |size|}}
+                {{size}}
+      {{/paper-select}}
+    {{#paper-button  disabled=countEqualToOne onClick=(action 'decrementCount')}}
+        -
+      {{/paper-button}}
+    {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
+      {{#paper-button onClick=(action 'incrementCount')}}
+        +
+      {{/paper-button}}
+    {{#paper-button onClick=(action 'addToCart') }}
+      Dodaj 
     {{/paper-button}}
-  {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
-    {{#paper-button onClick=(action 'incrementCount')}}
-      +
-    {{/paper-button}}
-  {{#paper-button onClick=(action 'addToCart') }}
-    Dodaj 
-  {{/paper-button}}
+    {{/unless}}
   {{/if}}
 </div>
 <div class='product-show-header'>
