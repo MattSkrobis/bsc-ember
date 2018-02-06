@@ -30,12 +30,12 @@ export default Component.extend({
           this.pictureChangeset
             .save()
             .then(() => {
-              this.get('paperToaster').show('Success!', { duration: 3000 });
+              this.get('paperToaster').show('Sukces!', { duration: 3000 });
               this.set('pictureChangeset', this.createChangeset());
               this.set('showDialog', false);
             })
             .catch(err => {
-              this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+              this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
             });
         }
       });

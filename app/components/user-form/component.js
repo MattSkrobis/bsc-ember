@@ -60,10 +60,10 @@ export default Component.extend({
             .then(() => {
               this.set('currentUser.user', this.changeset._content);
               this.get('router').transitionTo('/');
-              this.get('paperToaster').show('Success!', { duration: 3000 });
+              this.get('paperToaster').show('Sukces!', { duration: 3000 });
             })
             .catch(err => {
-              this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+              this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
             });
         }
       });

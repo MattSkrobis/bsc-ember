@@ -11,11 +11,11 @@ export default Component.extend({
       category
         .save()
         .then(() => {
-          this.get('paperToaster').show('Success!', { duration: 3000 });
+          this.get('paperToaster').show('Sukces!', { duration: 3000 });
           this.get('router').transitionTo('categories.index');
         })
         .catch(err => {
-          this.get('paperToaster').show(`Error: ${err}`);
+          this.get('paperToaster').show(`Błąd: ${err}`);
         });
     },
     toggle() {

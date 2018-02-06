@@ -22,7 +22,7 @@ export default Component.extend({
           record.save();
         })
         .catch(err => {
-          this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+          this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
         });
     },
     rollback() {
