@@ -41,10 +41,13 @@ export default Component.extend({
             }
           }).then(response => {
             let userId = response.user_id;
+            this.set('error', null);
             this.get('store').findRecord('user', userId).then(user => {
               this.set('user', user);
               this.get('router').transitionTo('login');
             });
+          }).catch(error => {
+            this.set('error', 'Konto z podanym adresem e-mail zostało juz stworzone.');
           });
         }
       });

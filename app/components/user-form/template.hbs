@@ -31,7 +31,10 @@
 </div>
 <ul data-test-user-form-errors>
   {{#if changeset.errors}}
-      <li>Proszę wypełnić każde z pól.</li>
+    <li>Proszę wypełnić każde z pól.</li>
+  {{/if}}
+{{#if error}}
+    <li>{{error}}</li>
   {{/if}}
 </ul>
 
