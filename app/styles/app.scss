@@ -8,6 +8,11 @@
   margin-right: 10px
 }
 
+a.userName:hover
+{
+text-decoration:underline;
+}
+
 #user-greeting {
   font-size: 14px
 }

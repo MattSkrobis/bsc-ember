@@ -103,7 +103,7 @@ export default Service.extend({
             status: 'Koszyk'
           }
         },
-        include: 'order-lines.product'
+        include: 'order-lines.product.category'
       });
     }
   }

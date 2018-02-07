@@ -7,8 +7,14 @@
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}} {{orderLine.product.name}}{{/text.headline}}
-            {{#text.subhead}} {{orderLine.product.price}} zł{{/text.subhead}}
-            {{#text.subhead }} W koszyku: {{ orderLine.count }}{{/text.subhead}}
+             <ul style="margin: 0px;font-size: 14px;padding: 0px 18px;list-style-type: none">
+              <li>Cena: <b>{{orderLine.product.price}} zł</b></li>
+              <li>W koszyku: {{ orderLine.count }}</li>
+              <li>Kolor: {{orderLine.product.color}}</li>
+              <li>Płeć: {{t (concat 'user.attrs.gender.' orderLine.product.gender )}}</li>
+              <li>Materiał: {{orderLine.product.material}}</li>
+              <li>Kategoria: {{orderLine.product.category.name}}</li>
+            </ul>
           {{/title.text}}
         {{/card.title}}
         {{#card.actions}}

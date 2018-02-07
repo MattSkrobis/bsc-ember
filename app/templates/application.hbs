@@ -6,61 +6,54 @@
       {{#if currentUser.user}}
         <p id='user-greeting'>
           {{t 'user.loggedIn'}}
-          {{#link-to 'users.edit'}}
+          {{#link-to 'users.edit' class='userName'}}
             {{currentUser.user.firstName}}
           {{/link-to}}
         </p>
       {{/if}}
     {{else}}
-      {{#paper-button }}
-        {{#link-to 'users.new'}} Zarejestruj się {{/link-to}}
-      {{/paper-button}}
+      {{#link-to 'users.new'}}
+        {{#paper-button}} Zarejestruj się {{/paper-button}}
+      {{/link-to}}
     {{/if}}
     {{#if session.isAuthenticated}}
       {{#if currentUser.user.isAdmin}}
-        {{#paper-button }}
-          {{#link-to 'admin.index'}} Panel administratora {{/link-to}}
-        {{/paper-button}}
+        {{#link-to 'admin.index' }}
+          {{#paper-button raised=true primary=true}} Panel administratora {{/paper-button}}
+        {{/link-to}}
       {{/if}}
     {{/if}}
     {{#if session.isAuthenticated}}
      {{#unless currentUser.user.isAdmin}}
-      {{!-- <div class='cartButton'>
-        {{#link-to "checkout" data-test-checkout-link}}
-          <div class="numberCircle">
-            {{inCartCount}}
-          </div>
-           <div class="cartIcon">
-            {{paper-icon "local-grocery-store" size=32}}
-          </div>
-        {{/link-to}}
-      </div> --}}
         {{shopping-cart-indicator}}
       {{/unless}}
       {{#paper-button onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}
     {{else}}
-      {{#paper-button }}
-        {{#link-to 'login'}} {{t 'default.login'}} {{/link-to}}
-      {{/paper-button}}
+      {{#link-to 'login'}}
+        {{#paper-button }} {{t 'default.login'}} {{/paper-button}} 
+      {{/link-to}}
     {{/if}}
-    {{#paper-button}}
-      {{link-to (t 'product.indexName') 'products' data-test-products-link}}
-    {{/paper-button}}
-    {{#paper-button}}
-      {{link-to (t 'category.indexName') 'categories' data-test-categories-link}}
-    {{/paper-button}}
+      {{!-- {{#link-to 'login'}}
+        {{#paper-button }} {{t 'default.login'}} {{/paper-button}} 
+      {{/link-to}} --}}
+    {{#link-to 'products'}}
+      {{#paper-button}} Produkty{{/paper-button}} 
+    {{/link-to}}
+    {{#link-to 'categories'}}
+      {{#paper-button}} Kategorie {{/paper-button}} 
+    {{/link-to}}
     {{#if currentUser.user.userHasPreferences}}
       {{#unless currentUser.user.isAdmin}}
-        {{#paper-button}}
-          {{link-to 'Polecane produkty' 'preferred-products' currentUser.user.id}}
-        {{/paper-button}}
+        {{#link-to 'preferred-products' currentUser.user.id}}
+          {{#paper-button}} Polecane produkty {{/paper-button}} 
+         {{/link-to}}
       {{/unless}}
     {{/if}}
-    {{#paper-button}}
-      {{link-to 'Kontakt' 'messages.new'}}
-    {{/paper-button}}
+    {{#link-to 'messages.new'}}
+      {{#paper-button}} Kontakt {{/paper-button}} 
+    {{/link-to}}
     {{!-- {{language-select}} --}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
