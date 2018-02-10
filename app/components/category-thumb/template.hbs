@@ -2,12 +2,12 @@
   {{#card.title as |title|}}
     {{#title.text as |text|}}
       {{#text.headline data-test-category-thumb-name}} {{model.name}} {{/text.headline}}
+      {{#text.subhead data-test-category-thumb-name}} 
+        Ilość produktów w tej kategorii: {{model.products.length}}
+      {{/text.subhead}}
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
-    {{#paper-button}}
-      {{#link-to 'categories.category' model data-test-category-show-link}} {{t 'default.details'}} {{/link-to}}
-    {{/paper-button}}
     {{#paper-button}}
       {{#link-to 'categories.category' model data-test-category-show-link}} Produkty {{/link-to}}
     {{/paper-button}}

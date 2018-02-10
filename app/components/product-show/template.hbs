@@ -1,6 +1,6 @@
 
 {{#if currentUser.user.userHasPreferences}}
-  {{#unless model.isAdmin}}
+  {{#unless currentUser.user.isAdmin}}
     {{#link-to 'preferred-products' currentUser.user.id}}
       {{#paper-button raised=true primary=true}} Wróć do polecanych produktów {{/paper-button}}
     {{/link-to}}

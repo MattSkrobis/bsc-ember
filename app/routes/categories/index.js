@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   model() {
-    return this.store.findAll('category');
+    return this.store.findAll('category', { include: 'products' });
   }
 });
