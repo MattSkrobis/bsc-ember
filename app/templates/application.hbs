@@ -35,9 +35,6 @@
         {{#paper-button }} {{t 'default.login'}} {{/paper-button}} 
       {{/link-to}}
     {{/if}}
-      {{!-- {{#link-to 'login'}}
-        {{#paper-button }} {{t 'default.login'}} {{/paper-button}} 
-      {{/link-to}} --}}
     {{#link-to 'products'}}
       {{#paper-button}} Produkty{{/paper-button}} 
     {{/link-to}}
@@ -51,10 +48,11 @@
          {{/link-to}}
       {{/unless}}
     {{/if}}
-    {{#link-to 'messages.new'}}
+      {{#unless currentUser.user.isAdmin}}
+        {{#link-to 'messages.new'}}
       {{#paper-button}} Kontakt {{/paper-button}} 
-    {{/link-to}}
-    {{!-- {{language-select}} --}}
+       {{/link-to}}
+      {{/unless}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 

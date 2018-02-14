@@ -8,8 +8,19 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
+  {{#if currentUser.user.isAdmin}}
+
+  {{#link-to 'categories.edit' model data-test-category-show-link}}
     {{#paper-button}}
-      {{#link-to 'categories.category' model data-test-category-show-link}} Produkty {{/link-to}}
+      Szczegóły
     {{/paper-button}}
+    {{/link-to}}
+    {{/if}}
+
+    {{#link-to 'categories.category' model data-test-category-show-link}}
+    {{#paper-button}}
+      Produkty
+    {{/paper-button}}
+    {{/link-to}}
   {{/card.actions}}
 {{/paper-card}}

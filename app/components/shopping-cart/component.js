@@ -107,41 +107,21 @@ export default Component.extend({
 
     saveTransferOrder() {
       this.get('shoppingCart').saveTransferOrder();
-      // let order = this.get('model.firstObject');
-      // order.setProperties({
-      //   discount: this.get('discount'),
-      //   total: this.get('totalWithShipping'),
-      //   courier: this.get('selectedShippingOption'),
-      //   priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
-      //   status: 'Niezrealizowane',
-      //   paymentMethod: 'transfer'
-      // });
-      // order
-      //   .save()
-      //   .then(() => {
-      //     _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
-      //     this.get('router').transitionTo('users.edit');
-      //   })
-      //   .catch(err => {
-      //   });
-    },
-
-    savePayUOrder() {
+      let _this = this;
       let order = this.get('model.firstObject');
       order.setProperties({
         discount: this.get('discount'),
         total: this.get('totalWithShipping'),
         courier: this.get('selectedShippingOption'),
         priceAfterDiscount: this.get('totalWithShippingAfterDiscount'),
-        // status: 'Niezrealizowane',
-        paymentMethod: 'payu'
+        status: 'Niezrealizowane',
+        paymentMethod: 'transfer'
       });
       order
         .save()
         .then(() => {
-          this.get('router').transitionTo('payment');
-        })
-        .catch(err => {
+          _this.set('order', _this.getCartOrder(_this.get('currentUser.user.id')));
+          this.get('router').transitionTo('users.edit');
         });
     }
   }

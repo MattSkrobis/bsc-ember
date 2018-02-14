@@ -1,13 +1,20 @@
 {{yield}}
 <h1 data-test-category-show-name> {{model.name}} </h1>  
 
+{{#if currentUser.user.isAdmin}}
+
+{{#link-to 'categories.edit' model data-test-category-edit-link}}
+    {{#paper-button}}
+      {{t 'default.edit'}}
+    {{/paper-button}}
+    {{/link-to}}
+{{#category-destroy category=model}} {{t 'default.remove'}} {{/category-destroy}}
+
+{{/if}}
+
 <div> {{t 'category.categoryProducts'}}</div>
-<ul  data-test-category-show-products>
+<ul data-test-category-show-products>
   {{#each model.products as |product|}}
     {{product-thumb product=product class="thumb"}}
   {{/each}}
 </ul>
-{{#paper-button}}
-  {{#link-to "categories.edit" model data-test-category-edit-link}} {{t 'default.edit'}} {{/link-to}}
-{{/paper-button}}
-{{#category-destroy category=model}} {{t 'default.remove'}} {{/category-destroy}}
