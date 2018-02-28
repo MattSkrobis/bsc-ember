@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Route, inject: { service }, computed, RSVP } = Ember;
+const { Route, inject: { service }, RSVP } = Ember;
 
 export default Route.extend({
   currentUser: service(),

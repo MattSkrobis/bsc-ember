@@ -7,11 +7,9 @@ export default Component.extend({
   store: service(),
   actions: {
     save() {
-      this.get('model')
-        .save()
-        .then(() => {
-          this.get('router').transitionTo('/');
-        });
+      this.get('model').save().then(() => {
+        this.get('router').transitionTo('/');
+      });
     }
   }
 });

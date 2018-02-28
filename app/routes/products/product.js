@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Route, service } = Ember;
+const { Route } = Ember;
 
 export default Route.extend({
   model(params) {

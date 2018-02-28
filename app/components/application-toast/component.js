@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { Component,  inject: { service } } = Ember;
+const { Component } = Ember;
 
-export default Component.extend({
-  // paperToaster: service()
-});
+export default Component.extend({});
