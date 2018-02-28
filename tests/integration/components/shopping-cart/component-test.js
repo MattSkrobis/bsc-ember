@@ -3,8 +3,8 @@ import { describe, it } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-describe('Integration | Component | picture list', function() {
-  setupComponentTest('picture-list', {
+describe('Integration | Component | shopping cart', function() {
+  setupComponentTest('shopping-cart', {
     integration: true
   });
   it('renders', function() {
@@ -12,12 +12,12 @@ describe('Integration | Component | picture list', function() {
     // Handle any actions with this.on('myAction', function(val) { ... });
     // Template block usage:
     // this.render(hbs`
-    //   {{#picture-list}}
+    //   {{#shopping-cart}}
     //     template content
-    //   {{/picture-list}}
+    //   {{/shopping-cart}}
     // `);
 
-    this.render(hbs`{{picture-list}}`);
+    this.render(hbs`{{shopping-cart}}`);
     expect(this.$()).to.have.length(1);
   });
 });

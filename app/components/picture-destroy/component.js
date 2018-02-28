@@ -13,10 +13,10 @@ export default Component.extend({
       picture
         .save()
         .then(() => {
-          this.get('paperToaster').show('Success!', { duration: 3000 });
+          this.get('paperToaster').show('Sukces!', { duration: 3000 });
         })
         .catch(err => {
-          this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+          this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
         });
     }
   }

@@ -1,0 +1,42 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}Zamówienie nr {{model.id}}{{/text.headline}}
+      {{#text.subhead}}
+        <p>
+          z dnia {{moment-format model.createdAt 'DD-MM-YYYY HH:mm'}}<br>
+          Status: {{model.status}}<br>
+          {{#unless isUser}}
+          Klient: {{user.firstName}} {{user.lastName}}<br>
+          Adres: {{user.addressLine1}}, {{user.addressLine2}}
+          {{/unless}}
+        </p>
+      {{/text.subhead}}
+        {{paper-divider}}
+        {{paper-divider}}
+      {{/title.text}}
+  {{/card.title}}
+  {{#paper-list}}
+
+    {{#unless isUser}}
+      {{#link-to "admin.orders.edit" model.id}}
+        {{#paper-button data-test-categories-new-link raised=true primary=true}}
+          Edytuj
+        {{/paper-button}}
+      {{/link-to}}
+    {{/unless}}
+    
+    {{#paper-subheader}}Produkty{{/paper-subheader}}
+    {{#each model.orderLines as |line|}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+            <h3>{{line.product.name}}</h3>
+            <p>Ilość: {{line.count}}</p>
+            <p>Rozmiar: {{line.size}}</p>
+            <p>Cena: {{line.product.price}}zł (za szt.)</p>
+        </div>
+      {{/paper-item}}
+      {{paper-divider}}
+    {{/each}}
+  {{/paper-list}}
+{{/paper-card}}

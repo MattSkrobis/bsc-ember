@@ -1,0 +1,17 @@
+{
+  "editor.tabSize": 2,
+  "files.autoSave": "onWindowChange",
+  "editor.fontFamily": "'Redressed, Monaco, Menlo, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/tmp": true,
+    "**/dist": true
+  },
+  "workbench.iconTheme": "vscode-great-icons",
+  "window.zoomLevel": -1,
+  "vim.disableAnnoyingNeovimMessage": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none"
+}

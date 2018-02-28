@@ -1,0 +1,33 @@
+  {{!-- {{#link-to 'users.edit'}}
+    {{#paper-button raised=true primary=true}}Wróć {{/paper-button}}
+  {{/link-to}} --}}
+  
+<h1>Preferowane produkty</h1>
+<p>Prezentujemy Ci ponizej produkty, które spełniają kryteria podane w formularzu preferencji.</p>
+{{#each model.customer.firstObject.userAnswers as |ua|}}
+ {{#if ua.answerDescription}}
+<p>Na pytanie <b>"{{ua.questionDescription}}"</b> odpowiedziałeś/łaś: <b>"{{ua.answerDescription}}"</b>.</p>
+{{/if}}
+{{/each}}
+<h3>Znaleziono: {{model.products.length}}</h3>
+{{#each model.products as |product|}}
+  {{#paper-card class="thumb" as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}} {{product.name}} {{/text.headline}}
+        {{#text.subhead}} {{product.description}} {{/text.subhead}}
+        <ul style="margin: 0px;font-size: 14px;padding: 0px 18px;">
+          <li>Kolor: {{product.color}}</li>
+          <li>Płeć: {{t (concat 'user.attrs.gender.' product.gender )}}</li>
+          <li>Materiał: {{product.material}}</li>
+          <li>Kategoria: {{product.category.name}}</li>
+        </ul>
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.actions}}
+      {{#paper-button}}
+        {{#link-to "products.product" data-test-product-thumb-link product}} {{t 'default.details'}} {{/link-to}}
+      {{/paper-button}}
+    {{/card.actions}}
+  {{/paper-card}}
+{{/each}}

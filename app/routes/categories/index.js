@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const { Route, inject: { service } } = Ember;
 
 export default Route.extend({
+  currentUser: service(),
   model() {
-    return this.store.findAll('category');
+    return this.store.findAll('category', { include: 'products' });
   }
 });

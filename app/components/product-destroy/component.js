@@ -16,7 +16,7 @@ export default Component.extend({
         .save()
         .then(() => {
           this.set('toast.message', 'Success!');
-          this.get('router').transitionTo('products.index', { queryParams: { availability: 'true' } });
+          this.get('router').transitionTo('products.index', { queryParams: {  name: null } });
         })
         .catch(err => {
           this.set('toast.message', `Error: ${err}`);

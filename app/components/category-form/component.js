@@ -6,7 +6,7 @@ import lookupValidator from 'ember-changeset-validations';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  paperToaster: service(),
+  // paperToaster: service(),
   router: service(),
   didReceiveAttrs() {
     this._super(...arguments);
@@ -23,11 +23,11 @@ export default Component.extend({
           this.changeset
             .save()
             .then(() => {
-              this.get('paperToaster').show('Success!', { duration: 3000 });
+              this.get('paperToaster').show('Sukces!', { duration: 3000 });
               this.get('router').transitionTo('categories.index');
             })
             .catch(err => {
-              this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+              this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
             });
         }
       });

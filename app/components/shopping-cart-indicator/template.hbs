@@ -1,0 +1,12 @@
+<div class='cartButton'>
+  {{#if count}}
+    {{#link-to "checkout" data-test-checkout-link}}
+      <div class="numberCircle">
+        {{count}}
+      </div>
+        <div class="cartIcon">
+        {{paper-icon "local-grocery-store" size=32}}
+      </div>
+    {{/link-to}}
+  {{/if}}
+</div>

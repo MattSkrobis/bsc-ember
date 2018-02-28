@@ -1,4 +1,40 @@
 
+{{#if currentUser.user.userHasPreferences}}
+  {{#unless currentUser.user.isAdmin}}
+    {{#link-to 'preferred-products' currentUser.user.id}}
+      {{#paper-button raised=true primary=true}} Wróć do polecanych produktów {{/paper-button}}
+    {{/link-to}}
+  {{/unless}}
+{{/if}}
+{{#link-to 'products' }}
+  {{#paper-button raised=true primary=true}} Wróć do produktów {{/paper-button}}
+{{/link-to}}
+
+<div>
+  {{#if currentUser.user }}
+    {{#unless currentUser.user.isAdmin}}
+    <h3>Dodaj do koszyka</h3>
+    {{#paper-select
+                label="Rozmiar"
+                options=sizes
+                selected=size
+                onChange=(action (mut size))
+                as |size|}}
+                {{size}}
+      {{/paper-select}}
+    {{#paper-button  disabled=countEqualToOne onClick=(action 'decrementCount')}}
+        -
+      {{/paper-button}}
+    {{paper-input type=number label="Ilość" value=count onChange=(action (mut count))}}
+      {{#paper-button onClick=(action 'incrementCount')}}
+        +
+      {{/paper-button}}
+    {{#paper-button onClick=(action 'addToCart') }}
+      Dodaj 
+    {{/paper-button}}
+    {{/unless}}
+  {{/if}}
+</div>
 <div class='product-show-header'>
   {{t 'product.attrs.name'}} 
   <div data-test-product-show-name class='product-show-attr'>
@@ -18,23 +54,28 @@
   </div>
 </div>
 <div class='product-show-header'>
-  {{t 'product.attrs.availability.name'}}
-  <div class='product-show-attr'>
-    {{ t (concat "product.attrs.availability." model.availability)}}
-  </div>
-</div>
-<div class='product-show-header'>
   {{t 'product.attrs.price'}}
   <div class='product-show-attr'>
     {{concat model.price " " model.currency}} 
   </div>
 </div>
 <div class='product-show-header'>
-  {{t 'product.attrs.quantity'}}
+  Płeć
   <div class='product-show-attr'>
-    {{model.quantity}} 
+    {{t (concat 'user.attrs.gender.' model.gender)}}
   </div>
 </div>
 <div class='product-show-header'>
-  {{picture-list product=model inForm=false}}
+  Kolor
+  <div class='product-show-attr'>
+    {{model.color}} 
+  </div>
+</div>
+<div class='product-show-header'>
+  Materiał
+  <div class='product-show-attr'>
+    {{model.material}} 
+  </div>
+</div>
+<div class='product-show-header'>
 </div>

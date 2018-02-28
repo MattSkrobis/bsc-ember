@@ -6,7 +6,8 @@ import lookupValidator from 'ember-changeset-validations';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  paperToaster: service(),
+  ajax: service(),
+  // paperToaster: service(),
   currentUser: service(),
   router: service(),
   genders: ['male', 'female'],
@@ -19,6 +20,37 @@ export default Component.extend({
     );
   },
   actions: {
+    saveNew() {
+      this.changeset.validate().then(() => {
+        if (this.changeset.get('isValid')) {
+          return this.get('ajax').request('/users', {
+            method: 'POST',
+            data: {
+              user: {
+                first_name: this.get('changeset.firstName'),
+                last_name: this.get('changeset.lastName'),
+                address_line1: this.get('changeset.addressLine1'),
+                address_line2: this.get('changeset.addressLine2'),
+                gender: this.get('changeset.gender'),
+                telephone_number: this.get('changeset.telephoneNumber'),
+                email: this.get('changeset.email'),
+                password: this.get('changeset.password'),
+                password_confirmation: this.get('changeset.passwordConfirmation'),
+              }
+            }
+          }).then(response => {
+            let userId = response.user_id;
+            this.set('error', null);
+            this.get('store').findRecord('user', userId).then(user => {
+              this.set('user', user);
+              this.get('router').transitionTo('login');
+            });
+          }).catch(error => {
+            this.set('error', 'Konto z podanym adresem e-mail zostało juz stworzone.');
+          });
+        }
+      });
+    },
     save() {
       this.changeset.validate().then(() => {
         if (this.changeset.get('isValid')) {
@@ -27,10 +59,10 @@ export default Component.extend({
             .then(() => {
               this.set('currentUser.user', this.changeset._content);
               this.get('router').transitionTo('/');
-              this.get('paperToaster').show('Success!', { duration: 3000 });
+              this.get('paperToaster').show('Sukces!', { duration: 3000 });
             })
             .catch(err => {
-              this.get('paperToaster').show(`Error: ${err}`, { duration: 3000 });
+              this.get('paperToaster').show(`Błąd: ${err}`, { duration: 3000 });
             });
         }
       });

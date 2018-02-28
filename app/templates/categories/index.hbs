@@ -1,10 +1,12 @@
 {{outlet}}
 <h1>{{t 'category.indexName' }}</h1>
-{{#link-to "categories.new"}}
+{{#if currentUser.user.isAdmin}}
+  {{#link-to "categories.new"}}
   {{#paper-button data-test-categories-new-link raised=true primary=true}}
     {{t 'default.new'}}
   {{/paper-button}}
 {{/link-to}}
+  {{/if}}
 {{#each model as |category|}}
   {{category-thumb model=category}}
 {{/each}}

@@ -6,9 +6,11 @@ const { Route, inject: { service } } = Ember;
 export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   currentUser: service(),
+
   beforeModel() {
-    return this._loadCurrentUser();
+    this._loadCurrentUser();
   },
+
   sessionAuthenticated() {
     this._super(...arguments);
     this._loadCurrentUser();

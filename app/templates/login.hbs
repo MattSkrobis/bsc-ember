@@ -1,10 +1,16 @@
+<h1>Logowanie</h1>
+
 <form {{action 'authenticate' on='submit'}}>
-  <label for="identification">{{t 'default.login'}}</label>
-  {{input id='identification' placeholder=(t 'default.loginPropmt') value=identification}}
-  <label for="password">{{t 'default.password'}}</label>
-  {{input id='password' placeholder=(t 'default.passwordPropmt') type='password' value=password}}
+  <label for="identification">E-mail</label>
+  {{input id='identification' placeholder="E-mail" value=identification}}
+  <label for="password">Hasło</label>
+  {{input id='password' placeholder="Hasło" type='password' value=password}}
   <button type="submit">{{t 'default.login'}}</button>
   {{#if errorMessage}}
     <p>{{errorMessage}}</p>
   {{/if}}
 </form>
+
+{{#paper-button}}
+  {{#link-to "password-forgotten"}} Nie pamiętasz hasła? {{/link-to}}
+{{/paper-button}}

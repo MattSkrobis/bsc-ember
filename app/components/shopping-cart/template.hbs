@@ -1,0 +1,41 @@
+{{yield}}
+<h1> Koszyk </h1>  
+{{#if sortedLines}}
+  <h3> Produkty </h3>
+    {{#each sortedLines as |orderLine|}}
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}} {{orderLine.product.name}}{{/text.headline}}
+             <ul style="margin: 0px;font-size: 14px;padding: 0px 18px;list-style-type: none">
+              <li>Cena: <b>{{orderLine.product.price}} zł</b></li>
+              <li>W koszyku: {{ orderLine.count }}</li>
+              <li>Kolor: {{orderLine.product.color}}</li>
+              <li>Płeć: {{t (concat 'user.attrs.gender.' orderLine.product.gender )}}</li>
+              <li>Materiał: {{orderLine.product.material}}</li>
+              <li>Kategoria: {{orderLine.product.category.name}}</li>
+            </ul>
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+          {{#paper-button onClick=(action 'incrementCount' orderLine)}} Zwiększ {{/paper-button}}
+          {{#paper-button onClick=(action 'decrementCount' orderLine)}} Zmniejsz {{/paper-button}}
+          {{#paper-button onClick=(action 'removeOrderLine' orderLine)}}{{t 'default.remove'}}{{/paper-button}}
+        {{/card.actions}}
+      {{/paper-card}}
+    {{/each}}
+
+  <h3> Opcje dostawy </h3>  
+  {{#paper-radio-group
+    groupValue=(readonly selectedShippingOption)
+    onChange=(action (mut selectedShippingOption)) as |group|}}
+    {{#each shippingOptions as |option|}}
+      {{#group.radio value=option.name primary=true}} {{option.name}} - {{option.value}} zł {{/group.radio}}
+    {{/each}}
+  {{/paper-radio-group}}
+  <h4> Suma: {{totalWithShipping}} zł </h4>
+  <h3> Do zapłaty (ze znizką): {{totalWithShippingAfterDiscount}} zł </h3>
+  {{#paper-button raised=true disabled=orderCorrect onClick=(action 'saveTransferOrder')}} 
+  Złóz zamówienie z obowiązkiem zapłaty przelewem {{/paper-button}}
+
+{{/if}}

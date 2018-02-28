@@ -1,3 +1,19 @@
-{{outlet}}
+{{#unless model.isAdmin}}
+  {{#link-to "preference-form" model.id}}
+    {{#paper-button raised=true primary=true}} Formularz preferencji {{/paper-button}}
+  {{/link-to}}
+
+  {{#if model.userHasPreferences}}
+    {{#link-to 'preferred-products' model.id}}
+      {{#paper-button raised=true primary=true}} Polecane produkty {{/paper-button}}
+    {{/link-to}}
+  {{/if}}
+
+  {{#link-to 'users.orders' model.id}}
+    {{#paper-button raised=true primary=true}} Twoje zamówienia {{/paper-button}}
+  {{/link-to}}
+{{/unless}}
+
+<h1>Twoje dane</h1>
 
 {{user-form user=model}}

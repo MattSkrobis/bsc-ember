@@ -1,0 +1,12 @@
+  {{#link-to 'users.edit'}}
+    {{#paper-button raised=true primary=true}}Wróć {{/paper-button}}
+  {{/link-to}}
+  
+<h1>Twoje zamówienia</h1>
+{{#if model.length}}
+{{#each model as |order|}}
+  {{order-item model=order isUser=true}}
+{{/each}}
+{{else}}
+  <p>Brak zamówień</p>
+{{/if}}

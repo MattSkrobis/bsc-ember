@@ -6,30 +6,57 @@
       {{#if currentUser.user}}
         <p id='user-greeting'>
           {{t 'user.loggedIn'}}
-          {{#link-to 'users.edit'}}
+          {{#link-to 'users.edit' class='userName'}}
             {{currentUser.user.firstName}}
           {{/link-to}}
         </p>
       {{/if}}
+    {{else}}
+      {{#link-to 'users.new'}}
+        {{#paper-button}} Zarejestruj się {{/paper-button}}
+      {{/link-to}}
     {{/if}}
     {{#if session.isAuthenticated}}
-      {{#paper-button  onClick=(action 'invalidateSession')}}
+      {{#if currentUser.user.isAdmin}}
+        {{#link-to 'admin.index' }}
+          {{#paper-button raised=true primary=true}} Panel administratora {{/paper-button}}
+        {{/link-to}}
+      {{/if}}
+    {{/if}}
+    {{#if session.isAuthenticated}}
+     {{#unless currentUser.user.isAdmin}}
+        {{shopping-cart-indicator}}
+      {{/unless}}
+      {{#paper-button onClick=(action 'invalidateSession')}}
         {{t 'default.logout'}}
       {{/paper-button}}
     {{else}}
-      {{#paper-button }}
-        {{#link-to 'login'}} {{t 'default.login'}} {{/link-to}}
-      {{/paper-button}}
+      {{#link-to 'login'}}
+        {{#paper-button }} {{t 'default.login'}} {{/paper-button}} 
+      {{/link-to}}
     {{/if}}
-    {{#paper-button}}
-      {{link-to (t 'product.indexName') 'products' data-test-products-link}}
-    {{/paper-button}}
-    {{#paper-button}}
-      {{link-to (t 'category.indexName')  'categories' data-test-categories-link}}
-    {{/paper-button}}
-    {{language-select}}
+    {{#link-to 'products'}}
+      {{#paper-button}} Produkty{{/paper-button}} 
+    {{/link-to}}
+    {{#link-to 'categories'}}
+      {{#paper-button}} Kategorie {{/paper-button}} 
+    {{/link-to}}
+    {{#if currentUser.user.userHasPreferences}}
+      {{#unless currentUser.user.isAdmin}}
+        {{#link-to 'preferred-products' currentUser.user.id}}
+          {{#paper-button}} Polecane produkty {{/paper-button}} 
+         {{/link-to}}
+      {{/unless}}
+    {{/if}}
+      {{#unless currentUser.user.isAdmin}}
+        {{#link-to 'messages.new'}}
+      {{#paper-button}} Kontakt {{/paper-button}} 
+       {{/link-to}}
+      {{/unless}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 
 {{application-toast}}
-{{outlet}}
+<div class="body-main">
+  {{outlet}}
+</div>

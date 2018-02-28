@@ -4,10 +4,15 @@
   value=changeset.description onChange=(action (mut changeset.description)) label=(t 'product.attrs.description')}}
 {{paper-input type="number" 
   value=changeset.sku onChange=(action (mut changeset.sku)) label=(t 'product.attrs.sku')}}
-{{#paper-select label='Category' required=true options=categories 
+{{#paper-select label='Kategoria' required=true options=categories 
   selected=changeset.category onChange=(action (mut changeset.category)) as |category|}} 
   {{category.name}} 
 {{/paper-select}}
+
+{{paper-input type="text" 
+  value=changeset.color onChange=(action (mut changeset.color)) label="Kolor"}}
+{{paper-input type="text" 
+  value=changeset.material onChange=(action (mut changeset.material)) label="Materiał"}}
 
 <ul data-test-product-form-errors>
   {{#each changeset.errors as |errorSet|}}
@@ -16,10 +21,6 @@
     {{/each}}
   {{/each}}
 </ul>
-
-{{#if changeset.id}}
-  {{picture-list product=changeset newPicture=newPicture inForm=true}}
-{{/if}}
 
 {{#paper-button data-test-product-form-save-button raised=true primary=true onClick=(action "save")}}{{t 'default.save'}}{{/paper-button}}
 {{#paper-button data-test-product-form-cancel-button raised=true onClick=(action "rollback")}}{{t 'default.cancel'}}{{/paper-button}}

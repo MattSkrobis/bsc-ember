@@ -1,0 +1,7 @@
+{{outlet}}
+
+  {{#link-to 'users.edit'}}
+    {{#paper-button raised=true primary=true}}Wróć {{/paper-button}}
+  {{/link-to}}
+  
+{{preference-form model=model reloadModel=(route-action 'reloadModel')}}
